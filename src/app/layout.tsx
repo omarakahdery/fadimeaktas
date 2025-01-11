@@ -45,6 +45,7 @@ export default function RootLayout({
       {children}
       <Footer/>
       <NavOffcanvas/>
+
     </main>
 
 
