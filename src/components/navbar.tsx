@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Cart } from "@/components/cart";
 
 export function Navbar() {
   return (
@@ -82,6 +83,7 @@ export function Navbar() {
 
           </nav>
         </div>
+        <Cart/>
       </header>
 
     </>

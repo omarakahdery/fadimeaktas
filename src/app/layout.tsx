@@ -1,4 +1,3 @@
-import "./globals.css";
 import "../../public/assets/css/theme.min.css";
 import type { Metadata } from "next";
 import "../../public/assets/icons/cartzilla-icons.min.css";
