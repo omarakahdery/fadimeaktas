@@ -42,10 +42,10 @@ export function Product() {
                   </div>
                 </Link>
                 <div className="row mb-1">
-                  <div style={{paddingRight:"2px"}} className="col-lg-6">
+                  <div style={{ paddingRight: "2px" }} className="col-lg-6">
                     <Link
                       //hover-effect-scale hover-effect-opacity
-                      className=" position-relative d-flex rounded-0 overflow-hidden"
+                      className="position-relative d-flex rounded-0 overflow-hidden"
                       href="" data-glightbox="" data-gallery="product-gallery">
                       <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
                            style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
@@ -58,7 +58,7 @@ export function Product() {
                       </div>
                     </Link>
                   </div>
-                  <div style={{paddingLeft:"2px"}} className="col-lg-6">
+                  <div style={{ paddingLeft: "2px" }} className="col-lg-6">
                     <Link
                       //hover-effect-scale hover-effect-opacity
                       className="position-relative d-flex rounded-0 overflow-hidden"
@@ -79,27 +79,11 @@ export function Product() {
               <div className={"col-lg-4 col-xl-3"}>
                 <div
                   style={{ "marginTop": "-115px" }}
-                  className="offcanvas-lg offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0">
-                  <div className="d-none d-lg-block" style={{ "height": "115px" }}></div>
-
+                  className=" offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0">
+                  <div className="" style={{ "height": "115px" }}></div>
                   <div>
-                    <div
-                      //  className="ps-md-4 ps-xl-5"
-                    >
-                      {/*Reviews*/}
-                      {/*  <a className="d-none d-md-flex align-items-center gap-2 text-decoration-none mb-3" href="#reviews">
-                    <div className="d-flex gap-1 fs-sm">
-                      <i className="ci-star-filled text-warning"></i>
-                      <i className="ci-star-filled text-warning"></i>
-                      <i className="ci-star-filled text-warning"></i>
-                      <i className="ci-star-filled text-warning"></i>
-                      <i className="ci-star text-body-tertiary opacity-75"></i>
-                    </div>
-                    <span className="text-body-tertiary fs-sm">23 reviews</span>
-                  </a>*/}
-
+                    <div/*className="ps-md-4 ps-xl-5"*/>
                       <h1 className="h6">
-
                         {item.name}
                       </h1>
                       {/*Price*/}
@@ -108,54 +92,6 @@ export function Product() {
                         <del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>
                       </div>
 
-                      {/*Color options*/}
-                      {/* <div className="mb-4">
-                    <label className="form-label fw-semibold pb-1 mb-2">Color: <span className="text-body fw-normal"
-                                                                                     id="colorOption">Dark blue</span></label>
-                    <div className="d-flex flex-wrap gap-2" data-binded-label="#colorOption">
-                      <input type="radio" className="btn-check" name="colors" id="dark-blue" checked={false}/>
-                      <label htmlFor="dark-blue" className="btn btn-image p-0" data-label="Dark blue">
-                        <img src="assets/img/shop/fashion/product/colors/color01.png" width="56" alt="Dark blue"/>
-                        <span className="visually-hidden">Dark blue</span>
-                      </label>
-                      <input type="radio" className="btn-check" name="colors" id="pink"/>
-                      <label htmlFor="pink" className="btn btn-image p-0" data-label="Pink">
-                        <img src="assets/img/shop/fashion/product/colors/color02.png" width="56" alt="Pink"/>
-                        <span className="visually-hidden">Pink</span>
-                      </label>
-                      <input type="radio" className="btn-check" name="colors" id="light-blue"/>
-                      <label htmlFor="light-blue" className="btn btn-image p-0" data-label="Light blue">
-                        <img src="assets/img/shop/fashion/product/colors/color03.png" width="56" alt="Light blue"/>
-                        <span className="visually-hidden">Light blue</span>
-                      </label>
-                    </div>
-                  </div>*/}
-
-                      {/*Size select*/}
-                      {/*   <div className="mb-3">
-                    <div className="d-flex align-items-center justify-content-between mb-1">
-                      <label className="form-label fw-semibold mb-0">Size</label>
-                      <div className="nav">
-                        <a className="nav-link animate-underline fw-normal px-0" href="#sizeGuide"
-                           data-bs-toggle="modal">
-                          <i className="ci-ruler fs-lg me-2"></i>
-                          <span className="animate-target">Size guide</span>
-                        </a>
-                      </div>
-                    </div>
-                    <select className="form-select form-select-lg" data-select="{
-                  &quot;classNames&quot;: {
-                    &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;form-select-lg&quot;]
-                  }
-                }" aria-label="Material select">
-                      <option value="">Choose a size</option>
-                      <option value="xs">6-8 (XS)</option>
-                      <option value="s">8-10 (S)</option>
-                      <option value="m">10-12 (M)</option>
-                      <option value="l">12-14 (L)</option>
-                      <option value="xl">14-16 (XL)</option>
-                    </select>
-                  </div>*/}
 
                       {/*Count input + Add to cart button*/}
                       <div className="d-flex gap-3 pb-3 pb-lg-4 mb-3">
@@ -275,7 +211,8 @@ export function Product() {
     </>
   );
 }
-function changeImageNumber(url:string, newNumber:number) {
+
+function changeImageNumber(url: string, newNumber: number) {
   const formattedNumber = newNumber.toString().padStart(2, '0');
   return url.replace(/(\d+)-\d+\.jpg$/, `$1-${formattedNumber}.jpg`);
 }
