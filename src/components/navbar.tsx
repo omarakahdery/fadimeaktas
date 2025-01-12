@@ -5,11 +5,10 @@ import { Cart } from "@/components/cart";
 export function Navbar() {
   return (
     <>
-      <header
-        style={{ display: "flex" }}
-        className="navbar fixed-top border-bottom bg-body d-block z-fixed p-0"
-       /* data-sticky-navbar="{&quot;offset&quot;: 500}"*/
-      >
+      <Cart/>
+      <header className="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0 border-bottom"
+              data-sticky-navbar="{&quot;offset&quot;: 500}">
+
         <div className="container-fluid py-2 py-lg-3">
           <div className="d-flex align-items-center gap-3">
             {/*--------*/}
@@ -83,9 +82,7 @@ export function Navbar() {
 
           </nav>
         </div>
-        <Cart/>
       </header>
-
     </>
 
   )

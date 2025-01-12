@@ -5,105 +5,102 @@ import item1 from "../../assets/img/shop/fashion/01.png";
 export function Collections() {
   return (
     <>
+      <main className="content-wrapper">
 
-      <section style={{ marginTop: "80px" }}>
-        <main className="content-wrapper">
-
-          <nav className="container-fluid pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-              <li className="breadcrumb-item active" aria-current="page">Prenses Gelinlik Modelleri</li>
-            </ol>
-          </nav>
+        <nav className="container-fluid pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
+            <li className="breadcrumb-item active" aria-current="page">Prenses Gelinlik Modelleri</li>
+          </ol>
+        </nav>
 
 
-          <h1 className="h3 container-fluid pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
-          <section className="container-fluid">
+        <h1 className="h3 container-fluid pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
+        <section className="container-fluid">
 
-            {/*Sorting*/}
-            <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
-              <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
-                Bulundu
-              </div>
-              <div className="d-flex align-items-center text-nowrap">
-                <label className="form-label fw-semibold mb-0 me-2">Sıralama:</label>
-                <div style={{ "width": "190px" }}>
-                  <select className="form-select border-0 rounded-0 px-1" data-select="{
+          {/*Sorting*/}
+          <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
+            <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
+              Bulundu
+            </div>
+            <div className="d-flex align-items-center text-nowrap">
+              <label className="form-label fw-semibold mb-0 me-2">Sıralama:</label>
+              <div style={{ "width": "190px" }}>
+                <select className="form-select border-0 rounded-0 px-1" data-select="{
                     &quot;removeItemButton&quot;: false,
                     &quot;classNames&quot;: {
                       &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;border-0&quot;, &quot;rounded-0&quot;, &quot;px-1&quot;]
                     }
                   }">
-                    <option value="Popularity">En Popüler</option>
-                    <option value="Price: Low to High">Fiyat: Düşükten Yükseğe</option>
-                    <option value="Price: High to Low">Fiyat: Yüksekten Düşüğe</option>
-                    <option value="Newest Arrivals">En Yeni Gelenler</option>
-                  </select>
-                </div>
+                  <option value="Popularity">En Popüler</option>
+                  <option value="Price: Low to High">Fiyat: Düşükten Yükseğe</option>
+                  <option value="Price: High to Low">Fiyat: Yüksekten Düşüğe</option>
+                  <option value="Newest Arrivals">En Yeni Gelenler</option>
+                </select>
               </div>
             </div>
+          </div>
 
 
-            <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
+          <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
 
-              {/*Item*/}
-              {imges.map((src, index) => (
-                <Item src={src.src} name={src.name} id={String(src.id)}/>
-              ))}
+            {/*Item*/}
+            {imges.map((src, index) => (
+              <Item src={src.src} name={src.name} id={String(src.id)}/>
+            ))}
 
-            </div>
-          </section>
+          </div>
+        </section>
 
 
-        </main>
-      </section>
+      </main>
     </>
   );
 }
 
-export const imges:{
-    id:number,
-    name:string,
-    src:string
+export const imges: {
+  id: number,
+  name: string,
+  src: string
 }[] = [
   {
     id: 1,
     name: "Straplez Kabarık Prenses Etek Kırık Beyaz Dantelli Gelinlik Modeli",
-    src: "https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Straplez-Kabarik-Prenses-Etek-Kirik-Beyaz-Dantelli-Gelinlik-Modeli-Front-Detail.jpg",
+    src: "https://cdn.vakko.com/mnresize/1490/1746/868289809891-01.jpg",
   },
   {
     id: 2,
     name: "V Yaka Transparan Kollu Dantelli İncili A Model Gelinlik",
-    src: "https://alissenuera.com/cdn/shop/products/gelinlik-modelleri-2019-alisse-nuera-17-01_900x.jpg",
+    src: "https://cdn.vakko.com/mnresize/595/892/8683821049902-01.jpg",
   },
   {
     id: 3,
     name: "V Yaka Işıltılı Dantelli Transparan Kollu Prenses Gelinlik",
-    src: "https://alissenuera.com/cdn/shop/products/gelinlik-modelleri-2020-alisse-nuera-25-08_1512x.jpg"
+    src: "https://cdn.vakko.com/mnresize/595/892/8683820736339-01.jpg"
   },
   {
     id: 4,
     name: "Uzun Kollu Pileli Dantelli Prenses Gelinlik Modeli",
-    src: "https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Uzun-Kollu-Pileli-Dantelli-Prenses-Gelinlik-Modeli-Front-Image_1512x.jpg",
+    src: "https://cdn.vakko.com/mnresize/595/892/8683820148392-01.jpg",
   },
   {
-    id:5,
+    id: 5,
     name: "Kayık Yaka Transparan Uzun Kollu Prenses Gelinlik Modeli",
-    src: "https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Kayik-Yaka-Transparan-Uzun-Kollu-Prenses-Gelinlik-Modeli-Front-Detail_1512x.jpg",
+    src: "https://cdn.vakko.com/mnresize/595/892/8683821049735-01.jpg",
   },
   {
     id: 6,
     name: "Portatif Kollu Dekolteli Tamamı Dantelli Prenses Etek Gelinlik Modeli",
-    src: "https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Portatif-Kollu-Dekolteli-Tamami-Dantelli-Prenses-Etek-Gelinlik-Modeli-Front-Image_1512x.jpg",
+    src: "https://cdn.vakko.com/mnresize/595/892/8683820116766-01.jpg",
   },
   {
     id: 7,
     name: "Transparan Kollu Tüllü Dantelli Aplikli Prenses Gelinlik",
-    src: "https://alissenuera.com/cdn/shop/products/gelinlik-modelleri-2020-gelinlikleri-alisse-nuera-29-05_1512x.jpg"
+    src: "https://cdn.vakko.com/mnresize/595/892/8683468714911-01.jpg"
   },
 
 ]
-const Item = ({ src,name,id }: { src: string,name:string,id:string }) => {
+const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
   return <div className="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0">
     <div className="animate-underline hover-effect-opacity">
       <div className="position-relative mb-3">
@@ -125,17 +122,17 @@ const Item = ({ src,name,id }: { src: string,name:string,id:string }) => {
 
       </div>
       <div className="nav mb-2">
-        <Link className="nav-link animate-target min-w-0 text-dark-emphasis p-0" href={id}>
-          <span className="text-truncate">{name}</span>
+        <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={id}>
+          <span className="">{name}</span>
         </Link>
       </div>
-      {/*
-      <div className="h6 mb-2">$126.50
-      <del className="fs-sm fw-normal text-body-tertiary">
-      $156.00
-      </del>
+
+      <div className="h6 mb-2">₺12.200,00
+        <del className="fs-sm fw-normal text-body-tertiary">
+          {" "}₺15.200,00
+        </del>
       </div>
-*/}
+
     </div>
   </div>
 }

@@ -11,25 +11,25 @@ export function Product() {
   if (!item) return <h1>Ürün bulunamadı</h1>
   return (
     <>
-      <section style={{ marginTop: "80px" }}>
-        <main className="content-wrapper">
+      <main className="content-wrapper">
+        <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+
           <nav className="container-fluid pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-              <li className="breadcrumb-item"><Link href="shop-catalog-fashion.html">Prenses Gelinlik Modelleri</Link>
+              <li className="breadcrumb-item"><Link href="/collections">Prenses Gelinlik Modelleri</Link>
               </li>
               {/*<li className="breadcrumb-item active" aria-current="page">Ürün Sayfası</li>*/}
             </ol>
           </nav>
 
           <section className="container-fluid">
-
-            <div style={{ display: "flex", gap: "10px" }} className="">
+            <div className="row">
               {/*photos*/}
-              <div style={{ flexBasis: "50%", }}>
+              <div className={"col-lg-8"}>
                 <Link
                   //hover-effect-scale hover-effect-opacity
-                  className="position-relative d-flex rounded-0 mb-1 overflow-hidden"
+                  className="position-relative d-flex rounded-0 mb-1  overflow-hidden"
                   href="" data-glightbox="" data-gallery="product-gallery">
                   <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
                        style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
@@ -41,41 +41,48 @@ export function Product() {
                     />
                   </div>
                 </Link>
-                <Link
-                  //hover-effect-scale hover-effect-opacity
-                  className=" position-relative d-flex rounded-0 mb-1 overflow-hidden"
-                  href="" data-glightbox="" data-gallery="product-gallery">
-                  <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
-                       style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
-                    <Image
-                      width={600}
-                      height={900}
-                      src={"https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Portatif-Kollu-Dekolteli-Tamami-Dantelli-Prenses-Etek-Gelinlik-Modeli-Back-Image_1512x.jpg"}
-                      alt="Image"
-                    />
+                <div className="row mb-1">
+                  <div style={{paddingRight:"2px"}} className="col-lg-6">
+                    <Link
+                      //hover-effect-scale hover-effect-opacity
+                      className=" position-relative d-flex rounded-0 overflow-hidden"
+                      href="" data-glightbox="" data-gallery="product-gallery">
+                      <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
+                           style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
+                        <Image
+                          width={600}
+                          height={900}
+                          src={changeImageNumber(item.src, 2)}
+                          alt="Image"
+                        />
+                      </div>
+                    </Link>
                   </div>
-                </Link>
-                <Link
-                  //hover-effect-scale hover-effect-opacity
-                  className=" position-relative d-flex rounded-0 mb-1 overflow-hidden"
-                  href="" data-glightbox="" data-gallery="product-gallery">
-                  <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
-                       style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
-                    <Image
-                      width={600}
-                      height={900}
-                      src={"https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Straplez-Kabarik-Prenses-Etek-Kirik-Beyaz-Dantelli-Gelinlik-Modeli-Front-Image_1512x.jpg"}
-                      alt="Image"
-                    />
+                  <div style={{paddingLeft:"2px"}} className="col-lg-6">
+                    <Link
+                      //hover-effect-scale hover-effect-opacity
+                      className="position-relative d-flex rounded-0 overflow-hidden"
+                      href="" data-glightbox="" data-gallery="product-gallery">
+                      <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
+                           style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
+                        <Image
+                          width={600}
+                          height={900}
+                          src={"https://cdn.vakko.com/mnresize/595/892/8683468714911-01.jpg"}
+                          alt="Image"
+                        />
+                      </div>
+                    </Link>
                   </div>
-                </Link>
+                </div>
               </div>
+              <div className={"col-lg-4 col-xl-3"}>
+                <div
+                  style={{ "marginTop": "-115px" }}
+                  className="offcanvas-lg offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0">
+                  <div className="d-none d-lg-block" style={{ "height": "115px" }}></div>
 
-              <div style={{ flexBasis: "50%", position: "relative", width: "100%" }}>
-
-                <div style={{ position: "sticky", top: "0", width: "100%" }} className="col-md-6">
-
-                  <div style={{ right: "50px", padding: "96px" }}>
+                  <div>
                     <div
                       //  className="ps-md-4 ps-xl-5"
                     >
@@ -223,32 +230,32 @@ export function Product() {
                                aria-labelledby="headingOne"
                                data-bs-parent="#accordionExample">
                             <div className="accordion-body">
-                              Bu parçe kalitesini korumak için bakım talimatlarına uymanızı öneririz:                              <ul>
-                                <li>
-                                  Yıkamayın
-                                </li>
-                                <li>
-                                  Ağartıcı kullanmayın
-                                </li>
-                                <li>
-                                  Kurutma makinesinde kurutmayın
-                                </li>
-                                <li>
-                                  Ütüyü maksimum 110°C taban sıcaklığında kullanın
-                                </li>
-                                <li>
-                                  Hidrokarbonlarla (KWL) hafif profesyonel kuru temizleme yapın
-                                </li>
-                                <li>
-                                  Nazik kuru temizleme
-                                </li>
-                                <li>
-                                  Bir torba içinde ters çevirerek kuru temizleme yapın
-                                </li>
-                                <li>
-                                  Ters çevirerek ve araya kumaş koyarak ütüleyin
-                                </li>
-                              </ul>
+                              Bu parçe kalitesini korumak için bakım talimatlarına uymanızı öneririz: <ul>
+                              <li>
+                                Yıkamayın
+                              </li>
+                              <li>
+                                Ağartıcı kullanmayın
+                              </li>
+                              <li>
+                                Kurutma makinesinde kurutmayın
+                              </li>
+                              <li>
+                                Ütüyü maksimum 110°C taban sıcaklığında kullanın
+                              </li>
+                              <li>
+                                Hidrokarbonlarla (KWL) hafif profesyonel kuru temizleme yapın
+                              </li>
+                              <li>
+                                Nazik kuru temizleme
+                              </li>
+                              <li>
+                                Bir torba içinde ters çevirerek kuru temizleme yapın
+                              </li>
+                              <li>
+                                Ters çevirerek ve araya kumaş koyarak ütüleyin
+                              </li>
+                            </ul>
                             </div>
 
                           </div>
@@ -263,8 +270,12 @@ export function Product() {
 
             </div>
           </section>
-        </main>
-      </section>
+        </section>
+      </main>
     </>
   );
+}
+function changeImageNumber(url:string, newNumber:number) {
+  const formattedNumber = newNumber.toString().padStart(2, '0');
+  return url.replace(/(\d+)-\d+\.jpg$/, `$1-${formattedNumber}.jpg`);
 }

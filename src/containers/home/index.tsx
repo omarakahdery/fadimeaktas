@@ -1,25 +1,27 @@
 import Image from "next/image";
 
 const imgList = [
-  "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
-  "https://alissenuera.com/cdn/shop/files/gelinlik-modelleri-gelinlik-koleksiyonlari-slider-2_96d2987d-f3a8-41fa-b312-0b2bcd2bdcc7.webp",
-  "https://alissenuera.com/cdn/shop/files/saten-gelinlik-modelleri-saten-gelinlik-koleksiyonu-slider-3.webp",
-  "https://alissenuera.com/cdn/shop/files/oriental-fashion-show-alisse-nuera-fashion-show-slider-4.webp",
-  "https://alissenuera.com/cdn/shop/files/gelin-odasi-dugununuze-hazirlanin-slider-6.webp",
+  /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
+   "https://alissenuera.com/cdn/shop/files/gelinlik-modelleri-gelinlik-koleksiyonlari-slider-2_96d2987d-f3a8-41fa-b312-0b2bcd2bdcc7.webp",
+   "https://alissenuera.com/cdn/shop/files/saten-gelinlik-modelleri-saten-gelinlik-koleksiyonu-slider-3.webp",
+   "https://alissenuera.com/cdn/shop/files/oriental-fashion-show-alisse-nuera-fashion-show-slider-4.webp",
+   "https://alissenuera.com/cdn/shop/files/gelin-odasi-dugununuze-hazirlanin-slider-6.webp",*/
+  "https://cdn.vakko.com/banners/d74ad5e7-4f5c-482d-acc4-e69ea5f56ece.jpeg",
+  "https://cdn.vakko.com/banners/fe7e6da4-e226-43e7-ab7b-13c74abf90ce.jpeg",
+  "https://api.vakko.com//medias/esra-12.jpg?context=bWFzdGVyfGltYWdlc3w1NjgwNzV8aW1hZ2UvanBlZ3xhRGN5TDJnek5TODVNak16TkRVMk9EVTNNVEU0TDJWemNtRXRNVEl1YW5Cbnw0NzcwYjM2MzA0NjcxMDRlNmViZWU1ODA2YzI3YzRmOGZiNzE2ZDcwNTU3MGMzYTYxNzFiMzY5NWQzNTdjYWI2",
+  "https://cdn.vakko.com/banners/d7025919-d811-496f-8c6a-00885d3b3c27.jpeg"
 ]
 
-export function Hero() {
+export function Home() {
   return (
-    <>
-      <section style={{ marginTop: "128px" }}>
-        {imgList.map((src, index) => (
-          <ImgToHomePage
-            key={index}
-            src={src}
-          />
-        ))}
-      </section>
-    </>
+    <main className="content-wrapper">
+      {imgList.map((src, index) => (
+        <ImgToHomePage
+          key={index}
+          src={src}
+        />
+      ))}
+    </main>
   );
 }
 
@@ -28,20 +30,6 @@ export function ImgToHomePage({ src }: { src: string }) {
     <>
       <div style={{ width: "100%", height: "100%" }} className="col-md-7 mt-md-n5">
         <div className="position-relative w-100 rtl-flip">
-          <div style={{ left: "120px", top: "120px" }} className={"position-absolute"}>
-
-            <div className="col-md-5 col-lg-4 offset-lg-1 text-center text-md-start mb-4 mb-md-0">
-              <div className="pt-5 pt-md-0 px-4 px-sm-5 pe-md-0 ps-md-5 ps-lg-0">
-                {/* <p className="fs-xl mb-lg-4">The new stylish collection</p>*/}
-                <h1 className="display-4 mb-4 mb-lg-5">2025 Gelinlik Modelleri </h1>
-                <a className="btn btn-lg btn-dark" href="/collections">
-                  Keşfet
-                  <i className="ci-arrow-up-right fs-lg ms-2 me-n1"></i>
-                </a>
-              </div>
-            </div>
-
-          </div>
           <Image
             sizes="100vw, 33vw"
             width={4000}

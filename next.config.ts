@@ -5,7 +5,10 @@ const nextConfig: NextConfig = {
   images: {
     domains: [
       "alissenuera.com",
-      "fadimeaktas.com"
+      "fadimeaktas.com",
+      "cdn.vakko.com",
+      "api.vakko.com",
+
     ],
   },
 };

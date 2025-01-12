@@ -28,14 +28,20 @@ export const Cart = () => {
           <div className="d-flex align-items-center">
             <Link className="flex-shrink-0" href="/1">
               <Image
-                src="https://alissenuera.com/cdn/shop/files/Alisse-nuerA-Straplez-Kabarik-Prenses-Etek-Kirik-Beyaz-Dantelli-Gelinlik-Modeli-Front-Detail.jpg"
+                src="https://cdn.vakko.com/mnresize/1490/1746/868289809891-01.jpg"
                 className="bg-body-tertiary rounded"
                 width={110}
                 height={110}
                 alt="Thumbnail"
               />
             </Link>
-            <div className="w-100 min-w-0 ps-3">
+            <div
+              style={{
+                display:"flex",
+                flexDirection:"column",
+                gap:"24px",
+              }}
+              className="w-100 min-w-0 ps-3">
               <h5 className="d-flex animate-underline mb-2">
                 <Link className="d-block fs-sm fw-medium text-truncate animate-target" href="/">
                   Straplez Kabarık Prenses Etek Kırık Beyaz Dantelli Gelinlik Modeli
@@ -62,15 +68,26 @@ export const Cart = () => {
           </div>
 
         </div>
-        {/*Footer */}
+        {/* Footer */}
         <div className="offcanvas-header flex-column align-items-start">
           <div className="d-flex align-items-center justify-content-between w-100 mb-3 mb-md-4">
             <span className="text-light-emphasis">Toplam:</span>
             <span className="h6 mb-0">₺10.900,00</span>
           </div>
           <div className="d-flex w-100 gap-3">
-            <Link className="btn btn-lg btn-secondary w-100" href="#">İndirim Kodu Gir</Link>
-            <Link className="btn btn-lg btn-dark w-100" href="#">Sepeti Onayla</Link>
+            <Link  className="btn btn-lg btn-secondary w-100" href="/">
+            <span data-bs-dismiss="offcanvas" aria-label="Close">
+
+              İndirim Kodu Gir
+            </span>
+            </Link>
+            <Link className="btn btn-lg btn-dark w-100" href="/odeme">
+
+            <span data-bs-dismiss="offcanvas" aria-label="Close" >
+
+              Sepeti Onayla
+            </span>
+            </Link>
           </div>
         </div>
       </div>
