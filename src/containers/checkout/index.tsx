@@ -74,9 +74,8 @@ export const Checkout = () => {
 
               <div className="col-lg-5 col-xl-4 offset-lg-1">
                 <div className="position-relative mb-3">
-                  <i className="ci-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
-                  <input type="email" className="form-control form-icon-start rounded-pill"
-                         placeholder="E-posta"/>
+                  <input type="email" className="form-control rounded-pill"
+                         placeholder="Kart Sahibi"/>
                 </div>
                 <div className="position-relative mb-3" data-input-format="{&quot;creditCard&quot;: true}">
                   <input type="text" className="form-control form-icon-end rounded-pill"
