@@ -12,7 +12,7 @@ export function Collections() {
       <main className="content-wrapper">
 
         <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-          <ol className="breadcrumb">
+          <ol className="breadcrumb fs-xs">
             <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
             <li className="breadcrumb-item active" aria-current="page">Prenses Gelinlik Modelleri</li>
           </ol>
