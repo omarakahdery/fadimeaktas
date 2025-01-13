@@ -48,7 +48,7 @@ export const Cart = () => {
                 </Link>
               </div>
               <div className="w-normal text-dark fs-sm mb-2">₺10.900,00</div>
-              <div className="d-flex align-items-center justify-content-between">
+             {/* <div className="d-flex align-items-center justify-content-between">
                 <div className="count-input rounded-2">
                   <button type="button" className="btn btn-icon btn-sm" data-decrement=""
                           aria-label="Decrement quantity">
@@ -63,7 +63,7 @@ export const Cart = () => {
                 <button type="button" className="btn-close fs-sm" data-bs-toggle="tooltip"
                         data-bs-custom-className="tooltip-sm" data-bs-title="Remove"
                         aria-label="Remove from cart"></button>
-              </div>
+              </div>*/}
             </div>
           </div>
 
@@ -75,13 +75,13 @@ export const Cart = () => {
             <span className=" mb-0">₺10.900,00</span>
           </div>
           <div className="d-flex w-100 gap-3">
-            <Link  className="btn btn-lg btn-secondary w-100" href="/">
+           {/* <Link  className="btn btn-lg btn-secondary w-100" href="/">
             <span data-bs-dismiss="offcanvas" aria-label="Close">
 
               İndirim Kodu Gir
             </span>
-            </Link>
-            <Link className="btn btn-lg btn-dark w-100" href="/odeme">
+            </Link>*/}
+            <Link className="btn rounded-pill btn-lg btn-dark w-100" href="/odeme">
 
             <span data-bs-dismiss="offcanvas" aria-label="Close" >
 
