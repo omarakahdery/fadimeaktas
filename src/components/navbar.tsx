@@ -14,20 +14,20 @@ export function Navbar() {
             {/*--------*/}
             <button
               type="button"
-              className="btn mb-3 me-2"
+              className="btn"
               data-bs-toggle="offcanvas"
               data-bs-target="#offcanvasLeft"
               aria-controls="offcanvasLeft"
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span className="navbar-toggler-icon"></span>
+              <span style={{fontSize:"24px"}} className="navbar-toggler-icon"></span>
             </button>
             {/*--------*/}
           </div>
           <Link className={"navbar-brand"} href={"/"}>
 
-            <h3 style={{letterSpacing:"0.025em"}} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
+            <h3 style={{letterSpacing:"0.075em"}} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
               {/* <Image
               width={80}
               height={80}
@@ -49,14 +49,14 @@ export function Navbar() {
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
               href="/">
-              <i className="ci-user animate-target"></i>
+              <i style={{fontSize:"24px"}} className="ci-user animate-target"></i>
               <span className="visually-hidden">Account</span>
             </Link>
 
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
               href="#">
-              <i className="ci-heart animate-target"></i>
+              <i style={{fontSize:"24px"}} className="ci-heart animate-target"></i>
               <span className="visually-hidden">Wishlist</span>
             </Link>
 
@@ -69,7 +69,7 @@ export function Navbar() {
                                 style="--cz-badge-padding-y: .25em; --cz-badge-padding-x: .42em"
               */
             >3</span>
-              <i className="ci-shopping-bag animate-target me-1"></i>
+              <i style={{fontSize:"24px"}} className="ci-shopping-bag animate-target me-1"></i>
             </button>
           </div>
         </div>

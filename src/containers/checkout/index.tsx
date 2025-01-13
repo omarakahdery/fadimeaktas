@@ -102,7 +102,7 @@ export const Checkout = () => {
                 </div>
                 <div className="d-flex align-items-center justify-content-between w-100 mt-4 mb-3">
                   <span className="fs-sm">Toplam:</span>
-                  <span className="h6 mb-0">₺10.900,00</span>
+                  <span className="mb-0">₺10.900,00</span>
                 </div>
                 <button type="button" className="btn btn-lg btn-dark w-100 rounded-pill">
 

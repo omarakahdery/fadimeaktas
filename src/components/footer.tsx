@@ -1,4 +1,5 @@
 import Script from 'next/script'
+
 export const Footer = () => {
   return (
 
@@ -8,27 +9,27 @@ export const Footer = () => {
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="YouTube" aria-label="Follow us on YouTube">
-            <i className="ci-youtube"></i>
+            <i style={{fontSize:"24px"}} className="ci-youtube"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Facebook" aria-label="Follow us on Facebook">
-            <i className="ci-facebook"></i>
+            <i style={{fontSize:"24px"}} className="ci-facebook"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Instagram" aria-label="Follow us on Instagram">
-            <i className="ci-instagram"></i>
+            <i style={{fontSize:"24px"}} className="ci-instagram"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Telegram" aria-label="Follow us on Telegram">
-            <i className="ci-telegram"></i>
+            <i style={{fontSize:"24px"}} className="ci-telegram"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Pinterest" aria-label="Follow us on Pinterest">
-            <i className="ci-pinterest"></i>
+            <i style={{fontSize:"24px"}} className="ci-pinterest"></i>
           </a>
         </div>
 
@@ -64,6 +65,10 @@ export const Footer = () => {
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Kış 2025</a>
                       </li>
+                      <li  className="d-flex w-100 pt-1">
+                        <a style={{ color: "#ff6700" }} className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="#!">İnderim</a>
+                      </li>
 
                     </ul>
                   </div>
@@ -95,10 +100,6 @@ export const Footer = () => {
                       <li className="d-flex w-100 pt-1">
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Sipariş takibi</a>
-                      </li>
-                      <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Teslimat bilgileri</a>
                       </li>
                     </ul>
                   </div>
@@ -134,14 +135,7 @@ export const Footer = () => {
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Bilgi güvenlği</a>
                       </li>
-                      <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Kalite politikasi</a>
-                      </li>
-                      <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Shipping</a>
-                      </li>
+
                     </ul>
                   </div>
                   <hr className="d-sm-none my-0"/>

@@ -14,12 +14,12 @@ export function Collections() {
         <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
           <ol className="breadcrumb text-dark fs-xs">
             <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-            <li className="breadcrumb-item" aria-current="page">Prenses Gelinlik Modelleri</li>
+            <li className="breadcrumb-item" aria-current="page">Gelinlik</li>
           </ol>
         </nav>
 
 
-        <h1 className="h3 container pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
+        <h1 className="h3 container pb-3 pb-lg-4">Gelinlik</h1>
         <section className="container">
           {/*Sorting*/}
           <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
@@ -91,15 +91,32 @@ export const imges: {
     src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-71.jpeg"
   },
   {
+    id: 344,
+    name: "Stephane Rolland",
+    src:"https://weddedwonderland.com/wp-content/uploads/2024/01/image-59.jpeg"
+  },
+  {
     id: 1,
     name: "Schiaparelli",
     src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-69.jpeg",
   },
+
+  {
+    id: 32,
+    name: "Dior",
+    src:"https://weddedwonderland.com/wp-content/uploads/2024/01/image-56.jpeg"
+  },
+
   {
     id: 2,
-    name: "Dior",
+    name: "Georges Hobeika",
     src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-66.jpeg",
   },
+  {
+    id: 3112,
+    name: "Schiaparelli",
+    src:"https://weddedwonderland.com/wp-content/uploads/2024/01/image-57.jpeg"
+  }
 ]
 const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
   return <div className="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0">
@@ -128,8 +145,8 @@ const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
         </Link>
       </div>
 
-      <div className="fw-semibold text-dark fs-sm mb-2">₺12.200,00
-        <del className="fs-xs fw-normal ms-2 text-body-tertiary">
+      <div className="fw-normal text-dark fs-sm mb-2">₺12.200,00
+        <del className="fs-sm fw-normal ms-2 text-body-tertiary">
           {" "}₺15.200,00
         </del>
       </div>

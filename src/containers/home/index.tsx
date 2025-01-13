@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const imgList = [
   /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
@@ -30,6 +31,7 @@ export function ImgToHomePage({ src }: { src: string }) {
     <>
       <div style={{ width: "100%", height: "100%" }} className="col-md-7 mt-md-n5">
         <div className="position-relative w-100 rtl-flip">
+          <Link href={"/collections"}>
           <Image
             sizes="100vw, 33vw"
             width={4000}
@@ -37,6 +39,7 @@ export function ImgToHomePage({ src }: { src: string }) {
             src={src}
             alt="Image"
           />
+          </Link>
         </div>
       </div>
     </>

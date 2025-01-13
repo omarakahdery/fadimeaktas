@@ -72,7 +72,7 @@ export const Cart = () => {
         <div className="offcanvas-header flex-column align-items-start">
           <div className="d-flex align-items-center justify-content-between w-100 mb-3 mb-md-4">
             <span className="text-light-emphasis">Toplam:</span>
-            <span className="h6 mb-0">₺10.900,00</span>
+            <span className=" mb-0">₺10.900,00</span>
           </div>
           <div className="d-flex w-100 gap-3">
             <Link  className="btn btn-lg btn-secondary w-100" href="/">

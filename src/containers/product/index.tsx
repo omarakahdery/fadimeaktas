@@ -17,7 +17,7 @@ export function Product() {
           <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
             <ol className="breadcrumb text-dark fs-xs">
               <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-              <li className="breadcrumb-item"><Link href="/collections">Prenses Gelinlik Modelleri</Link>
+              <li className="breadcrumb-item"><Link href="/collections">Gelinlik</Link>
               </li>
               {/*<li className="breadcrumb-item active" aria-current="page">Ürün Sayfası</li>*/}
             </ol>
@@ -87,9 +87,9 @@ export function Product() {
                         {item.name}
                       </h6>
                       {/*Price*/}
-                      <div className="fw-semibold fs-xs d-flex align-items-center my-4">
+                      <div className="fw-normal fs-sm d-flex align-items-center my-4">
                         ₺10.900,00
-                        <del className="fs-xs fw-normal text-body-tertiary ms-2">₺15.900,00</del>
+                        <del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>
                       </div>
 
                       {/*Count input + Add to cart button*/}

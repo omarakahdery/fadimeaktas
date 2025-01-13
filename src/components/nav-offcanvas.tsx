@@ -35,7 +35,7 @@ export function NavOffcanvas() {
 
               <li className="nav-item">
                 <a style={{ marginBottom: "16px" }} className="fs-xl nav-link" href="/collections">
-                  Bahar 2025
+                  sonbahar 2025
                 </a>
               </li>
 
@@ -46,7 +46,7 @@ export function NavOffcanvas() {
               </li>
 
               <li className="nav-item">
-                <a style={{ marginBottom: "16px" }} className="fs-xl nav-link text-warning " href="/collections">
+                <a style={{ marginBottom: "16px",color:"#ff6700" }} className="fs-xl nav-link " href="/collections">
                   İndirim
                 </a>
               </li>
@@ -62,27 +62,27 @@ export function NavOffcanvas() {
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
                  title="YouTube" aria-label="Follow us on YouTube">
-                <i className="ci-youtube"></i>
+                <i style={{fontSize:"24px"}} className="ci-youtube"></i>
               </a>
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
                  title="Facebook" aria-label="Follow us on Facebook">
-                <i className="ci-facebook"></i>
+                <i style={{fontSize:"24px"}} className="ci-facebook"></i>
               </a>
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
                  title="Instagram" aria-label="Follow us on Instagram">
-                <i className="ci-instagram"></i>
+                <i style={{fontSize:"24px"}} className="ci-instagram"></i>
               </a>
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
                  title="Telegram" aria-label="Follow us on Telegram">
-                <i className="ci-telegram"></i>
+                <i style={{fontSize:"24px"}} className="ci-telegram"></i>
               </a>
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
                  title="Pinterest" aria-label="Follow us on Pinterest">
-                <i className="ci-pinterest"></i>
+                <i style={{fontSize:"24px"}} className="ci-pinterest"></i>
               </a>
             </div>
           </div>
