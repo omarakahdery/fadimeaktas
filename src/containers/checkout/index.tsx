@@ -5,7 +5,7 @@ export const Checkout = () => {
   return (
     <>
       <section style={{ marginTop: "80px" }}>
-        <main className="container-fluid content-wrapper">
+        <main className="container content-wrapper">
           <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
             <div className="row">
               <div className="col-xl-10 offset-xl-1">

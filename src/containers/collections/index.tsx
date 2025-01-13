@@ -7,7 +7,7 @@ export function Collections() {
     <>
       <main className="content-wrapper">
 
-        <nav className="container-fluid pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
+        <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
             <li className="breadcrumb-item active" aria-current="page">Prenses Gelinlik Modelleri</li>
@@ -15,8 +15,8 @@ export function Collections() {
         </nav>
 
 
-        <h1 className="h3 container-fluid pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
-        <section className="container-fluid">
+        <h1 className="h3 container pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
+        <section className="container">
 
           {/*Sorting*/}
           <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">

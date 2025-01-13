@@ -14,7 +14,7 @@ export function Product() {
       <main className="content-wrapper">
         <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
 
-          <nav className="container-fluid pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
+          <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
               <li className="breadcrumb-item"><Link href="/collections">Prenses Gelinlik Modelleri</Link>
@@ -23,7 +23,7 @@ export function Product() {
             </ol>
           </nav>
 
-          <section className="container-fluid">
+          <section className="container">
             <div className="row">
               {/*photos*/}
               <div className={"col-lg-8"}>

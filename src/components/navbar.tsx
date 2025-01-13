@@ -25,14 +25,17 @@ export function Navbar() {
             </button>
             {/*--------*/}
           </div>
+          <Link className={"navbar-brand"} href={"/"}>
 
-          <Link className="navbar-brand fs-2 py-0 m-0 me-auto me-sm-n5" href="/">
-            <Image
+            <h3 className="fs-2 fw-normal py-0 m-0 me-auto me-sm-n5">
+              {/* <Image
               width={80}
               height={80}
               src={"https://fadimeaktas.com/wp-content/uploads/2024/11/cropped-PSD-LOGO-3.png"}
               alt={"ddd"}
-            />
+            />*/}
+              Fadime Aktaş
+            </h3>
           </Link>
 
           <div className="d-flex align-items-center">
