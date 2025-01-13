@@ -13,7 +13,7 @@ export const Cart = () => {
         {/*Header*/}
         <div className="offcanvas-header flex-column align-items-start py-3 pt-lg-4">
           <div className="d-flex align-items-center justify-content-between w-100 mb-3 mb-lg-4">
-            <h4 className="offcanvas-title" id="shoppingCartLabel">Sepetim (1 Ürün)
+            <h4 className="offcanvas-title" id="shoppingCartLabel">Sepetim
             </h4>
             <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>

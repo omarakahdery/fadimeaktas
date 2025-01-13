@@ -9,7 +9,7 @@ export const Checkout = () => {
           <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
             <div className="row">
               <div className="col-xl-10 offset-xl-1">
-                <h1 className="h3 pb-2 pb-md-3">Checkout</h1>
+                <h1 className="h3 pb-2 pb-md-3">Ödeme</h1>
               </div>
             </div>
             <div className="row">

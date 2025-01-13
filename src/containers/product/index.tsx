@@ -112,7 +112,7 @@ export function Product() {
 
                       </div>
 
-                      <p className="fs-sm mb-0">
+                      <p className="fs-sm mb-2">
                         Georges Hobeika'nın Haute Couture Moda Haftası'ndaki gelin tasarımı, romantizm ve
                         kadınsılık katmak için çiçeksi unsurları kusursuz bir şekilde entegre ederek, çağdaş bir
                         dokunuşla akıcı modernizmi özetliyor.</p>
@@ -123,7 +123,7 @@ export function Product() {
                         </div>
                       </div>
 
-                      <a className="d-inline-block fs-sm fw-medium text-dark-emphasis collapsed mt-1"
+                      <a className="d-inline-block fs-sm fw-medium text-dark-emphasis collapsed"
                          href="#moreDescription"
                          data-bs-toggle="collapse"
                          aria-expanded="false"
@@ -136,8 +136,8 @@ export function Product() {
                       <div className="accordion mt-3" id="accordionExample">
                         <div className="accordion-item border-top">
                           <h3 className="accordion-header" id="headingOne">
-                            <button style={{ fontSize: "12px" }} type="button"
-                                    className="accordion-button animate-underline"
+                            <button type="button"
+                                    className="accordion-button fs-sm animate-underline"
                                     data-bs-toggle="collapse"
                                     data-bs-target="#collapseOne"
                                     aria-expanded="false"
