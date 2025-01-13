@@ -2,6 +2,10 @@ import Link from "next/link";
 import Image from "next/image";
 import item1 from "../../assets/img/shop/fashion/01.png";
 
+function onCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
+  console.log(event.target.value);
+}
+
 export function Collections() {
   return (
     <>
@@ -17,36 +21,39 @@ export function Collections() {
 
         <h1 className="h3 container pb-3 pb-lg-4">Prenses Gelinlik Modelleri</h1>
         <section className="container">
-
           {/*Sorting*/}
           <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
-            <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
+            {/*       <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
               Bulundu
-            </div>
+            </div>*/}
+            {/*
             <div className="d-flex align-items-center text-nowrap">
               <label className="form-label fw-semibold mb-0 me-2">Sıralama:</label>
               <div style={{ "width": "190px" }}>
-                <select className="form-select border-0 rounded-0 px-1" data-select="{
+                <select
+                  onChange={onCategoryChange}
+                  defaultValue="44"
+                  className="form-select border-0 rounded-0 px-1" data-select="{
                     &quot;removeItemButton&quot;: false,
                     &quot;classNames&quot;: {
                       &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;border-0&quot;, &quot;rounded-0&quot;, &quot;px-1&quot;]
                     }
                   }">
-                  <option value="Popularity">En Popüler</option>
-                  <option value="Price: Low to High">Fiyat: Düşükten Yükseğe</option>
-                  <option value="Price: High to Low">Fiyat: Yüksekten Düşüğe</option>
-                  <option value="Newest Arrivals">En Yeni Gelenler</option>
+                  <option value="44">En Popüler</option>
+                  <option value="1">Fiyat: Düşükten Yükseğe</option>
+                  <option value="2">Fiyat: Yüksekten Düşüğe</option>
+                  <option value="3">En Yeni Gelenler</option>
                 </select>
               </div>
             </div>
+*/}
           </div>
 
 
           <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
 
-            {/*Item*/}
             {imges.map((src, index) => (
-              <Item src={src.src} name={src.name} id={String(src.id)}/>
+              <Item key={src.src} src={src.src} name={src.name} id={String(src.id)}/>
             ))}
 
           </div>
@@ -64,18 +71,33 @@ export const imges: {
   src: string
 }[] = [
   {
+    id: 0,
+    name: "Georges Hobeika",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg",
+  },
+  {
+    id: 435,
+    name: "Tony Ward",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-63.jpeg",
+  },
+  {
+    id: 45,
+    name: "Dior",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-59.jpeg",
+  },
+  {
     id: 1,
-    name: "Straplez Kabarık Prenses Etek Kırık Beyaz Dantelli Gelinlik Modeli",
+    name: "Schiaparelli",
     src: "https://cdn.vakko.com/mnresize/1490/1746/868289809891-01.jpg",
   },
   {
     id: 2,
-    name: "V Yaka Transparan Kollu Dantelli İncili A Model Gelinlik",
+    name: "Dior",
     src: "https://cdn.vakko.com/mnresize/595/892/8683821049902-01.jpg",
   },
   {
     id: 3,
-    name: "V Yaka Işıltılı Dantelli Transparan Kollu Prenses Gelinlik",
+    name: "Stephane Rolland",
     src: "https://cdn.vakko.com/mnresize/595/892/8683820736339-01.jpg"
   },
   {
@@ -127,8 +149,8 @@ const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
         </Link>
       </div>
 
-      <div className="h6 mb-2">₺12.200,00
-        <del className="fs-sm fw-normal text-body-tertiary">
+      <div className="h6 fs-sm mb-2">₺12.200,00
+        <del className="fs-xs fw-normal text-body-tertiary">
           {" "}₺15.200,00
         </del>
       </div>

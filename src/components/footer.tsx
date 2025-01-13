@@ -4,7 +4,7 @@ export const Footer = () => {
 
     <footer className="footer pt-5 pb-4">
       <div className="container pt-sm-2 pt-md-3 pt-lg-4">
-        <div className="d-flex justify-content-center justify-content-start mb-4 gap-2 mt-n2 mt-md-0">
+        <div className="d-flex justify-content-center justify-content-start mb-4 gap-4 mt-n2 mt-md-0">
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="YouTube" aria-label="Follow us on YouTube">

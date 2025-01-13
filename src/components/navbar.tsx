@@ -6,7 +6,7 @@ export function Navbar() {
   return (
     <>
       <Cart/>
-      <header className="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0 border-bottom"
+      <header className="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0"
               data-sticky-navbar="{&quot;offset&quot;: 500}">
 
         <div className="container-fluid py-2 py-lg-3">
@@ -27,7 +27,7 @@ export function Navbar() {
           </div>
           <Link className={"navbar-brand"} href={"/"}>
 
-            <h3 className="fs-2 fw-normal py-0 m-0 me-auto me-sm-n5">
+            <h3 style={{letterSpacing:"0.025em"}} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
               {/* <Image
               width={80}
               height={80}
@@ -47,14 +47,14 @@ export function Navbar() {
             </button>*/}
 
             <Link
-              className="btn btn-icon btn-lg fs-lg btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
+              className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
               href="/">
               <i className="ci-user animate-target"></i>
               <span className="visually-hidden">Account</span>
             </Link>
 
             <Link
-              className="btn btn-icon btn-lg fs-lg btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
+              className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
               href="#">
               <i className="ci-heart animate-target"></i>
               <span className="visually-hidden">Wishlist</span>
@@ -64,7 +64,7 @@ export function Navbar() {
                     className="btn btn-icon btn-lg fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
                     data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
                     aria-label="Shopping cart">
-            <span className="position-absolute top-0 start-100 badge fs-xs text-bg-primary rounded-pill mt-1 ms-n4 z-2"
+            <span className="position-absolute top-0 start-100 badge fs-xs text-bg-dark rounded-pill mt-1 ms-n4 z-2"
               /*
                                 style="--cz-badge-padding-y: .25em; --cz-badge-padding-x: .42em"
               */

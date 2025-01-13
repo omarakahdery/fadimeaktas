@@ -305,7 +305,7 @@ hr {
 }
 
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
-    font-family: Raleway ,sans-serif;
+    font-family: Raleway, sans-serif;
     color: var(--cz-heading-color);
     font-weight: 600;
     line-height: 1.2;
@@ -3160,10 +3160,11 @@ textarea.form-control-lg {
 
 .btn {
     --cz-btn-padding-x: 1.25rem;
+    letter-spacing: 0.025em;
     --cz-btn-padding-y: 0.625rem;
     --cz-btn-font-family: ;
     --cz-btn-font-size: 0.875rem;
-    --cz-btn-font-weight: 500;
+    --cz-btn-font-weight: 400;
     --cz-btn-line-height: 1.125rem;
     --cz-btn-color: var(--cz-component-color);
     --cz-btn-bg: transparent;
