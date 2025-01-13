@@ -35,7 +35,7 @@ export function NavOffcanvas() {
 
               <li className="nav-item">
                 <a style={{ marginBottom: "16px" }} className="fs-xl nav-link" href="/collections">
-                  sonbahar 2025
+                  Sonbahar 2025
                 </a>
               </li>
 
