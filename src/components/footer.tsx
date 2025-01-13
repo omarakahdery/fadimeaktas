@@ -67,7 +67,7 @@ export const Footer = () => {
                       </li>
                       <li  className="d-flex w-100 pt-1">
                         <a style={{ color: "#ff6700" }} className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">İnderim</a>
+                           href="#!">İndirim</a>
                       </li>
 
                     </ul>

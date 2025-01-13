@@ -4,13 +4,15 @@ export function NavOffcanvas() {
   return (
     <>
 
-      <div className="offcanvas w-100 h-100 offcanvas-start" id="offcanvasLeft" tabIndex={-1}
-           aria-labelledby="offcanvasLeftLabel">
+      <div
+        className="offcanvas w-100 h-100 offcanvas-start"
+        id="offcanvasLeft"
+        tabIndex={-1}
+        aria-labelledby="offcanvasLeftLabel"
+      >
 
         <div className="offcanvas-header">
-          {/*
-          <h5 className="offcanvas-title" id="navbarOffcanvasLabel">Modeller</h5>
-*/}
+          {/*<h5 className="offcanvas-title" id="navbarOffcanvasLabel">Modeller</h5>*/}
           <button type="button" className="btn-close fs-xl" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
 
@@ -22,31 +24,31 @@ export function NavOffcanvas() {
             </p>
             <ul className="navbar-nav ">
               <li className="nav-item ">
-                <a style={{ marginBottom: "16px" }} className="fs-xl nav-link active" aria-current="page"
+                <a style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" aria-current="page"
                    href="/collections">
                   İlkbahar 2025
                 </a>
               </li>
               <li className="nav-item">
-                <a style={{ marginBottom: "16px" }} className="fs-xl nav-link" href="/collections">
+                <a style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" href="/collections">
                   Yaz 2025
                 </a>
               </li>
 
               <li className="nav-item">
-                <a style={{ marginBottom: "16px" }} className="fs-xl nav-link" href="/collections">
+                <a style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" href="/collections">
                   Sonbahar 2025
                 </a>
               </li>
 
               <li className="nav-item">
-                <a style={{ marginBottom: "16px" }} className="fs-xl nav-link" href="/collections">
+                <a style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" href="/collections">
                   Kış 2025
                 </a>
               </li>
 
               <li className="nav-item">
-                <a style={{ marginBottom: "16px",color:"#ff6700" }} className="fs-xl nav-link " href="/collections">
+                <a style={{ marginBottom: "16px",color:"#ff6700" }} className="fs-xl fw-normal nav-link " href="/collections">
                   İndirim
                 </a>
               </li>
@@ -55,8 +57,8 @@ export function NavOffcanvas() {
             <p className={"fw-bold mt-3 text-dark fs-sm "}>
               Bilgi
             </p>
-            <h6 className={"fw-bold  text-body"}>
-              0312 123 45 67
+            <h6 style={{fontSize:"24px"}} className={"fw-bold text-body"}>
+              0312 400 14 14
             </h6>
             <div className=" d-flex justify-content-start justify-content-start mb-4 gap-4 mt-n2 mt-md-0">
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
@@ -86,7 +88,7 @@ export function NavOffcanvas() {
               </a>
             </div>
           </div>
-          <div className={"col-lg-6 m-0 p-0 col-xl-4"}>
+          <div className={"col-lg-6 col-xl-4"}>
             <div className={"w-100"} >
               <Image
                 className={"w-100"}
