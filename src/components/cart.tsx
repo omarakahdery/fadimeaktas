@@ -37,17 +37,17 @@ export const Cart = () => {
             </Link>
             <div
               style={{
-                display:"flex",
-                flexDirection:"column",
-                gap:"24px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "24px",
               }}
               className="w-100 min-w-0 ps-3">
-              <h5 className="d-flex animate-underline mb-2">
-                <Link className="d-block fs-sm fw-medium text-truncate animate-target" href="/">
-                  Georges Hobeika
+              <div className="nav mb-2">
+                <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
+                  <span className="">{"Georges Hobeika"}</span>
                 </Link>
-              </h5>
-              <div className="h6 pb-1 mb-2">₺10.900,00</div>
+              </div>
+              <div className="w-normal text-dark fs-sm mb-2">₺10.900,00</div>
               <div className="d-flex align-items-center justify-content-between">
                 <div className="count-input rounded-2">
                   <button type="button" className="btn btn-icon btn-sm" data-decrement=""
