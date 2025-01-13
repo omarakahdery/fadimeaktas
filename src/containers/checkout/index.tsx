@@ -16,8 +16,8 @@ export const Checkout = () => {
               <div className="col-lg-6 col-xl-5 offset-xl-1 mb-5 mb-lg-0">
                 <div className="vstack gap-4">
 
-                  <div style={{ width: "100%" }} className="col-lg-6 col-xl-5 offset-xl-1 mb-5 mb-lg-0">
-                    <div className="vstack gap-4">
+                  <div style={{ width: "100%" }} className="">
+                    <div className="vstack  gap-4">
                       {/*Item*/}
                       <div className="d-flex align-items-start me-auto">
                         <Link className="flex-shrink-0" href="/0">
@@ -34,7 +34,7 @@ export const Checkout = () => {
                           flexDirection: "column",
                           gap: "24px",
                         }} className="w-100 min-w-0 ps-3">
-                       {/*   <h5 className="d-flex animate-underline mb-2">
+                          {/*   <h5 className="d-flex animate-underline mb-2">
                             <Link className="d-block fs-sm fw-medium text-truncate animate-target" href="/">
                               Georges Hobeika
                             </Link>
@@ -45,7 +45,7 @@ export const Checkout = () => {
                             </Link>
                           </div>
                           <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
-                            <div className="d-flex align-items-center justify-content-between">
+                          <div className="d-flex align-items-center justify-content-between">
                             <div className="count-input rounded-2">
                               <button type="button" className="btn btn-icon btn-sm" data-decrement=""
                                       aria-label="Decrement quantity">
@@ -73,13 +73,6 @@ export const Checkout = () => {
               </div>
 
               <div className="col-lg-5 col-xl-4 offset-lg-1">
-                <div className="form-check fs-xl">
-                  <input type="radio" className="form-check-input" id="card" name="payment" checked={true}/>
-                  <label htmlFor="card" className="form-check-label fs-base fw-medium text-body-emphasis ps-1">
-                    Kridi Kartı ile Ödeme
-                  </label>
-                </div>
-                <p className="fs-sm">Visa, Mastercard, Maestro, Discover</p>
                 <div className="position-relative mb-3">
                   <i className="ci-mail position-absolute top-50 start-0 translate-middle-y ms-3"></i>
                   <input type="email" className="form-control form-icon-start rounded-pill"
@@ -99,11 +92,6 @@ export const Checkout = () => {
                   <input type="text" className="form-control w-50 rounded-pill" maxLength={4}
                          data-input-format="{&quot;numeral&quot;: true, &quot;numeralPositiveOnly&quot;: true, &quot;numeralThousandsGroupStyle&quot;: &quot;none&quot;}"
                          placeholder="CVC"/>
-                </div>
-                <div className="form-check fs-xl mt-4">
-                  <input type="radio" className="form-check-input" id="paypal" name="payment"/>
-                  <label htmlFor="paypal"
-                         className="form-check-label fs-base fw-medium text-body-emphasis ps-1">PayPal</label>
                 </div>
                 <div className="d-flex align-items-center justify-content-between w-100 mt-4 mb-3">
                   <span className="fs-sm">Toplam:</span>
