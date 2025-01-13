@@ -15704,10 +15704,10 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
     width: var(--cz-nav-link-underline-border-width)
 }
 
-.navbar-nav > .nav-item > .nav-link.active:before, .navbar-nav > .nav-item > .nav-link.show:before, .navbar-nav > .nav-item > .nav-link:focus-visible:before, .navbar-nav > .nav-item > .nav-link:hover:before {
+/*.navbar-nav > .nav-item > .nav-link.active:before, .navbar-nav > .nav-item > .nav-link.show:before, .navbar-nav > .nav-item > .nav-link:focus-visible:before, .navbar-nav > .nav-item > .nav-link:hover:before {
     transform: scaleY(1);
     transform-origin: top left
-}
+}*/
 
 .navbar-nav > .nav-item > .nav-link.dropdown-toggle:after {
     margin-left: auto

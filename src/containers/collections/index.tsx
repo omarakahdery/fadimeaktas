@@ -12,9 +12,9 @@ export function Collections() {
       <main className="content-wrapper">
 
         <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-          <ol className="breadcrumb fs-xs">
+          <ol className="breadcrumb text-dark fs-xs">
             <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-            <li className="breadcrumb-item active" aria-current="page">Prenses Gelinlik Modelleri</li>
+            <li className="breadcrumb-item" aria-current="page">Prenses Gelinlik Modelleri</li>
           </ol>
         </nav>
 
@@ -86,41 +86,20 @@ export const imges: {
     src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-59.jpeg",
   },
   {
+    id: 3,
+    name: "Stephane Rolland",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-71.jpeg"
+  },
+  {
     id: 1,
     name: "Schiaparelli",
-    src: "https://cdn.vakko.com/mnresize/1490/1746/868289809891-01.jpg",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-69.jpeg",
   },
   {
     id: 2,
     name: "Dior",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683821049902-01.jpg",
+    src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-66.jpeg",
   },
-  {
-    id: 3,
-    name: "Stephane Rolland",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683820736339-01.jpg"
-  },
-  {
-    id: 4,
-    name: "Uzun Kollu Pileli Dantelli Prenses Gelinlik Modeli",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683820148392-01.jpg",
-  },
-  {
-    id: 5,
-    name: "Kayık Yaka Transparan Uzun Kollu Prenses Gelinlik Modeli",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683821049735-01.jpg",
-  },
-  {
-    id: 6,
-    name: "Portatif Kollu Dekolteli Tamamı Dantelli Prenses Etek Gelinlik Modeli",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683820116766-01.jpg",
-  },
-  {
-    id: 7,
-    name: "Transparan Kollu Tüllü Dantelli Aplikli Prenses Gelinlik",
-    src: "https://cdn.vakko.com/mnresize/595/892/8683468714911-01.jpg"
-  },
-
 ]
 const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
   return <div className="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0">
@@ -149,8 +128,8 @@ const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
         </Link>
       </div>
 
-      <div className="h6 fs-sm mb-2">₺12.200,00
-        <del className="fs-xs fw-normal text-body-tertiary">
+      <div className="fw-semibold text-dark fs-sm mb-2">₺12.200,00
+        <del className="fs-xs fw-normal ms-2 text-body-tertiary">
           {" "}₺15.200,00
         </del>
       </div>

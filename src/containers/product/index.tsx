@@ -15,7 +15,7 @@ export function Product() {
         <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
 
           <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-            <ol className="breadcrumb fs-xs">
+            <ol className="breadcrumb text-dark fs-xs">
               <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
               <li className="breadcrumb-item"><Link href="/collections">Prenses Gelinlik Modelleri</Link>
               </li>
@@ -36,7 +36,7 @@ export function Product() {
                     <Image
                       width={600}
                       height={900}
-                      src={item.src}
+                      src={"https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg"}
                       alt="Image"
                     />
                   </div>
@@ -87,9 +87,9 @@ export function Product() {
                         {item.name}
                       </h6>
                       {/*Price*/}
-                      <div className="h4 d-flex align-items-center my-4">
+                      <div className="fw-semibold fs-xs d-flex align-items-center my-4">
                         ₺10.900,00
-                        <del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>
+                        <del className="fs-xs fw-normal text-body-tertiary ms-2">₺15.900,00</del>
                       </div>
 
                       {/*Count input + Add to cart button*/}

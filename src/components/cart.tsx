@@ -28,7 +28,7 @@ export const Cart = () => {
           <div className="d-flex align-items-center">
             <Link className="flex-shrink-0" href="/1">
               <Image
-                src="https://cdn.vakko.com/mnresize/1490/1746/868289809891-01.jpg"
+                src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg"
                 className="bg-body-tertiary rounded"
                 width={110}
                 height={110}
@@ -44,7 +44,7 @@ export const Cart = () => {
               className="w-100 min-w-0 ps-3">
               <h5 className="d-flex animate-underline mb-2">
                 <Link className="d-block fs-sm fw-medium text-truncate animate-target" href="/">
-                  Straplez Kabarık Prenses Etek Kırık Beyaz Dantelli Gelinlik Modeli
+                  Georges Hobeika
                 </Link>
               </h5>
               <div className="h6 pb-1 mb-2">₺10.900,00</div>
