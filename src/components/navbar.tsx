@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Cart } from "@/components/cart";
+import Logo from "../../public/fadime-aktas-logo.svg";
 
 export function Navbar() {
   return (
@@ -21,20 +22,19 @@ export function Navbar() {
               aria-expanded="false"
               aria-label="Toggle navigation"
             >
-              <span style={{fontSize:"24px"}} className="navbar-toggler-icon"></span>
+              <span style={{ fontSize: "24px" }} className="navbar-toggler-icon"></span>
             </button>
             {/*--------*/}
           </div>
           <Link className={"navbar-brand"} href={"/"}>
 
-            <h3 style={{letterSpacing:"0.075em"}} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
-              {/* <Image
-              width={80}
-              height={80}
-              src={"https://fadimeaktas.com/wp-content/uploads/2024/11/cropped-PSD-LOGO-3.png"}
-              alt={"ddd"}
-            />*/}
-              Fadime Aktaş
+            <h3 style={{ letterSpacing: "0.075em" }} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
+              <Image
+                width={150}
+                height={150}
+                src={Logo}
+                alt={"ddd"}
+              />
             </h3>
           </Link>
 
@@ -49,14 +49,14 @@ export function Navbar() {
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
               href="/">
-              <i style={{fontSize:"24px"}} className="ci-user animate-target"></i>
+              <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
               <span className="visually-hidden">Account</span>
             </Link>
 
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
               href="#">
-              <i style={{fontSize:"24px"}} className="ci-heart animate-target"></i>
+              <i style={{ fontSize: "24px" }} className="ci-heart animate-target"></i>
               <span className="visually-hidden">Wishlist</span>
             </Link>
 
@@ -69,7 +69,7 @@ export function Navbar() {
                                 style="--cz-badge-padding-y: .25em; --cz-badge-padding-x: .42em"
               */
             >3</span>
-              <i style={{fontSize:"24px"}} className="ci-shopping-bag animate-target me-1"></i>
+              <i style={{ fontSize: "24px" }} className="ci-shopping-bag animate-target me-1"></i>
             </button>
           </div>
         </div>

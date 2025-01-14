@@ -19,33 +19,27 @@ export const Checkout = () => {
                   <div style={{ width: "100%" }} className="">
                     <div className="vstack  gap-4">
                       {/*Item*/}
-                      <div className="d-flex align-items-start me-auto">
+                      <div className="d-flex w-100 h-100 align-items-start me-auto">
                         <Link className="flex-shrink-0" href="/0">
                           <Image
                             src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg"
                             className="bg-body-tertiary rounded"
-                            width={110}
-                            height={110}
+                            width={80}
+                            height={80}
                             alt="Thumbnail"
                           />
                         </Link>
-                        <div style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          gap: "24px",
-                        }} className="w-100 min-w-0 ps-3">
-                          {/*   <h5 className="d-flex animate-underline mb-2">
-                            <Link className="d-block fs-sm fw-medium text-truncate animate-target" href="/">
-                              Georges Hobeika
-                            </Link>
-                          </h5>*/}
-                          <div className="nav mb-2">
-                            <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
-                              <span className="">{"Georges Hobeika"}</span>
-                            </Link>
+                        <div className="h-100 w-100 d-flex justify-content-between flex-column min-w-0 ps-3">
+                          <div>
+                            <div className="nav mb-2">
+                              <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
+                                <span className="">{"Georges Hobeika"}</span>
+                              </Link>
+                            </div>
+                            <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
                           </div>
-                          <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
-                          <div className="d-flex align-items-center justify-content-between">
+
+                          <div className="w-100 d-flex mt-4 align-items-center  justify-content-between">
                             <div className="count-input rounded-2">
                               <button type="button" className="btn btn-icon btn-sm" data-decrement=""
                                       aria-label="Decrement quantity">
@@ -57,12 +51,53 @@ export const Checkout = () => {
                                 <i className="ci-plus"></i>
                               </button>
                             </div>
-                            <button type="button" className="btn btn-icon btn-sm flex-shrink-0 fs-sm"
-                                    data-bs-toggle="tooltip" data-bs-custom-class="tooltip-sm" data-bs-title="Remove"
-                                    aria-label="Remove from cart">
-                              <i className="ci-trash fs-base"></i>
-                            </button>
+                            <button type="button" className="btn-close fs-sm" data-bs-toggle="tooltip"
+                                    data-bs-custom-className="tooltip-sm" data-bs-title="Remove"
+                                    aria-label="Remove from cart"></button>
                           </div>
+
+
+                        </div>
+                      </div>
+
+                      <div className="d-flex w-100 h-100 align-items-start me-auto">
+                        <Link className="flex-shrink-0" href="/0">
+                          <Image
+                            src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-63.jpeg"
+                            className="bg-body-tertiary rounded"
+                            width={80}
+                            height={80}
+                            alt="Thumbnail"
+                          />
+                        </Link>
+                        <div className="h-100 w-100 d-flex justify-content-between flex-column min-w-0 ps-3">
+                          <div>
+                            <div className="nav mb-2">
+                              <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
+                                <span className="">{"Tony Ward"}</span>
+                              </Link>
+                            </div>
+                            <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
+                          </div>
+
+                          <div className="w-100 d-flex mt-4 align-items-center  justify-content-between">
+                            <div className="count-input rounded-2">
+                              <button type="button" className="btn btn-icon btn-sm" data-decrement=""
+                                      aria-label="Decrement quantity">
+                                <i className="ci-minus"></i>
+                              </button>
+                              <input type="number" className="form-control form-control-sm" value="1"/>
+                              <button type="button" className="btn btn-icon btn-sm" data-increment=""
+                                      aria-label="Increment quantity">
+                                <i className="ci-plus"></i>
+                              </button>
+                            </div>
+                            <button type="button" className="btn-close fs-sm" data-bs-toggle="tooltip"
+                                    data-bs-custom-className="tooltip-sm" data-bs-title="Remove"
+                                    aria-label="Remove from cart"></button>
+                          </div>
+
+
                         </div>
                       </div>
 

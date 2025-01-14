@@ -87,7 +87,7 @@ export function Product() {
                         {item.name}
                       </h6>
                       {/*Price*/}
-                      <div className="fw-normal fs-sm d-flex align-items-center my-4">
+                      <div className="fw-normal fs-sm d-flex align-items-center mb-4">
                         ₺10.900,00
                         <del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>
                       </div>
@@ -102,7 +102,7 @@ export function Product() {
                           gap: "10px"
                         }}>
                           <button type="button" className="btn rounded-pill btn-lg btn-dark w-100">
-                            Sepete Ekle
+                            Satın Al
                           </button>
                           <button type="button" className="btn btn-outline-secondary rounded-pill btn-lg w-100">
                             Randevu Al
@@ -132,56 +132,6 @@ export function Product() {
                          data-label-expanded="Daha az göster"
                          aria-label="Show / hide description"
                       ></a>
-
-                      <div className="accordion mt-3" id="accordionExample">
-                        <div className="accordion-item border-top">
-                          <h3 className="accordion-header" id="headingOne">
-                            <button type="button"
-                                    className="accordion-button fs-sm animate-underline"
-                                    data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne"
-                                    aria-expanded="false"
-                                    aria-controls="collapseOne"
-                            >
-                              <span className="animate-target me-2">Detaylar</span>
-                            </button>
-                          </h3>
-                          <div className="accordion-collapse collapse" id="collapseOne"
-                               aria-labelledby="headingOne"
-                               data-bs-parent="#accordionExample">
-                            <div className="accordion-body">
-                              Bu parçe kalitesini korumak için bakım talimatlarına uymanızı öneririz: <ul>
-                              <li>
-                                Yıkamayın
-                              </li>
-                              <li>
-                                Ağartıcı kullanmayın
-                              </li>
-                              <li>
-                                Kurutma makinesinde kurutmayın
-                              </li>
-                              <li>
-                                Ütüyü maksimum 110°C taban sıcaklığında kullanın
-                              </li>
-                              <li>
-                                Hidrokarbonlarla (KWL) hafif profesyonel kuru temizleme yapın
-                              </li>
-                              <li>
-                                Nazik kuru temizleme
-                              </li>
-                              <li>
-                                Bir torba içinde ters çevirerek kuru temizleme yapın
-                              </li>
-                              <li>
-                                Ters çevirerek ve araya kumaş koyarak ütüleyin
-                              </li>
-                            </ul>
-                            </div>
-
-                          </div>
-                        </div>
-
-                      </div>
                     </div>
                   </div>
 

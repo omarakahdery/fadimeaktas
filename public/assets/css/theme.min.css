@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @font-face {
     font-display: swap;
-    font-family: Inter;
+    font-family: Plus Jakarta Sans;
     font-style: normal;
     font-weight: 300 800;
     /*
@@ -159,7 +159,7 @@
     --cz-dark-border-subtle: #e0e5eb;
     --cz-white-rgb: 255, 255, 255;
     --cz-black-rgb: 0, 0, 0;
-    --cz-font-sans-serif: "Inter", sans-serif;
+    --cz-font-sans-serif: "Plus Jakarta Sans", serif;
     --cz-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
     --cz-gradient: linear-gradient(180deg, hsla(0, 0%, 100%, .15), hsla(0, 0%, 100%, 0));
     --cz-root-font-size: 1rem;
@@ -313,7 +313,7 @@ hr {
     line-height: 1.2;
     margin-bottom: 1rem;
     margin-top: 0;
-    latter-spacing: 0.025me;
+    letter-spacing: 0.025em;
 }
 
 .h1, h1 {
