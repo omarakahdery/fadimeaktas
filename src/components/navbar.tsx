@@ -30,8 +30,8 @@ export function Navbar() {
 
             <h3 style={{ letterSpacing: "0.075em" }} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
               <Image
-                width={150}
-                height={150}
+                width={180}
+                height={180}
                 src={Logo}
                 alt={"ddd"}
               />
