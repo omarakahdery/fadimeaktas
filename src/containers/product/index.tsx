@@ -85,7 +85,7 @@ export function Product() {
                   <div className="" style={{ "height": "115px" }}></div>
                   <div>
                     <div/*className="ps-md-4 ps-xl-5"*/>
-                      <h6 className="h6">
+                      <h6 className="h6 text-uppercase">
                         {item.name}
                       </h6>
                       {/*Price*/}

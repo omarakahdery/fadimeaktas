@@ -55,9 +55,9 @@ export function Navbar() {
 
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
-              href="#">
+              href="/favorilerim">
               <i style={{ fontSize: "24px" }} className="ci-heart animate-target"></i>
-              <span className="visually-hidden">Wishlist</span>
+              <span className="visually-hidden">favorilerim</span>
             </Link>
 
             <button type="button"
@@ -79,7 +79,7 @@ export function Navbar() {
                tabIndex={-1}
                aria-labelledby="navbarNavLabel">
             <div className="offcanvas-header py-3">
-              <h5 className="offcanvas-title" id="navbarNavLabel">Browse Cartzilla</h5>
+              <h5 className="offcanvas-title" id="navbarNavLabel">arama</h5>
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
 

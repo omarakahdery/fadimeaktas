@@ -39,7 +39,7 @@ export const Cart = () => {
               <div>
                 <div className="nav mb-2">
                   <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
-                    <span className="">{"Georges Hobeika"}</span>
+                    <span className="text-uppercase">{"Georges Hobeika"}</span>
                   </Link>
                 </div>
                 <div className="fw-normal fs-sm d-flex align-items-center">
@@ -83,7 +83,7 @@ export const Cart = () => {
               <div>
                 <div className="nav mb-2">
                   <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
-                    <span className="">{"Tony Ward"}</span>
+                    <span className="text-uppercase">{"Tony Ward"}</span>
                   </Link>
                 </div>
                 <div className="fw-normal fs-sm d-flex align-items-center">

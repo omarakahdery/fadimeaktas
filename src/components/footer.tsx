@@ -1,4 +1,5 @@
 import Script from 'next/script'
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -50,24 +51,24 @@ export const Footer = () => {
                        aria-labelledby="categoriesHeading" data-bs-parent="#footerLinks">
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">İlkbahar 2025</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/collections">İlkbahar 2025</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Yaz 2025</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/collections">Yaz 2025</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Sonbahar 2025</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/collections">Sonbahar 2025</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Kış 2025</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/collections">Kış 2025</Link>
                       </li>
                       <li  className="d-flex w-100 pt-1">
-                        <a style={{ color: "#ff6700" }} className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">İndirim</a>
+                        <Link style={{ color: "#ff6700" }} className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/collections">İndirim</Link>
                       </li>
 
                     </ul>
@@ -86,8 +87,8 @@ export const Footer = () => {
                        aria-labelledby="accountHeading" data-bs-parent="#footerLinks">
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">İletişim</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/iletisim">İletişim</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
