@@ -3,7 +3,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { imges } from "@/containers/collections";
-
+import img6 from "../../../public/6.jpg";
+import img4 from "../../../public/4.jpg";
+import img2 from "../../../public/2.jpg";
 
 export function Product() {
   const { id } = useParams();
@@ -36,7 +38,7 @@ export function Product() {
                     <Image
                       width={600}
                       height={900}
-                      src={"https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg"}
+                      src={img6}
                       alt="Image"
                     />
                   </div>
@@ -52,7 +54,7 @@ export function Product() {
                         <Image
                           width={600}
                           height={900}
-                          src={"https://weddedwonderland.com/wp-content/uploads/2024/01/image-67.jpeg"}
+                          src={img2}
                           alt="Image"
                         />
                       </div>
@@ -68,7 +70,7 @@ export function Product() {
                         <Image
                           width={600}
                           height={900}
-                          src={"https://weddedwonderland.com/wp-content/uploads/2024/01/image-64.jpeg"}
+                          src={img4}
                           alt="Image"
                         />
                       </div>

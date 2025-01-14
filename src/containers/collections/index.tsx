@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import item1 from "../../assets/img/shop/fashion/01.png";
+import img6 from "../../../public/6.jpg";
 
 function onCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
   console.log(event.target.value);
