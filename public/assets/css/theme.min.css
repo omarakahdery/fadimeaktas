@@ -453,20 +453,20 @@ code, kbd, pre, samp {
     font-size: 1em
 }
 
-pre {
+/*pre {
     color: #fff;
     display: block;
     font-size: .875em;
     margin-bottom: 1rem;
     margin-top: 0;
     overflow: auto
-}
+}*/
 
-pre code {
+/*pre code {
     color: inherit;
     font-size: inherit;
     word-break: normal
-}
+}*/
 
 code {
     color: var(--cz-code-color);
@@ -14277,12 +14277,12 @@ a.active [class*=" ci-"]:not(.animate-target), a.active [class^=ci-]:not(.animat
     opacity: 1 !important
 }
 
-.hljs, pre {
+/*.hljs, pre {
     background-color: #222934;
     border-radius: var(--cz-border-radius);
     margin: 0;
     padding: 1.25rem 1rem
-}
+}*/
 
 kbd {
     border-radius: calc(var(--cz-border-radius) * .5)

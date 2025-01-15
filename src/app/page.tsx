@@ -1,9 +1,10 @@
 import { Home } from "@/containers/home";
 
-export default function HomePage() {
+export default async function HomePage() {
+
   return (
     <>
-        <Home/>
+      <Home/>
     </>
   );
 }

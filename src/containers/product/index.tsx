@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -6,28 +5,24 @@ import { imges } from "@/containers/collections";
 import img6 from "../../../public/6.jpg";
 import img4 from "../../../public/4.jpg";
 import img2 from "../../../public/2.jpg";
+import { IProduct } from "@/types/IProduct";
 
-export function Product() {
-  const { id } = useParams();
-  const item = imges.find((img) => img.id === Number(id));
-  if (!item) return <h1>Ürün bulunamadı</h1>
+async function getProducts(id: string): Promise<IProduct> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch products' + id);
+  }
+  return res.json();
+}
+
+export async function Product({ id }: { id: string }) {
+
+const data = await getProducts(id);
   return (
     <>
-      <main className="content-wrapper">
-        <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
 
-          <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-            <ol className="breadcrumb text-dark fs-xs">
-              <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-              <li className="breadcrumb-item"><Link href="/collections">Gelinlik</Link>
-              </li>
-              {/*<li className="breadcrumb-item active" aria-current="page">Ürün Sayfası</li>*/}
-            </ol>
-          </nav>
-
-          <section className="container">
-            <div className="row">
               {/*photos*/}
+
               <div className={"col-lg-8"}>
                 <Link
                   //hover-effect-scale hover-effect-opacity
@@ -38,13 +33,13 @@ export function Product() {
                     <Image
                       width={600}
                       height={900}
-                      src={img6}
+                      src={data.images[0].src}
                       alt="Image"
                     />
                   </div>
                 </Link>
                 <div className="row mb-1">
-                  <div style={{ paddingRight: "2px" }} className="col-lg-6">
+              {/*    <div style={{ paddingRight: "2px" }} className="col-lg-6">
                     <Link
                       //hover-effect-scale hover-effect-opacity
                       className="position-relative d-flex rounded-0 overflow-hidden"
@@ -75,7 +70,7 @@ export function Product() {
                         />
                       </div>
                     </Link>
-                  </div>
+                  </div>*/}
                 </div>
               </div>
               <div className={"col-lg-4 col-xl-3"}>
@@ -86,12 +81,16 @@ export function Product() {
                   <div>
                     <div/*className="ps-md-4 ps-xl-5"*/>
                       <h6 className="h6 text-uppercase">
-                        {item.name}
+                        {data?.name}
                       </h6>
                       {/*Price*/}
-                      <div className="fw-normal fs-sm d-flex align-items-center mb-4">
-                        ₺10.900,00
-                        <del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>
+                      <div
+                        /*
+                                                dangerouslySetInnerHTML={{ __html: data.price_html }}
+                        */
+                        className="fw-normal fs-sm d-flex align-items-center mb-4">
+                        ₺{data?.price}.00,00
+                        <del className="fs-sm fw-normal text-body-tertiary ms-2">₺{data?.regular_price}.00,00</del>
                       </div>
 
                       {/*Count input + Add to cart button*/}
@@ -114,14 +113,13 @@ export function Product() {
 
                       </div>
 
-                      <p className="fs-sm mb-2">
-                        Georges Hobeika'nın Haute Couture Moda Haftası'ndaki gelin tasarımı, romantizm ve
-                        kadınsılık katmak için çiçeksi unsurları kusursuz bir şekilde entegre ederek, çağdaş bir
-                        dokunuşla akıcı modernizmi özetliyor.</p>
+                      <p dangerouslySetInnerHTML={{ __html: data.short_description }} className="fs-sm mb-2">
+
+                      </p>
                       <div className="collapse" id="moreDescription">
                         <div className="fs-sm pt-3">
-                          <p>Dekolte boyunca kullanılan şeffaf kumaş, elbisenin
-                            uhrevi ve düşsel çekiciliğini artırıyor.</p>
+                          <p dangerouslySetInnerHTML={{ __html: data.description }}>
+                          </p>
                         </div>
                       </div>
 
@@ -141,10 +139,8 @@ export function Product() {
 
               </div>
 
-            </div>
-          </section>
-        </section>
-      </main>
+
+
     </>
   );
 }

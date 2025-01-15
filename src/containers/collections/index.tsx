@@ -2,32 +2,27 @@ import Link from "next/link";
 import Image from "next/image";
 import item1 from "../../assets/img/shop/fashion/01.png";
 import img6 from "../../../public/6.jpg";
+import { IProduct } from "@/types/IProduct";
 
-function onCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
+ function  onCategoryChange(event: React.ChangeEvent<HTMLSelectElement>) {
   console.log(event.target.value);
 }
-
-export function Collections() {
+async function getProducts(): Promise<IProduct[]> {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/products`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch products');
+  }
+  return res.json();
+}
+ export  async function  Collections() {
+   const products = await getProducts();
   return (
     <>
-      <main className="content-wrapper">
-
-        <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-          <ol className="breadcrumb text-dark fs-xs">
-            <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
-            <li className="breadcrumb-item" aria-current="page">Gelinlik</li>
-          </ol>
-        </nav>
-
-
-        <h1 className="h3 container pb-3 pb-lg-4">Gelinlik</h1>
-        <section className="container">
-          {/*Sorting*/}
-          <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
-            {/*       <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
+      <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
+        {/*       <div className="fs-sm text-body-emphasis text-nowrap"><span className="fw-semibold">43 </span>Ürün
               Bulundu
             </div>*/}
-            {/*
+        {/*
             <div className="d-flex align-items-center text-nowrap">
               <label className="form-label fw-semibold mb-0 me-2">Sıralama:</label>
               <div style={{ "width": "190px" }}>
@@ -48,20 +43,15 @@ export function Collections() {
               </div>
             </div>
 */}
-          </div>
+      </div>
 
 
-          <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
+      <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
+        {products.map((product, index) => (
+          <Item key={product.id} product={product}/>
+        ))}
+      </div>
 
-            {imges.map((src, index) => (
-              <Item key={src.src} src={src.src} name={src.name} id={String(src.id)}/>
-            ))}
-
-          </div>
-        </section>
-
-
-      </main>
     </>
   );
 }
@@ -119,7 +109,7 @@ export const imges: {
     src: "https://weddedwonderland.com/wp-content/uploads/2024/01/image-57.jpeg"
   }
 ]
-export const Item = ({ src, name, id }: { src: string, name: string, id: string }) => {
+export const Item = ({ product }: { product: IProduct }) => {
   return <div className="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0">
     <div className="animate-underline hover-effect-opacity">
       <div className="position-relative mb-3">
@@ -129,12 +119,12 @@ export const Item = ({ src, name, id }: { src: string, name: string, id: string 
           aria-label="Add to Wishlist">
           <i className="ci-heart animate-target"></i>
         </button>
-        <Link className="d-flex bg-body-tertiary rounded-0" href={id}>
+        <Link className="d-flex bg-body-tertiary rounded-0" href={product.id.toString()}>
           <div className="ratio" style={{ "--cz-aspect-ratio": "calc(360 / 274 * 100%)" } as React.CSSProperties}>
             <Image
               width={274}
               height={360}
-              src={src}
+              src={product.images[0].src}
               alt="Image"
             />
           </div>
@@ -142,14 +132,14 @@ export const Item = ({ src, name, id }: { src: string, name: string, id: string 
 
       </div>
       <div className="nav mb-2">
-        <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={id}>
-          <span className="text-uppercase">{name}</span>
+        <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={product.id.toString()}>
+          <span className="text-uppercase">{product.name}</span>
         </Link>
       </div>
 
-      <div className="fw-normal text-dark fs-sm mb-2">₺12.200,00
+      <div className="fw-normal text-dark fs-sm mb-2">₺{product.price}.00,00
         <del className="fs-sm fw-normal ms-2 text-body-tertiary">
-          {" "}₺15.200,00
+          {" "}₺{product.regular_price}.200,00
         </del>
       </div>
 
