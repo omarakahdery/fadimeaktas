@@ -2,9 +2,6 @@ import { Collections } from "@/containers/collections";
 import Link from "next/link";
 import { Suspense } from "react";
 
-
-
-
 export default async function CollectionsPage() {
   return (
     <main className="content-wrapper">
@@ -21,8 +18,6 @@ export default async function CollectionsPage() {
           <Collections />
         </Suspense>
       </section>
-
     </main>
-
   );
 }

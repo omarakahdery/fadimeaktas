@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import { api } from "@/app/api/products/route";
+import { api } from "../../../../../config";
 
 
-export async function GET(
+export  async function GET(
   req: Request,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  const id = (await params).id // 'a', 'b', or 'c'
+  const id = (await params).id
 
   try {
     const response = await api.get("products/" + id);

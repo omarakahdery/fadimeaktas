@@ -1,12 +1,8 @@
 import { NextResponse } from "next/server";
 import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
+import { api } from "../../../../config";
 
-export const api = new WooCommerceRestApi({
-  url: "https://faktas.yeniveri.com",
-  consumerKey: process.env.WOOCOMMERCE_CONSUMER_KEY!,
-  consumerSecret: process.env.WOOCOMMERCE_CONSUMER_SECRET!,
-  version: 'wc/v3'
-});
+
 
 export async function GET() {
   try {
