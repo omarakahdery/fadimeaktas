@@ -45,7 +45,6 @@ async function getProducts(): Promise<IProduct[]> {
 */}
       </div>
 
-
       <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
         {products.map((product, index) => (
           <Item key={product.id} product={product}/>
