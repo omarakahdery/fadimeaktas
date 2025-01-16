@@ -14,7 +14,7 @@ export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => 
 
   const { ref, inView } = useInView()
 
-  const loadMoreUsers = async () => {
+  const loadMoreProducts = async () => {
     const apiProducts: IProduct [] | undefined = await getData(`/products?page=${offset}&per_page=${PER_PAGE}`);
     setHaveMoreData(apiProducts?.length === PER_PAGE)
     setInitialProducts(prevState => [ ...prevState, ...(apiProducts || []) ])
@@ -22,7 +22,7 @@ export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => 
   }
   useEffect(() => {
     if (inView) {
-      loadMoreUsers()
+      loadMoreProducts()
     }
   }, [ inView ])
 
@@ -48,7 +48,7 @@ export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => 
         </div>
 
       )}
-      {/*<button className={"btn btn-dark rounded-pill"} onClick={loadMoreUsers}>Daha fazla yükle</button>*/}
+      {/*<button className={"btn btn-dark rounded-pill"} onClick={loadMoreProducts}>Daha fazla yükle</button>*/}
     </div>
 
   )
