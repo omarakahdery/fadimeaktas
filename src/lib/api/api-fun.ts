@@ -1,4 +1,4 @@
-export async function getData<T>(url: string): Promise<T> {
+export async function getData<T>(url: string): Promise<T | undefined> {
   try {
     const res = await fetch(`${process.env
       .NEXT_PUBLIC_API_URL}/api/${url}`);
@@ -8,6 +8,6 @@ export async function getData<T>(url: string): Promise<T> {
     return res.json()
   } catch (error) {
     console.error('Fetch error:', error)
-    throw error
+    return undefined
   }
 }

@@ -7,17 +7,17 @@ import { getData } from "@/lib/api/api-fun";
 import { PER_PAGE } from "@/containers/collections/list";
 
 
-export const Items = ({ initialProducts }: { initialProducts: IProduct[] }) => {
-  const [ products, setInitialProducts ] = useState<IProduct[]>(initialProducts)
+export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => {
+  const [ products, setInitialProducts ] = useState<IProduct[]>(initialProducts || [])
   const [ offset, setOffset ] = useState(2)
   const [ haveMoreData, setHaveMoreData ] = useState(true)
 
   const { ref, inView } = useInView()
 
   const loadMoreUsers = async () => {
-    const apiProducts: IProduct [] = await getData(`/products?page=${offset}&per_page=${PER_PAGE}`);
-    setHaveMoreData(apiProducts.length === PER_PAGE)
-    setInitialProducts(prevState => [ ...prevState, ...apiProducts ])
+    const apiProducts: IProduct [] | undefined = await getData(`/products?page=${offset}&per_page=${PER_PAGE}`);
+    setHaveMoreData(apiProducts?.length === PER_PAGE)
+    setInitialProducts(prevState => [ ...prevState, ...(apiProducts || []) ])
     setOffset(offset => offset + 1)
   }
   useEffect(() => {
@@ -37,7 +37,8 @@ export const Items = ({ initialProducts }: { initialProducts: IProduct[] }) => {
           ref={ref}
         >
           <span className=" d-flex animate-target rotating-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" className="bi bi-vignette"
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                 className="bi bi-vignette"
                  viewBox="0 0 16 16">
               <path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8"/>
               <path

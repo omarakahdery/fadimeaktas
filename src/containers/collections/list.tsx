@@ -8,7 +8,7 @@ export const PER_PAGE = 3
 
 
 export async function Collections() {
-  const products: IProduct [] = await getData(`/products?page=${1}&per_page=${PER_PAGE}`);
+  const products: IProduct []|undefined = await getData(`/products?page=${1}&per_page=${PER_PAGE}`);
   return (
     <>
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">

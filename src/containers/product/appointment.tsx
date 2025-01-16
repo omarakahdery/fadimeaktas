@@ -1,7 +1,7 @@
 "use client";
 const phoneNumber = "+905357091720xxxx";
 
-export function Appointment({ productName }: { productName: string }) {
+export function Appointment({ productName }: { productName?: string }) {
   return <div className="modal fade" id="modalId" tabIndex={-1} role="dialog">
     <div className="modal-dialog modal-dialog-centered" role="document">
       <div className="modal-content">
@@ -33,7 +33,7 @@ export function Appointment({ productName }: { productName: string }) {
 
 }
 
-function WhatsappMessage(productName: string) {
+function WhatsappMessage(productName?: string) {
   const message = `Merhaba, ben ${productName} için randevu almak istiyorum.`;
   const encodedMessage = encodeURIComponent(message);
   return `https://wa.me/${phoneNumber}/?text=${encodedMessage}`;

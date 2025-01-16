@@ -24,7 +24,7 @@ export async function Product({ id }: { id: string }) {
             <Image
               width={600}
               height={900}
-              src={data.images[0].src}
+              src={data?.images[0].src||""}
               alt="Image"
             />
           </div>
@@ -105,12 +105,12 @@ export async function Product({ id }: { id: string }) {
 
               </div>
 
-              <p dangerouslySetInnerHTML={{ __html: data.short_description }} className="fs-sm mb-2">
+              <p dangerouslySetInnerHTML={{ __html: data?.short_description||"" }} className="fs-sm mb-2">
 
               </p>
               <div className="collapse" id="moreDescription">
                 <div className="fs-sm pt-3">
-                  <p dangerouslySetInnerHTML={{ __html: data.description }}>
+                  <p dangerouslySetInnerHTML={{ __html: data?.description||"" }}>
                   </p>
                 </div>
               </div>
@@ -131,7 +131,7 @@ export async function Product({ id }: { id: string }) {
 
       </div>
 
-      <Appointment productName={data.name}/>
+      <Appointment productName={data?.name}/>
     </>
   );
 }
