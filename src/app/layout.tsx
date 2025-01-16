@@ -4,7 +4,8 @@ import "../../public/assets/icons/cartzilla-icons.min.css";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import Script from "next/script";
-import { NavOffcanvas } from "@/components/nav-offcanvas";
+import { NavOffCanvas } from "@/components/nav-off-canvas";
+import { getData } from "@/lib/api/api-fun";
 
 export const metadata: Metadata = {
   title: "Fadime Aktaş",
@@ -31,11 +32,13 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-                                     children,
-                                   }: Readonly<{
+export default async function RootLayout({
+                                           children,
+                                         }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const categories = await getData<ICategory[]>(`/products/categories`);
+
   return (
     <html lang="en">
     <head>
@@ -53,8 +56,11 @@ export default function RootLayout({
     <main className="page-wrapper">
       <Navbar/>
       {children}
-      <Footer/>
-      <NavOffcanvas/>
+{/*      <pre>
+  {JSON.stringify(categories, null, 2)}
+</pre>*/}
+      <Footer categories={categories}/>
+      <NavOffCanvas categories={categories}/>
 
     </main>
 

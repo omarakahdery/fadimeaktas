@@ -1,6 +1,14 @@
-import { Collections } from "@/containers/collections";
+import { Collections } from "@/containers/collections/list";
 import Link from "next/link";
 import { Suspense } from "react";
+import ErrorBoundary from "@/components/error-boundary";
+/*
+import { IProduct } from "@/types/IProduct";
+interface ProductsPageProps {
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+*/
+
 
 export default async function CollectionsPage() {
   return (
@@ -13,7 +21,6 @@ export default async function CollectionsPage() {
       </nav>
       <h1 className="h3 container pb-3 pb-lg-4">Gelinlik</h1>
       <section className="container">
-        {/* <pre>{JSON.stringify(products[0], null, 4)}</pre>;*/}
         <Suspense fallback={<p>Yükleniyor...</p>}>
           <Collections />
         </Suspense>

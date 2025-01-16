@@ -1,7 +1,7 @@
 import Script from 'next/script'
 import Link from "next/link";
 
-export const Footer = () => {
+export const Footer = ({ categories }: { categories: ICategory[] }) => {
   return (
 
     <footer className="footer pt-5 pb-4">
@@ -10,27 +10,27 @@ export const Footer = () => {
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="YouTube" aria-label="Follow us on YouTube">
-            <i style={{fontSize:"24px"}} className="ci-youtube"></i>
+            <i style={{ fontSize: "24px" }} className="ci-youtube"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Facebook" aria-label="Follow us on Facebook">
-            <i style={{fontSize:"24px"}} className="ci-facebook"></i>
+            <i style={{ fontSize: "24px" }} className="ci-facebook"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Instagram" aria-label="Follow us on Instagram">
-            <i style={{fontSize:"24px"}} className="ci-instagram"></i>
+            <i style={{ fontSize: "24px" }} className="ci-instagram"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Telegram" aria-label="Follow us on Telegram">
-            <i style={{fontSize:"24px"}} className="ci-telegram"></i>
+            <i style={{ fontSize: "24px" }} className="ci-telegram"></i>
           </a>
           <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
              data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"
              title="Pinterest" aria-label="Follow us on Pinterest">
-            <i style={{fontSize:"24px"}} className="ci-pinterest"></i>
+            <i style={{ fontSize: "24px" }} className="ci-pinterest"></i>
           </a>
         </div>
 
@@ -50,9 +50,17 @@ export const Footer = () => {
                   <div className="accordion-collapse collapse d-sm-block" id="categoriesLinks"
                        aria-labelledby="categoriesHeading" data-bs-parent="#footerLinks">
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
-                      <li className="d-flex w-100 pt-1">
+                      {categories.map((category) => (
+                        <li className="d-flex w-100 pt-1">
+                          <Link
+                            className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                            href="/collections">{category.name}</Link>
+                        </li>
+                      ))}
+
+                      {/*  <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/collections">İlkbahar 2025</Link>
+                              href="/collections">İlkbahar 2025</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
@@ -65,10 +73,11 @@ export const Footer = () => {
                       <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="/collections">Kış 2025</Link>
-                      </li>
-                      <li  className="d-flex w-100 pt-1">
-                        <Link style={{ color: "#ff6700" }} className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/collections">İndirim</Link>
+                      </li>*/}
+                      <li className="d-flex w-100 pt-1">
+                        <Link style={{ color: "#ff6700" }}
+                              className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                              href="/collections">İndirim</Link>
                       </li>
 
                     </ul>
@@ -88,7 +97,7 @@ export const Footer = () => {
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                       <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/iletisim">İletişim</Link>
+                              href="/iletisim">İletişim</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"

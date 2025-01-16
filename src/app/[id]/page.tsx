@@ -1,6 +1,6 @@
-import { Product } from "@/containers/product";
 import { Suspense } from "react";
 import Link from "next/link";
+import { Product } from "@/containers/product";
 
 export interface PageProps {
   params?: Promise<{ id: string; }>

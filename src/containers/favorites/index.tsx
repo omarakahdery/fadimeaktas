@@ -1,5 +1,3 @@
-import { imges, Item } from "@/containers/collections";
-
 export function Favorites() {
   return (
     <main className="content-wrapper">
