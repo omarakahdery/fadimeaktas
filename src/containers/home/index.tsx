@@ -18,40 +18,42 @@ const imgList = [
   "https://cdn.vakko.com/banners/d7025919-d811-496f-8c6a-00885d3b3c27.jpeg"
 ]
 
-export function Home({footerData}: {footerData: any}) {
+export function Home({ footerData }: { footerData: any }) {
 
   return (
-    <div className={"home-class"}>
+    <>
       <Navbar/>
-      {/*@ts-ignore*/}
-      <Fullpage
-        licenseKey=""
-        scrollingSpeed={700}
-        navigation={false}
-        anchors={[ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]}
-        render={({}) => (
-          <div>
-            {imgList.map((src, index) => (
-              <div className="section" key={index}>
+      <div className={"home-class"}>
+        {/*@ts-ignore*/}
+        <Fullpage
+          licenseKey=""
+          scrollingSpeed={700}
+          navigation={false}
+          anchors={[ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]}
+          render={({}) => (
+            <div>
+              {imgList.map((src, index) => (
+                <div className="section" key={index}>
+                  <div style={{ height: "100vh", overflow: "hidden" }}>
+                    <Image
+                      src={src}
+                      alt={`Slide ${index + 1}`}
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                  </div>
+                </div>
+              ))}
+              <div className="section">
                 <div style={{ height: "100vh", overflow: "hidden" }}>
-                  <Image
-                    src={src}
-                    alt={`Slide ${index + 1}`}
-                    layout="fill"
-                    objectFit="cover"
-                  />
+                  <Footer categories={footerData}/>
                 </div>
               </div>
-            ))}
-            <div className="section">
-              <div style={{ height: "100vh", overflow: "hidden" }}>
-                <Footer categories={footerData} />
-              </div>
             </div>
-          </div>
-        )}
-      />
-    </div>
+          )}
+        />
+      </div>
+    </>
 
   );
 }
