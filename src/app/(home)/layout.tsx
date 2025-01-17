@@ -9,7 +9,6 @@ export default async function HomeLayout({
 
   return (
     <main className="page-wrapper">
-      <Navbar/>
       {children}
     </main>
   );

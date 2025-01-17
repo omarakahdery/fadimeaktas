@@ -4,6 +4,7 @@ import Link from "next/link";
 import Fullpage from "@fullpage/react-fullpage";
 import { Footer } from "@/components/footer";
 import { getData } from "@/lib/api/api-fun";
+import { Navbar } from "@/components/navbar";
 
 const imgList = [
   /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
@@ -21,6 +22,7 @@ export function Home({footerData}: {footerData: any}) {
 
   return (
     <div className={"home-class"}>
+      <Navbar/>
       {/*@ts-ignore*/}
       <Fullpage
         licenseKey=""

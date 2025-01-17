@@ -9,7 +9,6 @@ export function Navbar() {
       <Cart/>
       <header className="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0"
               data-sticky-navbar="{&quot;offset&quot;: 500}">
-
         <div className="container-fluid py-2 py-lg-3">
           <div className="d-flex align-items-center gap-3">
             {/*--------*/}
