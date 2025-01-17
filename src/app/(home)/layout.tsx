@@ -1,0 +1,16 @@
+import { Navbar } from "@/components/navbar";
+
+
+export default async function HomeLayout({
+                                           children,
+                                         }: Readonly<{
+  children: React.ReactNode;
+}>) {
+
+  return (
+    <main className="page-wrapper">
+      <Navbar/>
+      {children}
+    </main>
+  );
+}

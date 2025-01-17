@@ -1,5 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import Fullpage from "@fullpage/react-fullpage";
+import { Footer } from "@/components/footer";
+import { getData } from "@/lib/api/api-fun";
 
 const imgList = [
   /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
@@ -13,16 +17,40 @@ const imgList = [
   "https://cdn.vakko.com/banners/d7025919-d811-496f-8c6a-00885d3b3c27.jpeg"
 ]
 
-export function Home() {
+export function Home({footerData}: {footerData: any}) {
+
   return (
-    <main className="content-wrapper">
-      {imgList.map((src, index) => (
-        <ImgToHomePage
-          key={index}
-          src={src}
-        />
-      ))}
-    </main>
+    <div className={"home-class"}>
+      {/*@ts-ignore*/}
+      <Fullpage
+        licenseKey=""
+        scrollingSpeed={700}
+        navigation={false}
+        anchors={[ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]}
+        render={({}) => (
+          <div>
+            {imgList.map((src, index) => (
+              <div className="section" key={index}>
+                <div style={{ height: "100vh", overflow: "hidden" }}>
+                  <Image
+                    src={src}
+                    alt={`Slide ${index + 1}`}
+                    layout="fill"
+                    objectFit="cover"
+                  />
+                </div>
+              </div>
+            ))}
+            <div className="section">
+              <div style={{ height: "100vh", overflow: "hidden" }}>
+                <Footer categories={footerData} />
+              </div>
+            </div>
+          </div>
+        )}
+      />
+    </div>
+
   );
 }
 
@@ -31,14 +59,14 @@ export function ImgToHomePage({ src }: { src: string }) {
     <>
       <div style={{ width: "100%", height: "100%" }} className="col-md-7 mt-md-n5">
         <div className="position-relative w-100 rtl-flip">
-          <Link href={"/collections"}>
-          <Image
-            sizes="100vw, 33vw"
-            width={4000}
-            height={800}
-            src={src}
-            alt="Image"
-          />
+          <Link href={"/accessories/20"}>
+            <Image
+              sizes="100vw, 33vw"
+              width={4000}
+              height={800}
+              src={src}
+              alt="Image"
+            />
           </Link>
         </div>
       </div>

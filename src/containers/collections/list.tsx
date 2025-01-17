@@ -6,15 +6,29 @@ import { getData } from "@/lib/api/api-fun";
 
 export const PER_PAGE = 3
 
+type CollectionsProps = {
+  params: {
+    id: string,
+    category: string
+  }
+}
 
-export async function Collections() {
-  const products: IProduct []|undefined = await getData(`/products?page=${1}&per_page=${PER_PAGE}`);
+export async function Collections({ params }: CollectionsProps) {
+  const endpoint = `/products?page=${1}&per_page=${PER_PAGE}&category=${params.id}`;
+  const products: IProduct [] | undefined = await getData(endpoint);
   return (
     <>
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
         <Filter/>
       </div>
-      <Items initialProducts={products}/>
+      {/*<pre>{JSON.stringify(products, null, 2)}</pre>*/}
+      <Items
+        params={{
+          id: params.id,
+          category: params.category
+        }}
+        initialProducts={products}
+      />
     </>
   );
 }

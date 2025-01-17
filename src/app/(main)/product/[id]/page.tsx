@@ -21,7 +21,7 @@ export default async function ProductPage
           <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
             <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
               <ol className="breadcrumb text-dark fs-xs">
-                <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
+                <li className="breadcrumb-item"><Link href="/gelinlik-frontend/public">Ana Sayfa</Link></li>
                 <li className="breadcrumb-item"><Link href="/collections">Gelinlik</Link>
                 </li>
                 {/*<li className="breadcrumb-item active" aria-current="page">Ürün Sayfası</li>*/}

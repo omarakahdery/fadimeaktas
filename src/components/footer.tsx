@@ -54,7 +54,7 @@ export const Footer = ({ categories }: { categories?: ICategory[]}) => {
                         <li className="d-flex w-100 pt-1">
                           <Link
                             className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                            href="/collections">{category.name}</Link>
+                            href={`/${category.slug}/${category.id}`}>{category.name}</Link>
                         </li>
                       ))}
 
@@ -77,7 +77,7 @@ export const Footer = ({ categories }: { categories?: ICategory[]}) => {
                       <li className="d-flex w-100 pt-1">
                         <Link style={{ color: "#ff6700" }}
                               className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                              href="/collections">İndirim</Link>
+                              href={"/accessories/20"}>İndirim</Link>
                       </li>
 
                     </ul>

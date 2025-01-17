@@ -1,11 +1,10 @@
 import "../../public/assets/css/theme.min.css";
 import type { Metadata } from "next";
 import "../../public/assets/icons/cartzilla-icons.min.css";
-import { Footer } from "@/components/footer";
-import { Navbar } from "@/components/navbar";
 import Script from "next/script";
 import { NavOffCanvas } from "@/components/nav-off-canvas";
 import { getData } from "@/lib/api/api-fun";
+import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Fadime Aktaş",
@@ -46,7 +45,6 @@ export default async function RootLayout({
       <link rel="preconnect" href="https://fonts.gstatic.com"/>
       <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
             rel="stylesheet"/>
-
       <link
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
         rel="stylesheet"/>
@@ -54,30 +52,18 @@ export default async function RootLayout({
 
     <body className={""}>
     <main className="page-wrapper">
-      <Navbar/>
       {children}
-{/*      <pre>
-  {JSON.stringify(categories, null, 2)}
-</pre>*/}
-      <Footer categories={categories}/>
       <NavOffCanvas categories={categories}/>
-
     </main>
-
-
     <Script src="/assets/js/customizer.min.js"/>
     <Script src="/assets/js/theme.min.js" strategy="afterInteractive"/>
-
     <Script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js"></Script>
-
-
     <Script src="/assets/vendor/swiper/swiper-bundle.min.js"></Script>
     <Script src="/assets/vendor/simplebar/simplebar.min.js"></Script>
     <Script src="/assets/vendor/choices.js/choices.min.js"></Script>
     <Script src="/assets/vendor/nouislider/nouislider.min.js"></Script>
     <Script src="/assets/vendor/list.js/list.min.js"></Script>
     <Script src="/assets/js/theme-switcher.js"></Script>
-
     </body>
     </html>
   );

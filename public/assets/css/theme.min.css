@@ -17508,3 +17508,16 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
     }
 }
 /*# sourceMappingURL=theme.min.css.map */
+.home-class {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+#fullpage {
+    height: 100%;
+}
+.fp-watermark{
+    display: none;
+}

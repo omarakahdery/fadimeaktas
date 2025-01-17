@@ -27,15 +27,12 @@ export function Navbar() {
             {/*--------*/}
           </div>
           <Link className={"navbar-brand"} href={"/"}>
-
-            <h3 style={{ letterSpacing: "0.075em" }} className="fs-2 fw-light py-0 m-0 me-auto me-sm-n5">
-              <Image
-                width={180}
-                height={180}
-                src={Logo}
-                alt={"ddd"}
-              />
-            </h3>
+            <Image
+              width={180}
+              height={180}
+              src={Logo}
+              alt={"ddd"}
+            />
           </Link>
 
           <div className="d-flex align-items-center">
@@ -48,7 +45,7 @@ export function Navbar() {
 
             <Link
               className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
-              href="/">
+              href="/giris-yap">
               <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
               <span className="visually-hidden">Account</span>
             </Link>

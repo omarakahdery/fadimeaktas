@@ -2,6 +2,7 @@ import Image from "next/image";
 import img from "../../public/image-63.webp";
 import { getData } from "@/lib/api/api-fun";
 import Link from "next/link";
+import { PER_PAGE } from "@/containers/collections/list";
 
 export async function NavOffCanvas({ categories }: { categories?: ICategory[] }) {
 
@@ -29,9 +30,8 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
               {categories?.map((category) => {
                 return <li className="nav-item ">
                   <Link style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" aria-current="page"
-                        href="/collections">
+                        href={`/${category.slug}/${category.id}`}>
                     <span data-bs-dismiss="offcanvas" aria-label="Close">
-
                     {category.name}
                     </span>
                   </Link>

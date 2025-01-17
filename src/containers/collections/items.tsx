@@ -6,8 +6,15 @@ import { useInView } from "react-intersection-observer";
 import { getData } from "@/lib/api/api-fun";
 import { PER_PAGE } from "@/containers/collections/list";
 
+type Props = {
+  params: {
+    id: string,
+    category: string
+  }
+  initialProducts?: IProduct[]
+}
 
-export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => {
+export const Items = ({ initialProducts,params }: Props) => {
   const [ products, setInitialProducts ] = useState<IProduct[]>(initialProducts || [])
   const [ offset, setOffset ] = useState(2)
   const [ haveMoreData, setHaveMoreData ] = useState(true)
@@ -15,7 +22,7 @@ export const Items = ({ initialProducts }: { initialProducts?: IProduct[] }) => 
   const { ref, inView } = useInView()
 
   const loadMoreProducts = async () => {
-    const apiProducts: IProduct [] | undefined = await getData(`/products?page=${offset}&per_page=${PER_PAGE}`);
+    const apiProducts: IProduct [] | undefined = await getData(`/products?page=${offset}&per_page=${PER_PAGE}&category=${params.category}`);
     setHaveMoreData(apiProducts?.length === PER_PAGE)
     setInitialProducts(prevState => [ ...prevState, ...(apiProducts || []) ])
     setOffset(offset => offset + 1)
