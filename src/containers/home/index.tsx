@@ -47,7 +47,7 @@ export function Home({ footerData }: { footerData: any }) {
                 </div>
               ))}
               <div className="section">
-                <div style={{ overflow: "hidden" }}>
+                <div style={{marginTop:"80px" ,overflow: "hidden" }}>
                   <Footer categories={footerData}/>
                 </div>
               </div>
