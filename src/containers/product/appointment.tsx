@@ -1,32 +1,37 @@
 "use client";
-const phoneNumber = "+905357091720xxxx";
+const phoneNumber = "+90535xxxx7091720";
 
 export function Appointment({ productName }: { productName?: string }) {
-  return <div className="modal fade" id="modalId" tabIndex={-1} role="dialog">
-    <div className="modal-dialog modal-dialog-centered" role="document">
-      <div className="modal-content">
+  return <div className="modal fade modal-lg" id="modalId" tabIndex={-1} role="dialog">
+    <div className="modal-dialog" role="document">
+      <div className="modal-content ">
         <div className="modal-header border-0">
           <h5 className="modal-title">Randevu Al</h5>
           <button className="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div className="modal-body">
+          <h6>Telefon ile</h6>
+          <p className={"fs-sm"}>
+            Mesai saatleri içerisinde bizi arayabilirsiniz.
+          </p>
           <p>
-            Randevu almak için bize WhatsApp üzerinden mesaj gönderebilir veya <b>09:00 - 20:00</b> saatleri arasında telefonla
-            ulaşabilirsiniz. </p>
-        </div>
-        <div className="modal-footer border-0 flex-column flex-sm-row align-items-stretch">
-          <button
-            type="button" onClick={() => {
-            window.location.href = 'tel:' + phoneNumber;
-          }}
-            className="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Bizi Arayın</button>
+            Pzt-Cum: 10:00 - 19:00
+          </p>
+          <p>
+            0312 466 26 16
+          </p>
+          <h6>Whatsapp ile</h6>
+          <p className={"fs-sm"}>
+            Whatsapp ile hemen randevu alabilirsiniz.
+          </p>
           <button
             onClick={() => {
               window.open(WhatsappMessage(productName), "_blank")
             }}
-            className="btn rounded-pill btn-dark" type="button">whatsapp'tan yazın
+            className="btn rounded-pill btn-sm me-auto btn-dark" type="button">Whatsapp ile Randevu Al
           </button>
         </div>
+
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@ import Link from "next/link";
 import Fullpage from "@fullpage/react-fullpage";
 import { Footer } from "@/components/footer";
 import { getData } from "@/lib/api/api-fun";
-import { Navbar } from "@/components/navbar";
+import { Navbar, NavbarContent } from "@/components/navbar";
 
 const imgList = [
   /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
@@ -22,8 +22,10 @@ export function Home({ footerData }: { footerData: any }) {
 
   return (
     <>
-      <Navbar/>
       <div className={"home-class"}>
+        <header className="bg-body navbar z-fixed p-0 position-fixed top-0 end-0 start-0">
+          <NavbarContent/>
+        </header>
         {/*@ts-ignore*/}
         <Fullpage
           licenseKey=""
@@ -31,7 +33,7 @@ export function Home({ footerData }: { footerData: any }) {
           navigation={false}
           anchors={[ "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ]}
           render={({}) => (
-            <div>
+            <div style={{ marginTop: "80px"  }}>
               {imgList.map((src, index) => (
                 <div className="section" key={index}>
                   <div style={{ height: "100vh", overflow: "hidden" }}>
@@ -45,7 +47,7 @@ export function Home({ footerData }: { footerData: any }) {
                 </div>
               ))}
               <div className="section">
-                <div style={{ height: "100vh", overflow: "hidden" }}>
+                <div style={{ overflow: "hidden" }}>
                   <Footer categories={footerData}/>
                 </div>
               </div>
