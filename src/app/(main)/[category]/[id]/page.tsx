@@ -20,7 +20,14 @@ export default async function CategoryPage
       </nav>
       <h1 className="h3 container pb-3 pb-lg-4">Gelinlik</h1>
       <section className="container">
-        <Suspense fallback={<p>Yükleniyor...</p>}>
+        <Suspense fallback={
+          <div style={{ height: "50vh" }} className="d-flex justify-content-center align-items-center">
+            <div className="spinner-border text-dark" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+
+        }>
           <Collections params={{
             id, category
           }}/>

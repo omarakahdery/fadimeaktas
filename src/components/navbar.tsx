@@ -54,7 +54,7 @@ export function NavbarContent() {
 
           <Link
             className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
-            href="/giris-yap">
+            href="/hesap-bilgisi">
             <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
             <span className="visually-hidden">Account</span>
           </Link>

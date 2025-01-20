@@ -7,7 +7,7 @@ export default function AccountPage() {
       <h1 className="h2 mb-1 mb-sm-2">Hesap bilgileri</h1>
       {/*Basic info*/}
       <PersonalInfo/>
-      <ContactInfo/>
+      {/*<ContactInfo/>*/}
     </>
   )
 }

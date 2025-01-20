@@ -30,7 +30,13 @@ export default async function ProductPage
 
             <section className="container">
               <div className="row">
-                <Suspense fallback={<p>Yükleniyor...</p>}>
+                <Suspense fallback={
+                  <div style={{height:"50vh"}} className="d-flex justify-content-center align-items-center">
+                  <div className="spinner-border text-dark" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                  </div>
+                  </div>
+                }>
                   <Product id={id}/>
                 </Suspense>
               </div>

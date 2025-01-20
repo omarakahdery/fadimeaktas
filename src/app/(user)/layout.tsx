@@ -21,23 +21,51 @@ export default async function UserLayout({
 
             <div className="offcanvas-lg offcanvas-start pe-lg-0 pe-xl-4" id="accountSidebar">
               <div className="offcanvas-body d-block pt-2 pt-lg-4 pb-lg-0">
-                <h6 className="pt-4 ps-2 ms-1">Hesabı yönet</h6>
                 <nav className="list-group list-group-borderless">
-                  <Link className="list-group-item list-group-item-action d-flex align-items-center pe-none active"
-                     href="/hesap-bilgisi">
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/sipatislerim">
+                    <i className="ci-shopping-bag fs-base opacity-75 me-2"></i>
+                    Siparişlerim
+                  </Link>
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/favorilerim">
+                    <i className="ci-heart fs-base opacity-75 me-2"></i>
+                    Favorilerim
+                  </Link>
+                </nav>
+                <h6 className="pt-4 ps-2 ms-1">Hesap</h6>
+                <nav className="list-group list-group-borderless">
+                  {/*pe-none active*/}
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/hesap-bilgisi">
                     <i className="ci-user fs-base opacity-75 me-2"></i>
                     Hesap bilgileri
                   </Link>
-                  <a className="list-group-item list-group-item-action d-flex align-items-center"
-                     href="account-addresses.html">
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/adreslerim">
                     <i className="ci-map-pin fs-base opacity-75 me-2"></i>
-                    Addresses
-                  </a>
-                  <a className="list-group-item list-group-item-action d-flex align-items-center"
-                     href="account-notifications.html">
-                    <i className="ci-bell fs-base opacity-75 mt-1 me-2"></i>
-                    Notifications
-                  </a>
+                    Adreslerim
+                  </Link>
+                </nav>
+                <h6 className="pt-4 ps-2 ms-1">Müşteri Hizmetleri</h6>
+                <nav className="list-group list-group-borderless">
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/iletisim">
+                    <i className="ci-mail fs-base opacity-75 me-2"></i>
+                    İletişim
+                  </Link>
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                        href="/sss">
+                    <i className="ci-help-circle fs-base opacity-75 me-2"></i>
+                    SSS
+                  </Link>
+                </nav>
+                <nav className="list-group list-group-borderless pt-3">
+                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                     href="/">
+                    <i className="ci-log-out fs-base opacity-75 me-2"></i>
+                    Çıkış yap
+                  </Link>
                 </nav>
               </div>
             </div>
@@ -52,5 +80,5 @@ export default async function UserLayout({
 
       <Footer categories={categories}/>
     </main>
-);
+  );
 }
