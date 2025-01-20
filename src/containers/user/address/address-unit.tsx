@@ -7,7 +7,7 @@ export default function AddressUnit({ collapseName, title }: { collapseName: str
         </div>
         <a className="nav-link hiding-collapse-toggle text-decoration-underline p-0 collapsed" href={"." + collapseName}
            data-bs-toggle="collapse" aria-expanded="false"
-           aria-controls="primaryAddressPreview primaryAddressEdit">Edit</a>
+           aria-controls="primaryAddressPreview primaryAddressEdit">Düzenle</a>
       </div>
       <div className={"collapse show " + collapseName} id="primaryAddressPreview">
         <ul className="list-unstyled fs-sm m-0">
