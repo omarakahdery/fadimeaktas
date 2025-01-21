@@ -69,8 +69,8 @@ export default function AddressUnit({ collapseName, title }: { collapseName: str
           </div>
           <div className="col-12">
             <div className="d-flex gap-3 pt-2 pt-sm-0">
-              <button type="submit" className="btn btn-dark">Kaydet</button>
-              <button type="button" className="btn btn-secondary" data-bs-toggle="collapse"
+              <button type="submit" className="btn rounded-pill btn-dark">Kaydet</button>
+              <button type="button" className="btn rounded-pill btn-secondary" data-bs-toggle="collapse"
                       data-bs-target={"." + collapseName} aria-expanded="true"
                       aria-controls="primaryAddressPreview primaryAddressEdit">Vazgeç
               </button>

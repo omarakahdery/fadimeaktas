@@ -57,7 +57,7 @@ export default async function Girsyap() {
                   </label>
                 </div>
               </div>*/}
-              <button type="submit" className="btn btn-lg btn-dark w-100">
+              <button type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
                 Giriş Yap
                 <i className="ci-chevron-right fs-lg ms-1 me-n1"></i>
               </button>

@@ -1,11 +1,70 @@
+"use client"
+import { useState } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
+import { useRouter } from "next/navigation";
+import { z } from "zod";
+import { Input } from "@/components/input";
+import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 
-export default async function Signup() {
+
+const signupSchema = z.object({
+  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
+  username: z.string().min(3, "Kullanıcı adı en az 3 karakter olmalıdır."),
+  password: z
+    .string()
+    .min(6, "Şifre en az 6 karakter olmalıdır.")
+    .max(20, "Şifre en fazla 20 karakter olabilir."),
+});
+
+export default function Signup() {
+  const [ email, setEmail ] = useState("")
+  const [ username, setUsername ] = useState("")
+  const [ password, setPassword ] = useState("")
+  const [ message, setMessage ] = useState("")
+  const [ isLoading, setIsLoading ] = useState(false)
+  const [ errors, setErrors ] = useState<Record<string, string>>({});
+
+  const router = useRouter()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setMessage("");
+    setErrors({});
+
+    const result = signupSchema.safeParse({ email, username, password });
+
+    setFieldsErrors(result, setErrors);
+
+    setIsLoading(true)
+    try {
+      const response = await fetch("/api/user/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, username, password }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
+        setTimeout(() => {
+          router.push("/")
+        }, 500)
+      } else {
+        setMessage(`Error: ${data.error}`)
+      }
+    } catch (error) {
+      setMessage("An error occurred while creating the customer.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
   return (
     <>
-
       <main className="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style={{ maxWidth: "1920px" }}>
 
         <div className="d-lg-flex">
@@ -29,34 +88,40 @@ export default async function Signup() {
               <Link className="nav-link text-decoration-underline p-0 ms-2" href="/giris-yap">Giriş Yap</Link>
             </div>
             {/*Form*/}
-            <form className="needs-validation" noValidate>
+            <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
-                <label htmlFor="register-email" className="form-label">E-posta</label>
-                <input type="email" className="form-control form-control-lg" id="register-email" required/>
-                <div className="invalid-tooltip bg-transparent py-0">Geçerli bir e-posta adresi girin!</div>
+                <Input
+                  name="email"
+                  type="text"
+                  required
+                  label={"E-posta"}
+                  error={errors.email}
+                  value={email} onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
+              <div className="position-relative mb-4">
+                <Input
+                  name="username"
+                  label="Kullanıcı Adı"
+                  type="text"
+                  value={username}
+                  error={errors.username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
               <div className="mb-4">
-                <label htmlFor="register-password" className="form-label">Şifre</label>
                 <div className="password-toggle">
-                  <input type="password" className="form-control form-control-lg" id="register-password" minLength={8}
-                         placeholder="Minimum 8 karakter" required/>
-                  <div className="invalid-tooltip bg-transparent py-0">Şifre gerekli kriterleri karşılamıyor!
-                  </div>
-                  <label className="password-toggle-button fs-lg" aria-label="Show/hide password">
-                    <input type="checkbox" className="btn-check"/>
-                  </label>
+                  <Input
+                    name="password"
+                    type="password"
+                    label="Şifre"
+                    error={errors.password}
+                    value={password} onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
               </div>
-              <div className="d-flex flex-column gap-2 mb-4">
-                <div className="form-check">
-                  <input type="checkbox" className="form-check-input" id="privacy" required/>
-                  <label htmlFor="privacy" className="form-check-label">
-                    <Link className="text-dark-emphasis" href="/">Gizlilik Politikası </Link>
-                    {" "}okudum ve kabul ediyorum
-                  </label>
-                </div>
-              </div>
-              <button type="submit" className="btn btn-lg btn-dark w-100">
+              {/*{message && <p className="text-primary">{message}</p>}*/}
+              <button disabled={isLoading} type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
                 Hesap Oluştur
                 <i className="ci-chevron-right fs-lg ms-1 me-n1"></i>
               </button>
@@ -84,9 +149,7 @@ export default async function Signup() {
 
           </div>
         </div>
-
       </main>
-
     </>
 
   )
