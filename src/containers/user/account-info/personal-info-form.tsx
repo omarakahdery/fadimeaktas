@@ -6,31 +6,32 @@ import { z } from "zod";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { useRouter } from "next/navigation";
 
+export function PersonalInfoForm({ user }: { user?: IUser }) {
+  const [ formData, setFormData ] = useState({
+    firstName: user?.first_name || "",
+    lastName: user?.last_name || "",
+    email: user?.email || "",
+  });
 
-const userSchema = z.object({
-  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
-  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
-  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
-});
-
-export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
-  const [ firstName, setFirstName ] = useState(user?.first_name || "")
-  const [ lastName, setLastName ] = useState(user?.last_name || "")
-  const [ email, setEmail ] = useState(user?.email || "")
-
-  const [ message, setMessage ] = useState("")
   const [ isLoading, setIsLoading ] = useState(false)
   const [ errors, setErrors ] = useState<Record<string, string>>({});
-  const router = useRouter()
+  const router = useRouter();
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setMessage("");
+    /*setMessage("");*/
     setErrors({});
 
-    // Validate form fields using zod schema
-    const result = userSchema.safeParse({ email, firstName, lastName });
+    const result = userSchema.safeParse({
+      email: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+    });
 
     setFieldsErrors(result, setErrors);
 
@@ -41,20 +42,24 @@ export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, firstName, lastName }),
+        body: JSON.stringify({
+          email: formData.email,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+        }),
       })
 
       const data = await response.json()
 
       if (data.success) {
-        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
+        /*setMessage(`Customer created successfully! ID: ${data.customer.id}`)*/
         router.refresh()
-        closeForm()
+        closeForm("close")
       } else {
-        setMessage(`Error: ${data.error}`)
+        /*setMessage(`Error: ${data.error}`)*/
       }
     } catch (error) {
-      setMessage("An error occurred while creating the customer.")
+      /*setMessage("An error occurred while creating the customer.")*/
     } finally {
       setIsLoading(false)
     }
@@ -68,9 +73,9 @@ export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
             name={"firstName"}
             type="text"
             label={"Ad"}
-            value={firstName}
+            value={formData.firstName}
             error={errors.firstName}
-            onChange={(e) => setFirstName(e.target.value)}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -80,9 +85,9 @@ export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
             name={"lastName"}
             type="text"
             label={"Soyad"}
-            value={lastName}
+            value={formData.lastName}
             error={errors.lastName}
-            onChange={(e) => setLastName(e.target.value)}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -92,9 +97,9 @@ export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
             name={"email"}
             type="text"
             label={"E-posta"}
-            value={email}
+            value={formData.email}
             error={errors.email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
           />
         </div>
       </div>
@@ -111,9 +116,14 @@ export xfunction PersonalInfoForm({ user }: { user?: IUser }) {
   )
 }
 
+const userSchema = z.object({
+  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
+  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+});
 
-export function closeForm() {
+export function closeForm(id: string) {
   //@ts-ignore
-  const btn: HTMLButtonElement = document.getElementById("close");
+  const btn: HTMLButtonElement = document.getElementById(id);
   btn.click();
 }

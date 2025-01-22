@@ -1,15 +1,15 @@
 import { AddressTitle } from "@/containers/user/address/address-title";
-import { AddressForm } from "@/containers/user/address/address-form";
 import { getData } from "@/lib/api/api-fun";
 import { IUser } from "@/types/IUser";
+import { BillingAddressForm, ShippingAddressForm } from "@/containers/user/address/address-form";
 
-export default async function AddressUnit({ collapseName, title }: { collapseName: string, title: string }) {
-  const data = await getData<IUser>(`/user/me/3`);
-
+export async function ShippingAddress() {
+  const userId = "3"
+  const data = await getData<IUser>(`/user/me/${userId}`);
   return <>
     <div className="border-bottom py-4">
-      <AddressTitle collapseName={collapseName} title={title}/>
-      <div className={"collapse show " + collapseName} id="primaryAddressPreview">
+      <AddressTitle collapseName={"ShippingAddress"} title={"Teslimat Adresi"}/>
+      <div className={"collapse show " + "ShippingAddress"} id="primaryAddressPreview">
         <ul className="list-unstyled fs-sm m-0">
           <li>
             {data?.shipping.first_name} {data?.shipping.last_name}
@@ -22,8 +22,34 @@ export default async function AddressUnit({ collapseName, title }: { collapseNam
           </li>
         </ul>
       </div>
-      <div className={"collapse " + collapseName} id="primaryAddressEdit">
-        <AddressForm shippingAddress={data?.shipping} collapseName={collapseName}/>
+      <div className={"collapse " + "ShippingAddress"} id="primaryAddressEdit">
+        <ShippingAddressForm addressData={data?.shipping} collapseName={"ShippingAddress"}/>
+      </div>
+    </div>
+  </>
+}
+
+export async function BillingAddress() {
+  const userId = "3"
+  const data = await getData<IUser>(`/user/me/${userId}`);
+  return <>
+    <div className="border-bottom py-4">
+      <AddressTitle collapseName={"BillingAddress"} title={"Fatura Adresi"}/>
+      <div className={"collapse show " + "BillingAddress"} id="primaryAddressPreview">
+        <ul className="list-unstyled fs-sm m-0">
+          <li>
+            {data?.billing.first_name} {data?.billing.last_name}
+          </li>
+          <li>
+            {data?.billing.state}, {data?.billing.city}
+          </li>
+          <li>
+            {data?.billing.address_1}
+          </li>
+        </ul>
+      </div>
+      <div className={"collapse " + "BillingAddress"} id="primaryAddressEdit">
+        <BillingAddressForm addressData={data?.billing} collapseName={"BillingAddress"}/>
       </div>
     </div>
   </>

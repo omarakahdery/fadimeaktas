@@ -3,8 +3,9 @@ import { IUser } from "@/types/IUser";
 import { getData } from "@/lib/api/api-fun";
 import { PersonalInfoTitle } from "@/containers/user/account-info/personal-info-title";
 
-export async function PersonalInfo({ id }: { id?: string }) {
-  const data = await getData<IUser>(`/user/me/3`);
+export async function PersonalInfo() {
+  const userId="3"
+  const data = await getData<IUser>(`/user/me/${userId}`);
 
   return <>
     <div className="border-bottom py-4">

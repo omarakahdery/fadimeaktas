@@ -9,4 +9,11 @@ export interface IUser {
     city: string,
     state: string,
   },
+  billing:{
+    first_name: string,
+    last_name: string,
+    address_1: string,
+    city: string,
+    state: string,
+  }
 }

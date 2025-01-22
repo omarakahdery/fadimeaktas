@@ -24,13 +24,14 @@ export async function PUT(request: Request,
 
   try {
     const body = await request.json()
-    const { email, firstName, lastName, shipping } = body
+    const { email, firstName, lastName, shipping, billing } = body
 
     const data = {
       email,
       first_name: firstName,
       last_name: lastName,
-      shipping: shipping
+      shipping: shipping,
+      billing: billing
     }
 
     const response = await api.put("customers/" + id, data)

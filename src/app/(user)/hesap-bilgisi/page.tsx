@@ -8,14 +8,7 @@ export interface PageProps {
   searchParams?: Promise<any>
 }
 
-export default async function AccountPage
-({
-   params,
- }: {
-  params: Promise<{ id: string }>
-}) {
-  const { id } = await params
-
+export default async function AccountPage() {
   return (
     <>
       <h1 className="h2 mb-1 mb-sm-2">Hesap bilgileri</h1>
@@ -31,7 +24,7 @@ export default async function AccountPage
           </div>
         </div>
       }>
-        <PersonalInfo id={id}/>
+        <PersonalInfo />
       </Suspense>
       {/*<ContactInfo/>*/}
     </>
