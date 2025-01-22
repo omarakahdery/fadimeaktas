@@ -35,7 +35,7 @@ export function NavbarContent() {
           </button>
           {/*--------*/}
         </div>
-        <Link className={"navbar-brand"} href={"/"}>
+        <Link style={{margin:0}} className={"navbar-brand"} href={"/"}>
           <Image
             width={180}
             height={180}

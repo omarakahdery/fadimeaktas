@@ -1,6 +1,7 @@
 import { Collections } from "@/containers/collections/list";
 import Link from "next/link";
 import { Suspense } from "react";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export default async function CategoryPage
 ({
@@ -21,12 +22,7 @@ export default async function CategoryPage
       <h1 className="h3 container pb-3 pb-lg-4">Gelinlik</h1>
       <section className="container">
         <Suspense fallback={
-          <div style={{ height: "50vh" }} className="d-flex justify-content-center align-items-center">
-            <div className="spinner-border text-dark" role="status">
-              <span className="visually-hidden">Loading...</span>
-            </div>
-          </div>
-
+          <LoadingSpinner/>
         }>
           <Collections params={{
             id, category

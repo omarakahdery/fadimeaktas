@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { Product } from "@/containers/product";
+import { LoadingSpinner } from "@/components/loading-spinner";
 
 export interface PageProps {
   params?: Promise<{ id: string; }>
@@ -31,11 +32,7 @@ export default async function ProductPage
             <section className="container">
               <div className="row">
                 <Suspense fallback={
-                  <div style={{height:"50vh"}} className="d-flex justify-content-center align-items-center">
-                  <div className="spinner-border text-dark" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                  </div>
-                  </div>
+                  <LoadingSpinner/>
                 }>
                   <Product id={id}/>
                 </Suspense>

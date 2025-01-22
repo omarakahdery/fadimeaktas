@@ -1,7 +1,7 @@
 import { PersonalInfo } from "@/containers/user/account-info/personal-info";
-import { getData } from "@/lib/api/api-fun";
-import { IUser } from "@/types/IUser";
 import { Suspense } from "react";
+import { LoadingSpinner } from "@/components/loading-spinner";
+import { PersonalInfoTitle } from "@/containers/user/account-info/personal-info-title";
 
 export interface PageProps {
   params?: Promise<{ id: string; }>
@@ -15,13 +15,24 @@ export default async function AccountPage
   params: Promise<{ id: string }>
 }) {
   const { id } = await params
-  const data = await getData<IUser>(`/user/me/3`);
 
   return (
     <>
       <h1 className="h2 mb-1 mb-sm-2">Hesap bilgileri</h1>
       {/*Basic info*/}
-        <PersonalInfo user={data}/>
+      <Suspense fallback={
+        <div className="border-bottom py-4">
+          <PersonalInfoTitle/>
+          <div className="collapse basic-info show" id="basicInfoPreview">
+            <div className="placeholder-glow d-flex flex-column gap-3">
+              <span className="placeholder col-2"></span>
+              <span className="placeholder col-3"></span>
+            </div>
+          </div>
+        </div>
+      }>
+        <PersonalInfo id={id}/>
+      </Suspense>
       {/*<ContactInfo/>*/}
     </>
   )
