@@ -8,6 +8,7 @@ import img2 from "../../../public/2.jpg";
 import { IProduct } from "@/types/IProduct";
 import { Appointment } from "@/containers/product/appointment";
 import { getData } from "@/lib/api/api-fun";
+import { AddItemToCart } from "@/containers/product/add-to-cart";
 
 export async function Product({ id }: { id: string }) {
   const data = await getData<IProduct>(`/products/${id}`);
@@ -24,7 +25,7 @@ export async function Product({ id }: { id: string }) {
             <Image
               width={600}
               height={900}
-              src={data?.images[0].src||""}
+              src={data?.images[0].src || ""}
               alt="Image"
             />
           </div>
@@ -86,16 +87,16 @@ export async function Product({ id }: { id: string }) {
 
               {/*Count input + Add to cart button*/}
               <div className="d-flex gap-3 pb-3 pb-lg-4 mb-3">
-
                 <div style={{
                   width: "100%",
                   display: "flex",
                   flexDirection: "column",
                   gap: "10px"
                 }}>
-                  <button type="button" className="btn rounded-pill btn-lg btn-dark w-100">
-                    Satın Al
-                  </button>
+                  <AddItemToCart Product={{
+                    id: data?.id.toString() || "",
+                    quantity: "1"
+                  }}/>
                   <button data-bs-toggle="modal" data-bs-target="#modalId" type="button"
                           className="btn btn-outline-secondary rounded-pill btn-lg w-100">
                     Randevu Al
@@ -105,12 +106,12 @@ export async function Product({ id }: { id: string }) {
 
               </div>
 
-              <p dangerouslySetInnerHTML={{ __html: data?.short_description||"" }} className="fs-sm mb-2">
+              <p dangerouslySetInnerHTML={{ __html: data?.short_description || "" }} className="fs-sm mb-2">
 
               </p>
               <div className="collapse" id="moreDescription">
                 <div className="fs-sm pt-3">
-                  <p dangerouslySetInnerHTML={{ __html: data?.description||"" }}>
+                  <p dangerouslySetInnerHTML={{ __html: data?.description || "" }}>
                   </p>
                 </div>
               </div>

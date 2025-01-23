@@ -1,5 +1,4 @@
 import Image from "next/image";
-import imgP from "../../../../public/2.jpg";
 import { getData } from "@/lib/api/api-fun";
 import { IOrder, statusTr } from "@/types/IOrder";
 import { formatDate } from "@/lib/format-dete";
@@ -7,9 +6,7 @@ import { formatDate } from "@/lib/format-dete";
 export default async function MyOrders() {
   const apiOrders: IOrder [] | undefined = await getData(`/orders?customer_id=${3}`);
   return <>
- {/*   <pre>
-      {JSON.stringify(apiOrders, null, 2)}
-    </pre>*/}
+
     <h1 className="h2 mb-1 mb-sm-2">Siparişlerim</h1>
     <table className="table align-middle fs-sm text-nowrap">
       <thead>

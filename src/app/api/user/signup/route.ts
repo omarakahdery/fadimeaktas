@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { api } from "../../../../../config";
+import { api } from "../../../../config/wc";
 
 
 export async function POST(request: Request) {

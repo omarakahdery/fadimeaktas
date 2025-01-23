@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@cocart/cocart-rest-api": "^1.1.0",
     "@fullpage/react-fullpage": "^0.1.46",
     "@popperjs/core": "^2.11.8",
     "@radix-ui/react-dialog": "^1.1.4",

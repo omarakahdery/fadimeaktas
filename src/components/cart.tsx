@@ -1,15 +1,24 @@
-import Link from "next/link";
+"use client";
+import Link from "next/link"
 import Image from "next/image";
+import { useEffect, useState } from "react";
+import { getData } from "@/lib/api/api-fun";
 
 export const Cart = () => {
+  const [ data, setData ] = useState<any>();
+  useEffect(() => {
+    (async () => {
+      /*const data = await getData();*/
+      const data = await getData("/cart?cart_key=9f190bde23bc8600fa10658866536d");
+      setData(data);
+    })()
+  }, []);
   return (
     <>
 
       {/*Shopping cart offcanvas */}
       <div className="offcanvas offcanvas-end pb-sm-2 px-sm-2" id="shoppingCart" tabIndex={-1}
            aria-labelledby="shoppingCartLabel" style={{ "width": "500px" }}>
-
-
         {/*Header*/}
         <div className="offcanvas-header flex-column align-items-start py-3 pt-lg-4">
           <div className="d-flex align-items-center justify-content-between w-100 mb-3 mb-lg-4">
@@ -24,7 +33,12 @@ export const Cart = () => {
         {/*Items*/}
         <div className="offcanvas-body d-flex flex-column gap-4 pt-2">
 
+     {/*     <pre>
+               {JSON.stringify(data, null, 2)}
+          </pre>*/}
+
           {/*Item*/}
+{/*
           <div className="d-flex align-items-center">
             <Link className="flex-shrink-0" href="/1">
               <Image
@@ -66,10 +80,11 @@ export const Cart = () => {
               </div>
             </div>
           </div>
+*/}
 
 
           {/*Item*/}
-          <div className="d-flex align-items-center">
+     {/*     <div className="d-flex align-items-center">
             <Link className="flex-shrink-0" href="/1">
               <Image
                 src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-63.jpeg"
@@ -109,7 +124,7 @@ export const Cart = () => {
                         aria-label="Remove from cart"></button>
               </div>
             </div>
-          </div>
+          </div>*/}
 
 
         </div>
