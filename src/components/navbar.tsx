@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Cart } from "@/components/cart";
+import { Cart } from "@/components/cart/cart";
 import Logo from "../../public/fadime-aktas-logo.svg";
 
 export function Navbar() {

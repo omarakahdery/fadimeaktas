@@ -2,18 +2,13 @@ export interface IUser {
   email: string,
   first_name: string,
   last_name: string,
-  shipping: {
-    first_name: string,
-    last_name: string,
-    address_1: string,
-    city: string,
-    state: string,
-  },
-  billing:{
-    first_name: string,
-    last_name: string,
-    address_1: string,
-    city: string,
-    state: string,
-  }
+  shipping: IAddress,
+  billing:IAddress
+}
+export interface IAddress{
+  first_name: string,
+  last_name: string,
+  address_1: string,
+  city: string,
+  state: string,
 }

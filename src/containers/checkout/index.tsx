@@ -1,7 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getData } from "@/lib/api/api-fun";
+import { ICart } from "@/types/ICart";
 
-export const Checkout = () => {
+export const Checkout = async () => {
+  const data = await getData<ICart>("/cart?cart_key=8f63fd5a90dcb7e37f544ae7d76094");
+
   return (
     <>
       <section style={{ marginTop: "80px" }}>
@@ -15,59 +19,38 @@ export const Checkout = () => {
             <div className="row">
               <div className="col-lg-6 col-xl-5 offset-xl-1 mb-5 mb-lg-0">
                 <div className="vstack gap-4">
-
                   <div style={{ width: "100%" }} className="">
                     <div className="vstack  gap-4">
                       {/*Item*/}
-                      <div className="d-flex w-100 h-100 align-items-start me-auto">
-                        <Link className="flex-shrink-0" href="/0">
-                          <Image
-                            src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-72.jpeg"
-                            className="bg-body-tertiary rounded"
-                            width={80}
-                            height={80}
-                            alt="Thumbnail"
-                          />
-                        </Link>
-                        <div className="h-100 w-100 d-flex justify-content-between flex-column min-w-0 ps-3">
-                          <div>
-                            <div className="nav mb-2">
-                              <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
-                                <span className="text-uppercase">{"Georges Hobeika"}</span>
-                              </Link>
+                      {data?.items.map((item) => {
+                        return <>
+                          <div className="d-flex w-100 h-100 align-items-start me-auto">
+                            <Link className="flex-shrink-0" href={"/product/" + item.id}>
+                              <Image
+                                src={item.featured_image}
+                                className="bg-body-tertiary rounded"
+                                width={80}
+                                height={80}
+                                alt={item.name}
+                              />
+                            </Link>
+                            <div className="h-100 w-100 d-flex justify-content-between flex-column min-w-0 ps-3">
+                              <div>
+                                <div className="nav mb-2">
+                                  <Link className="nav-link min-w-0 text-dark-emphasis p-0"
+                                        href={"/product/" + item.id}>
+                                    <span className="text-uppercase">{item.name}</span>
+                                  </Link>
+                                </div>
+                                <div className="fw-normal text-dark fs-sm mb-2">₺{item.totals?.total},00</div>
+                              </div>
+
                             </div>
-                            <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
                           </div>
 
-                        </div>
-                      </div>
-                      {/*Item*/}
-                      <div className="d-flex w-100 h-100 align-items-start me-auto">
-                        <Link className="flex-shrink-0" href="/0">
-                          <Image
-                            src="https://weddedwonderland.com/wp-content/uploads/2024/01/image-63.jpeg"
-                            className="bg-body-tertiary rounded"
-                            width={80}
-                            height={80}
-                            alt="Thumbnail"
-                          />
-                        </Link>
-                        <div className="h-100 w-100 d-flex justify-content-between flex-column min-w-0 ps-3">
-                          <div>
-                            <div className="nav mb-2">
-                              <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/0"}>
-                                <span className="text-uppercase">{"Tony Ward"}</span>
-                              </Link>
-                            </div>
-                            <div className="fw-normal text-dark fs-sm mb-2">₺10.900,00</div>
-                          </div>
-
-                        </div>
-                      </div>
-
-
+                        </>
+                      })}
                     </div>
-
                   </div>
                 </div>
               </div>
@@ -81,10 +64,12 @@ export const Checkout = () => {
                   <div className="card border-0 shadow">
                     <div className="card-body">
                       <h5 className="card-title">Sipariş Özeti</h5>
-                      <Amount value={"₺10.900,00"} label={"Ürünün Toplamı"}/>
-                      <Amount value={"₺100,00"} label={"Kargo Ücreti"}/>
-                      <Amount value={"₺500,00"} label={"İndrim"}/>
-                      <Amount value={"₺10.500,00"} label={"Toplam"}/>
+                      <Amount value={"₺" + data?.totals?.subtotal.toString()} label={"Ürünün Toplamı"}/>
+                      <Amount value={"₺" + data?.totals?.shipping_total.toString()} label={"Kargo Ücreti"}/>
+                      {Number(data?.totals?.discount_total)>0 &&
+                          <Amount value={"₺" + data?.totals?.discount_total.toString()} label={"İndrim"}/>
+                      }
+                      <Amount value={"₺" + data?.totals?.total.toString()} label={"Toplam"}/>
 
 
                       <div className="mb-3">
@@ -108,7 +93,7 @@ export const Checkout = () => {
                       </div>
 
                       <button type="button" className="btn mt-3 btn-lg btn-dark w-100 rounded-pill">
-                        Öde ₺10.500,00
+                        Öde {"₺" + data?.totals?.total.toString()}
                       </button>
                       <div className="d-flex align-items-center justify-content-center fs-xs text-body-secondary mt-3">
                         <i className="ci-lock me-1"></i>
@@ -125,10 +110,11 @@ export const Checkout = () => {
         </main>
       </section>
     </>
-  );
+  )
+    ;
 }
 
-function Amount({ label, value }: { label: string, value: string }) {
+function Amount({ label, value }: { label: string, value?: string }) {
   return (
     <div className="d-flex align-items-center justify-content-between w-100 mt-4 mb-3">
       <span className="fs-sm">{label}</span>

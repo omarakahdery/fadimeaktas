@@ -50,7 +50,7 @@ export function ShippingAddressForm({ addressData, collapseName }: {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me/3", {
+      const response = await fetch("/api/user/me/2", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -98,7 +98,7 @@ export function ShippingAddressForm({ addressData, collapseName }: {
               const { value } = e.target;
               setFormData((prev) => ({ ...prev, addressOne: value }));
             }}
-            className="form-control" id="psa-address"
+            className="form-control rounded-6" id="psa-address"
             value={formData.addressOne}
           />
           {errors.addressOne && (
@@ -156,7 +156,7 @@ export function BillingAddressForm({ addressData, collapseName }: {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me/3", {
+      const response = await fetch("/api/user/me/2", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -204,7 +204,7 @@ export function BillingAddressForm({ addressData, collapseName }: {
               const { value } = e.target;
               setFormData((prev) => ({ ...prev, addressOne: value }));
             }}
-            className="form-control" id="psa-address"
+            className="form-control rounded-6" id="psa-address"
             value={formData.addressOne}
           />
           {errors.addressOne && (

@@ -14,7 +14,7 @@ export function Input({ label, type, name, value, onChange, required, placeholde
     <>
       <label className="form-label" htmlFor={name}>{label}</label>
       <input
-        className="form-control form-control-lg"
+        className="form-control form-control-lg rounded-pill"
         type={type}
         name={name}
         value={value}
