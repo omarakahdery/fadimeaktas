@@ -2,10 +2,11 @@ import { PersonalInfoForm } from "@/containers/user/account-info/personal-info-f
 import { IUser } from "@/types/IUser";
 import { getData } from "@/lib/api/api-fun";
 import { PersonalInfoTitle } from "@/containers/user/account-info/personal-info-title";
+import { cookies } from "next/headers";
 
 export async function PersonalInfo() {
-  const data = await getData<IUser>(`/user/me`);
-
+  const userId = (await cookies()).get("user_id")
+  const data = await getData<IUser>(`/user/me/${userId?.value}`);
   return <>
     <div className="border-bottom py-4">
       <PersonalInfoTitle/>

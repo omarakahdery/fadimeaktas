@@ -2,11 +2,12 @@ import Image from "next/image";
 import { getData } from "@/lib/api/api-fun";
 import { IOrder, statusTr } from "@/types/IOrder";
 import { formatDate } from "@/lib/format-dete";
+import { cookies } from "next/headers";
 
 export default async function MyOrders() {
-  const apiOrders: IOrder [] | undefined = await getData(`/orders?customer_id=${3}`);
+  const userId = (await cookies()).get("user_id")
+  const apiOrders: IOrder [] | undefined = await getData(`/orders?customer_id=${userId}`);
   return <>
-
     <h1 className="h2 mb-1 mb-sm-2">Siparişlerim</h1>
     <table className="table align-middle fs-sm text-nowrap">
       <thead>

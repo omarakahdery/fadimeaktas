@@ -2,7 +2,7 @@
 import { IUser } from "@/types/IUser";
 import { Input } from "@/components/input";
 import { useState } from "react";
-import { z } from "zod";
+import { date, z } from "zod";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { useRouter } from "next/navigation";
 
@@ -12,7 +12,6 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
     lastName: user?.last_name || "",
     email: user?.email || "",
   });
-
   const [ isLoading, setIsLoading ] = useState(false)
   const [ errors, setErrors ] = useState<Record<string, string>>({});
   const router = useRouter();
@@ -37,7 +36,7 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me", {
+      const response = await fetch("/api/user/me/" + user?.id, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

@@ -1,18 +1,15 @@
 "use server";
 import { NextResponse } from "next/server";
 import { api } from "@/config/wc";
-import { cookies } from "next/headers";
 
-export async function GET(req: Request) {
-  const userId =  (await cookies()).get("user_id")
-  console.log("xxxxxxx", userId?.value)
-
-  /*  if (!userId) {
-      return NextResponse.json({ error: "User ID not found in cookies" }, { status: 400 })
-    }*/
+export async function GET(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const id = (await params).id
 
   try {
-    const response = await api.get(`customers/${userId?.value}`)
+    const response = await api.get(`customers/${id}`)
     return NextResponse.json(response.data)
   } catch (error) {
     console.error(error)
@@ -20,11 +17,13 @@ export async function GET(req: Request) {
   }
 }
 
-export async function PUT(request: Request) {
-  const cookieStore = await cookies()
-  const userId = cookieStore.get("user_id")
+export async function PUT(
+  req: Request,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const id = (await params).id
   try {
-    const body = await request.json()
+    const body = await req.json()
     const { email, firstName, lastName, shipping, billing } = body
 
     const data = {
@@ -34,9 +33,7 @@ export async function PUT(request: Request) {
       shipping: shipping,
       billing: billing
     }
-
-    const response = await api.put("customers/" + userId?.value, data)
-
+    const response = await api.put("customers/" + id, data)
     return NextResponse.json({ success: true, customer: response.data })
   } catch (error) {
     console.error("Error creating customer:", error)

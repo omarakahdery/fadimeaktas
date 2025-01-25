@@ -2,9 +2,11 @@ import { AddressTitle } from "@/containers/user/address/address-title";
 import { getData } from "@/lib/api/api-fun";
 import { IUser } from "@/types/IUser";
 import { BillingAddressForm, ShippingAddressForm } from "@/containers/user/address/address-form";
+import { cookies } from "next/headers";
 
 export async function ShippingAddress() {
-  const data = await getData<IUser>(`/user/me}`);
+  const userId = (await cookies()).get("user_id")
+  const data = await getData<IUser>(`/user/me/${userId?.value}`);
   return <>
     <div className="border-bottom py-4">
       <AddressTitle collapseName={"ShippingAddress"} title={"Teslimat Adresi"}/>
@@ -22,14 +24,17 @@ export async function ShippingAddress() {
         </ul>
       </div>
       <div className={"collapse " + "ShippingAddress"} id="primaryAddressEdit">
-        <ShippingAddressForm addressData={data?.shipping} collapseName={"ShippingAddress"}/>
+        <ShippingAddressForm
+          userId={data?.id}
+          addressData={data?.shipping} collapseName={"ShippingAddress"}/>
       </div>
     </div>
   </>
 }
 
 export async function BillingAddress() {
-  const data = await getData<IUser>(`/user/me}`);
+  const userId = (await cookies()).get("user_id")
+  const data = await getData<IUser>(`/user/me/${userId?.value}`);
   return <>
     <div className="border-bottom py-4">
       <AddressTitle collapseName={"BillingAddress"} title={"Fatura Adresi"}/>
@@ -47,7 +52,10 @@ export async function BillingAddress() {
         </ul>
       </div>
       <div className={"collapse " + "BillingAddress"} id="primaryAddressEdit">
-        <BillingAddressForm addressData={data?.billing} collapseName={"BillingAddress"}/>
+        <BillingAddressForm
+          userId={data?.id}
+          addressData={data?.billing}
+          collapseName={"BillingAddress"}/>
       </div>
     </div>
   </>

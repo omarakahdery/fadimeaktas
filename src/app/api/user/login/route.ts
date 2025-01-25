@@ -25,7 +25,7 @@ export async function POST(request: Request) {
 
     if (response.ok) {
       const cookieStore = await cookies()
-      cookieStore.set("user_id", data.user_id, {
+      cookieStore.set("user_id", data.user_id.toString(), {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",

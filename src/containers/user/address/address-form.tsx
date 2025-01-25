@@ -14,9 +14,10 @@ const userSchema = z.object({
   addressOne: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
 });
 
-export function ShippingAddressForm({ addressData, collapseName }: {
+export function ShippingAddressForm({ addressData, collapseName,userId }: {
   collapseName: string,
   addressData?: IUser["shipping"]
+  userId?: string
 }) {
   const [ formData, setFormData ] = useState({
     firstName: addressData?.first_name || "",
@@ -50,7 +51,7 @@ export function ShippingAddressForm({ addressData, collapseName }: {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me/2", {
+      const response = await fetch("/api/user/me/" + userId, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -120,9 +121,10 @@ export function ShippingAddressForm({ addressData, collapseName }: {
 }
 
 
-export function BillingAddressForm({ addressData, collapseName }: {
+export function BillingAddressForm({ addressData, collapseName,userId }: {
   collapseName: string,
   addressData?: IUser["shipping"]
+  userId?: string
 }) {
   const [ formData, setFormData ] = useState({
     firstName: addressData?.first_name || "",
@@ -156,7 +158,7 @@ export function BillingAddressForm({ addressData, collapseName }: {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me/2", {
+      const response = await fetch("/api/user/me/" + userId, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
