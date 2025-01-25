@@ -12,7 +12,7 @@ export const Cart = () => {
   useEffect(() => {
     (async () => {
       /*const data = await getData();*/
-      const data = await getData<ICart>("/cart?cart_key=8f63fd5a90dcb7e37f544ae7d76094");
+      const data = await getData<ICart>("/cart?cart_key=903d882be54f000d83fb7710ff3059");
       setData(data);
     })()
   }, []);
@@ -66,12 +66,11 @@ export const Cart = () => {
                   </div>
 
                   <div className="w-100 d-flex justify-content-between">
-                    <IncreaseDecreaseQ item_key={item?.item_key} quantity={Number(item?.quantity)}/>
+                    <IncreaseDecreaseQ productId={item.id} item_key={item?.item_key} quantity={Number(item?.quantity)}/>
                     <RemoveItemBtn item_key={item?.item_key}/>
                   </div>
                 </div>
               </div>
-
             </>
           })
           }

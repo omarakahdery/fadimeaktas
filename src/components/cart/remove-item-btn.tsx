@@ -10,7 +10,7 @@ export function RemoveItemBtn({ item_key }: { item_key: string }) {
     setIsLoading(true)
     setIsSuccess(false)
     try {
-      const response = await fetch(`/api/cart?item_key=${item_key}&cart_key=8f63fd5a90dcb7e37f544ae7d76094`, {
+      const response = await fetch(`/api/cart/${item_key}?cart_key=8f63fd5a90dcb7e37f544ae7d76094`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
