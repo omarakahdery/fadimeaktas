@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { api } from "../../../../config/wc";
+import { api } from "@/config/wc";
 
 
 export  async function GET(
@@ -7,7 +7,6 @@ export  async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const id = (await params).id
-
   try {
     const response = await api.get("products/" + id);
     return NextResponse.json(response.data);

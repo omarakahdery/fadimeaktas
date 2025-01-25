@@ -1,8 +1,62 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
+import { Input } from "@/components/input";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { setFieldsErrors } from "@/lib/form/set-fields-errors";
+import { z } from "zod";
 
-export default async function Girsyap() {
+const signupSchema = z.object({
+  username: z.string().min(3, "Kullanıcı adı en az 3 karakter olmalıdır."),
+  password: z
+    .string()
+    .min(6, "Şifre en az 6 karakter olmalıdır.")
+    .max(20, "Şifre en fazla 20 karakter olabilir."),
+});
+
+export default function LoginPage() {
+  const [ username, setUsername ] = useState("")
+  const [ password, setPassword ] = useState("")
+  const [ message, setMessage ] = useState("")
+  const [ isLoading, setIsLoading ] = useState(false)
+  const [ errors, setErrors ] = useState<Record<string, string>>({});
+  const router = useRouter()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setMessage("");
+    setErrors({});
+
+    const result = signupSchema.safeParse({ username, password });
+
+    setFieldsErrors(result, setErrors);
+
+    setIsLoading(true)
+    try {
+      const response = await fetch("api/user/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
+        router.push("/")
+      } else {
+        setMessage(`Error: ${data.error}`)
+      }
+    } catch (error) {
+      setMessage("An error occurred while creating the customer.")
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   return (
     <>
 
@@ -29,24 +83,25 @@ export default async function Girsyap() {
               <Link className="nav-link text-decoration-underline p-0 ms-2" href="/kaydol">Hesap Oluştur</Link>
             </div>
             {/*Form*/}
-            <form className="needs-validation" noValidate>
-
+            <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
-                <label htmlFor="register-email" className="form-label">E-posta</label>
-                <input type="email" className="form-control form-control-lg" id="register-email" required/>
-                <div className="invalid-tooltip bg-transparent py-0">Geçerli bir e-posta adresi girin!</div>
+                <Input
+                  name="username"
+                  label="Kullanıcı Adı"
+                  type="text"
+                  value={username}
+                  error={errors.username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
               </div>
               <div className="mb-4">
-                <label htmlFor="register-password" className="form-label">Şifre</label>
-                <div className="password-toggle">
-                  <input type="password" className="form-control form-control-lg" id="register-password" minLength={8}
-                         placeholder="Minimum 8 karakter" required/>
-                  <div className="invalid-tooltip bg-transparent py-0">Şifre gerekli kriterleri karşılamıyor!
-                  </div>
-                  <label className="password-toggle-button fs-lg" aria-label="Show/hide password">
-                    <input type="checkbox" className="btn-check"/>
-                  </label>
-                </div>
+                <Input
+                  name="password"
+                  type="password"
+                  label="Şifre"
+                  error={errors.password}
+                  value={password} onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               {/*           <div className="d-flex flex-column gap-2 mb-4">
                 <div className="form-check">

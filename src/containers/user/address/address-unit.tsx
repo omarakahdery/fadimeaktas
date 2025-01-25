@@ -4,8 +4,7 @@ import { IUser } from "@/types/IUser";
 import { BillingAddressForm, ShippingAddressForm } from "@/containers/user/address/address-form";
 
 export async function ShippingAddress() {
-  const userId = "2"
-  const data = await getData<IUser>(`/user/me/${userId}`);
+  const data = await getData<IUser>(`/user/me}`);
   return <>
     <div className="border-bottom py-4">
       <AddressTitle collapseName={"ShippingAddress"} title={"Teslimat Adresi"}/>
@@ -15,7 +14,7 @@ export async function ShippingAddress() {
             {data?.shipping.first_name} {data?.shipping.last_name}
           </li>
           <li>
-            {data?.shipping.state}{data?.shipping.state&&","} {data?.shipping.city}
+            {data?.shipping.state}{data?.shipping.state && ","} {data?.shipping.city}
           </li>
           <li>
             {data?.shipping.address_1}
@@ -30,8 +29,7 @@ export async function ShippingAddress() {
 }
 
 export async function BillingAddress() {
-  const userId = "2"
-  const data = await getData<IUser>(`/user/me/${userId}`);
+  const data = await getData<IUser>(`/user/me}`);
   return <>
     <div className="border-bottom py-4">
       <AddressTitle collapseName={"BillingAddress"} title={"Fatura Adresi"}/>
@@ -41,7 +39,7 @@ export async function BillingAddress() {
             {data?.billing.first_name} {data?.billing.last_name}
           </li>
           <li>
-            {data?.billing.state}{data?.shipping.state&&","} {data?.billing.city}
+            {data?.billing.state}{data?.shipping.state && ","} {data?.billing.city}
           </li>
           <li>
             {data?.billing.address_1}

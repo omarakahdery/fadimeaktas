@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import WooCommerceRestApi from "@woocommerce/woocommerce-rest-api";
-import { api } from "../../../config/wc";
+import { api } from "@/config/wc";
 
 
 export async function GET(request: Request) {

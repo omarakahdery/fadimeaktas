@@ -37,7 +37,7 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
 
     setIsLoading(true)
     try {
-      const response = await fetch("/api/user/me/3", {
+      const response = await fetch("/api/user/me", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
