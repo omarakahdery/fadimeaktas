@@ -14,10 +14,10 @@ export default async function UserLayout({
 }>) {
   const cookiesStore = await cookies()
   const userId = cookiesStore.get("user_id")
-  if (userId) {
+  const categories = await getData<ICategory[]>(`/products/categories`);
+  if (!userId?.value) {
     redirect("/giris-yap")
   }
-  const categories = await getData<ICategory[]>(`/products/categories`);
   return (
     <main className="page-wrapper">
       <RemoveOverflow/>
@@ -68,11 +68,8 @@ export default async function UserLayout({
                   </Link>
                 </nav>
                 <nav className="list-group list-group-borderless pt-3">
+                  {/* //todo: logout */}
                   <Link
-                    onClick={() => {
-                      cookiesStore.delete("user_id")
-                      cookiesStore.delete("token")
-                    }}
                     className="list-group-item list-group-item-action d-flex align-items-center" href="/">
                     <i className="ci-log-out fs-base opacity-75 me-2"></i>
                     Çıkış yap
