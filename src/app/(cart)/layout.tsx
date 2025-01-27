@@ -11,11 +11,12 @@ export default async function CartLayout({
                                          }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const userId = (await cookies()).get("token")
-  if (userId === undefined) {
+  const cookiesStore = await cookies()
+  const userId = cookiesStore.get("token")
+  const categories = await getData<ICategory[]>(`/products/categories`);
+  if (!userId?.value) {
     redirect("/giris-yap")
   }
-  const categories = await getData<ICategory[]>(`/products/categories`);
   return (
     <main className="page-wrapper">
       <RemoveOverflow/>
