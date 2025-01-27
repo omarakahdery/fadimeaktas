@@ -9,8 +9,10 @@ import { IProduct } from "@/types/IProduct";
 import { Appointment } from "@/containers/product/appointment";
 import { getData } from "@/lib/api/api-fun";
 import { AddItemToCart } from "@/containers/product/add-to-cart";
+import { cookies } from "next/headers";
 
 export async function Product({ id }: { id: string }) {
+  const token = (await cookies()).get("token")
   const data = await getData<IProduct>(`/products/${id}`);
   return (
     <>
@@ -94,6 +96,7 @@ export async function Product({ id }: { id: string }) {
                   gap: "10px"
                 }}>
                   <AddItemToCart Product={{
+                    token: token?.value,
                     id: data?.id.toString() || "",
                     quantity: "1"
                   }}/>

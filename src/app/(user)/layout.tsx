@@ -3,6 +3,8 @@ import { Navbar } from "@/components/navbar";
 import { getData } from "@/lib/api/api-fun";
 import { RemoveOverflow } from "@/components/remove-overflow";
 import Link from "next/link";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 
 export default async function UserLayout({
@@ -10,6 +12,11 @@ export default async function UserLayout({
                                          }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const cookiesStore = await cookies()
+  const userId = cookiesStore.get("user_id")
+  if (userId) {
+    redirect("/giris-yap")
+  }
   const categories = await getData<ICategory[]>(`/products/categories`);
   return (
     <main className="page-wrapper">
@@ -61,8 +68,12 @@ export default async function UserLayout({
                   </Link>
                 </nav>
                 <nav className="list-group list-group-borderless pt-3">
-                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
-                     href="/">
+                  <Link
+                    onClick={() => {
+                      cookiesStore.delete("user_id")
+                      cookiesStore.delete("token")
+                    }}
+                    className="list-group-item list-group-item-action d-flex align-items-center" href="/">
                     <i className="ci-log-out fs-base opacity-75 me-2"></i>
                     Çıkış yap
                   </Link>

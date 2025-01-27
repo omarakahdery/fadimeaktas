@@ -2,16 +2,15 @@ import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
-  const cart_key = searchParams.get("cart_key")
-  const baseUrl = "https://faktas.yeniveri.com/wp-json/cocart/v2/cart"
-  const endpoint = !cart_key ? baseUrl
-    : `${baseUrl}?cart_key=${cart_key}`
-
+  const token = searchParams.get("token")
+  if(!token) {
+    return NextResponse.json({ error: "No token provided" }, { status: 400 })
+  }
   try {
-    const response = await fetch(endpoint, {
+    const response = await fetch("https://faktas.yeniveri.com/wp-json/cocart/v2/cart", {
       headers: {
         Accept: "application/json",
-        cache: 'no-store',
+        Authorization: "Basic " + token,
       },
     })
 
@@ -30,8 +29,9 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
 
-  const { cart_key, id, quantity } = await req.json()
-
+  const {  id, quantity } = await req.json()
+  const { searchParams } = new URL(req.url)
+  const token = searchParams.get("token")
   const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/add-item`
   try {
     const response = await fetch(endpoint, {
@@ -39,10 +39,9 @@ export async function POST(req: Request) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        'Cart-Key': cart_key,
+        Authorization: "Basic " + token,
       },
       body: JSON.stringify({
-        cart_key,
         id: id.toString(),
         quantity,
       }),

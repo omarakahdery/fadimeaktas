@@ -1,37 +1,35 @@
+"use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function IncreaseDecreaseQ({ item_key, quantity, productId }: {
+export function IncreaseDecreaseQ({ item_key, quantity, token }: {
   item_key: string,
   quantity: number,
-  productId: string
+  token?: string
 }) {
   const [ q, setQ ] = useState(quantity || 1);
   const [ isLoading, setIsLoading ] = useState(false)
   const [ isSuccess, setIsSuccess ] = useState(false)
   const router = useRouter();
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setIsSuccess(false)
     try {
-      const response = await fetch("/api/cart/" + item_key, {
+      const response = await fetch(`/api/cart/${item_key}?token=${token}&path=/api/cart`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          /*id: productId,*/
-          quantity: q,
-          cart_key: "903d882be54f000d83fb7710ff3059"
+          quantity: Number(q),
         }),
       })
       const data = await response.json()
-
       if (data?.notices?.success?.length > 0) {
         setIsSuccess(true)
-      } else {
+        //todo:  router.refresh() is not working
+        router.refresh()
       }
     } catch (error) {
       /*setMessage("An error occurred while creating the customer.")*/

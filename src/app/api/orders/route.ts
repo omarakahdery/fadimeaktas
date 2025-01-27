@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { api } from "../../../config/wc";
+import { api } from "@/config/wc";
 
 
 export async function GET(request: Request) {

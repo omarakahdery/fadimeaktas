@@ -1,6 +1,3 @@
-import { Navbar } from "@/components/navbar";
-
-
 export default async function HomeLayout({
                                            children,
                                          }: Readonly<{

@@ -11,13 +11,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: false, error: "Username and password are required" }, { status: 400 })
     }
 
-    const authHeader = "Basic " + btoa(`${username}:${password}`)
+    const authHeader = btoa(`${username}:${password}`)
 
     const response = await fetch("https://faktas.yeniveri.com/wp-json/cocart/v2/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: authHeader,
+        Authorization: "Basic " + authHeader,
       },
     })
 
@@ -26,6 +26,13 @@ export async function POST(request: Request) {
     if (response.ok) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", data.user_id.toString(), {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 7 * 24 * 60 * 60, // 1 week
+        path: "/",
+      })
+      cookieStore.set("token", authHeader, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",

@@ -1,7 +1,7 @@
 import { IAddress } from "@/types/IUser";
 
 export interface ICart {
-
+  cart_key?: string,
   items: ICartItem[],
   customer: {
 /*    billing_address:IAddress

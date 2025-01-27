@@ -7,6 +7,7 @@ type Props = {
   Product: {
     id: string,
     quantity: string
+    token?: string
   }
 }
 
@@ -20,7 +21,7 @@ export function AddItemToCart({ Product }: Props) {
     setIsLoading(true)
     setIsSuccess(false)
     try {
-      const response = await fetch("/api/cart", {
+      const response = await fetch("/api/cart?token=" + Product.token, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -28,7 +29,6 @@ export function AddItemToCart({ Product }: Props) {
         body: JSON.stringify({
           id: Product.id,
           quantity: Product.quantity,
-          cart_key: "8f63fd5a90dcb7e37f544ae7d76094"
         }),
       })
       const data = await response.json()

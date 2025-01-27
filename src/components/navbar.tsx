@@ -3,10 +3,9 @@ import Image from "next/image";
 import { Cart } from "@/components/cart/cart";
 import Logo from "../../public/fadime-aktas-logo.svg";
 
-export function Navbar() {
+export async function Navbar() {
   return (
     <>
-      <Cart/>
       <header className="navbar navbar-expand-lg navbar-sticky bg-body d-block z-fixed p-0"
               data-sticky-navbar="{&quot;offset&quot;: 500}">
         <NavbarContent/>
@@ -35,7 +34,7 @@ export function NavbarContent() {
           </button>
           {/*--------*/}
         </div>
-        <Link style={{margin:0}} className={"navbar-brand"} href={"/"}>
+        <Link style={{ margin: 0 }} className={"navbar-brand"} href={"/"}>
           <Image
             width={180}
             height={180}
@@ -56,7 +55,7 @@ export function NavbarContent() {
             className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
             href="/hesap-bilgisi">
             <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
-            <span className="visually-hidden">Account</span>
+            <span className="visually-hidden">hesap</span>
           </Link>
 
           <Link
@@ -66,17 +65,12 @@ export function NavbarContent() {
             <span className="visually-hidden">favorilerim</span>
           </Link>
 
-          <button type="button"
-                  className="btn btn-icon btn-lg fs-xl btn-outline-secondary position-relative border-0 rounded-circle animate-scale"
-                  data-bs-toggle="offcanvas" data-bs-target="#shoppingCart" aria-controls="shoppingCart"
-                  aria-label="Shopping cart">
-            <span className="position-absolute top-0 start-100 badge fs-xs text-bg-dark rounded-pill mt-1 ms-n4 z-2"
-              /*
-                                style="--cz-badge-padding-y: .25em; --cz-badge-padding-x: .42em"
-              */
-            >3</span>
+          <Link
+            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
+            href="/sepetim">
             <i style={{ fontSize: "24px" }} className="ci-shopping-bag animate-target me-1"></i>
-          </button>
+          </Link>
+
         </div>
       </div>
       <div className="collapse navbar-stuck-hide" id="stuckNav">
