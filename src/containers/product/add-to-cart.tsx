@@ -1,5 +1,4 @@
 "use client";
-import { closeForm } from "@/containers/user/account-info/personal-info-form";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -35,6 +34,7 @@ export function AddItemToCart({ Product }: Props) {
 
       if (data?.notices?.success?.length > 0) {
         setIsSuccess(true)
+        openCart("cartButton");
       } else {
       }
     } catch (error) {
@@ -46,17 +46,31 @@ export function AddItemToCart({ Product }: Props) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        {isSuccess ? <div className="alert d-flex alert-success" role="alert">
-            <i className="ci-check-circle fs-lg pe-1 mt-1 me-2"></i>
-            Sepete eklendi
-          </div> :
-          <button
-            disabled={isLoading}
-            type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
-            Satın Al
-          </button>
-        }
+        <button
+          disabled={isLoading}
+          type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
+          Satın Al
+        </button>
+        <button
+          data-bs-toggle="offcanvas"
+          data-bs-target="#shoppingCart"
+          aria-controls="shoppingCart"
+          aria-label="Shopping cart"
+          id="cartButton"
+          type="button"
+          className="btn opacity-0 position-absolute rounded-pill btn-lg btn-dark w-100">
+          Görünmez Buton
+        </button>
       </form>
     </>
   );
+}
+
+function openCart(id: string) {
+  const btn = document.getElementById(id) as HTMLButtonElement;
+  if (btn) {
+    btn.click();
+  } else {
+    console.error("Button not found");
+  }
 }

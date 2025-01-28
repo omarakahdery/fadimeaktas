@@ -103,18 +103,16 @@ export const Checkout = async () => {
                     </div>
                   </div>
                 </div>
-
-
               </div>
             </div>
           </div>
         </main>
       </section>
     </>
-  )
-    ;
+  );
 }
 
+/*
 export function Amount({ label, value }: { label: string, value?: string }) {
   return (
     <div className="d-flex align-items-center justify-content-between w-100 mt-4 mb-3">
@@ -123,4 +121,4 @@ export function Amount({ label, value }: { label: string, value?: string }) {
     </div>
 
   )
-}
+}*/
