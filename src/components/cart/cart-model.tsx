@@ -1,12 +1,14 @@
+"use client";
 import Link from "next/link"
 import Image from "next/image";
 import { getData } from "@/lib/api/api-fun";
 import { ICart } from "@/types/ICart";
 import { RemoveItemBtn } from "@/components/cart/remove-item-btn";
 import { IncreaseDecreaseQ } from "@/components/cart/increase-decrease-q";
-import { cookies } from "next/headers";
+import { useEffect, useState } from "react";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
-export const CartModel = async () => {
+export const CartModel = ({ token }: { token?: string }) => {
   /*  const [data, setData] = useState<ICart | null>(null);
 
     useEffect(() => {
@@ -19,8 +21,23 @@ export const CartModel = async () => {
         }
       })();
     }, []);*/
-  const token = (await cookies()).get("token")?.value;
-  const data = await getData<ICart>("/cart?token=" + token);
+  /*  const token = (await cookies()).get("token")?.value;
+    const data = await getData<ICart>("/cart?token=" + token);*/
+
+  const [ cartData, setCartData ] = useState<ICart | undefined>(undefined)
+
+  useEffect(() => {
+    const fetchCartData = async () => {
+      try {
+        const data = await getData<ICart>("/cart?token=" + token)
+        setCartData(data)
+      } catch (err) {
+        console.error(err)
+      } finally {
+      }
+    }
+    fetchCartData()
+  }, [])
   return (
     <>
       {/* Shopping cart offcanvas */}
@@ -48,7 +65,7 @@ export const CartModel = async () => {
 
         {/* Items */}
         <div className="offcanvas-body d-flex flex-column gap-4 pt-2">
-          {data?.items?.map((item, index) => (
+          {cartData?.items?.map((item, index) => (
             <div className="d-flex align-items-center" key={index}>
               <Link
                 aria-label="Close"
@@ -74,8 +91,7 @@ export const CartModel = async () => {
                       <span className="text-uppercase">{item.name}</span>
                     </Link>
                   </div>
-                  <div className="fw-normal fs-sm d-flex align-items-center">
-                    ₺{item?.totals?.total},00
+                  <div className="fw-normal fs-sm d-flex align-items-center">{formatCurrency(Number(item?.totals?.total))}
                   </div>
                   <div className="w-100 d-flex justify-content-between mt-2">
                     <IncreaseDecreaseQ
@@ -94,7 +110,8 @@ export const CartModel = async () => {
           <div className="offcanvas-header mt-auto flex-column align-items-start">
             <div className="d-flex align-items-center justify-content-between w-100 mb-3 mb-md-4">
               <span className="text-light-emphasis">Toplam:</span>
-              <span className=" mb-0">₺{data?.totals?.total},00</span>
+              <span className=" mb-0">{formatCurrency(Number(cartData?.totals?.total))}</span>
+
             </div>
             <div className="d-flex w-100 gap-3">
               {/* <Link  className="btn btn-lg btn-secondary w-100" href="/">

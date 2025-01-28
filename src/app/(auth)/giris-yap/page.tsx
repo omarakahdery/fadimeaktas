@@ -4,12 +4,13 @@ import Image from "next/image";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
 import { Input } from "@/components/input";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { z } from "zod";
 
 const signupSchema = z.object({
+/*
   email: z.string().email("Geçerli bir e-posta adresi giriniz."),
+*/
   password: z
     .string()
     .min(6, "Şifre en az 6 karakter olmalıdır.")

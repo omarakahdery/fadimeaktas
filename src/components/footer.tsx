@@ -1,7 +1,7 @@
 import Script from 'next/script'
 import Link from "next/link";
 
-export const Footer = ({ categories }: { categories?: ICategory[]}) => {
+export const Footer = ({ categories }: { categories?: ICategory[] }) => {
   return (
 
     <footer className="footer pt-5 pb-4">
@@ -39,6 +39,7 @@ export const Footer = ({ categories }: { categories?: ICategory[]}) => {
           <div className="col-md-8 col-xl-7 pb-2 pb-md-0 mb-4 mb-md-0 mt-n3 mt-sm-0">
             <div className="accordion" id="footerLinks">
               <div className="row row-cols-1 row-cols-sm-3">
+
                 <div className="accordion-item col border-0">
                   <h6 className="accordion-header" id="categoriesHeading">
                     <span className="text-dark-emphasis d-none d-sm-block">Sezon</span>
@@ -57,29 +58,6 @@ export const Footer = ({ categories }: { categories?: ICategory[]}) => {
                             href={`/${category.slug}/${category.id}`}>{category.name}</Link>
                         </li>
                       ))}
-
-                      {/*  <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                              href="/collections">İlkbahar 2025</Link>
-                      </li>
-                      <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/collections">Yaz 2025</Link>
-                      </li>
-                      <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/collections">Sonbahar 2025</Link>
-                      </li>
-                      <li className="d-flex w-100 pt-1">
-                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="/collections">Kış 2025</Link>
-                      </li>*/}
-                      <li className="d-flex w-100 pt-1">
-                        <Link style={{ color: "#ff6700" }}
-                              className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                              href={"/accessories/20"}>İndirim</Link>
-                      </li>
-
                     </ul>
                   </div>
                   <hr className="d-sm-none my-0"/>
@@ -150,10 +128,27 @@ export const Footer = ({ categories }: { categories?: ICategory[]}) => {
                   </div>
                   <hr className="d-sm-none my-0"/>
                 </div>
+
+              </div>
+
+            </div>
+
+          </div>
+          <div className="col-md-4 offset-xl-1">
+            {/*<h6 className="mb-4">İletişim</h6>*/}
+
+            {/*------*/}
+            <div className="col text-center mb-2 mb-sm-0">
+              <i
+                className="ci-phone-outgoing bg-dark text-white fs-4 rounded-circle p-3 mb-3 d-inline-flex d-none-dark"></i>
+              <h3 className="text-body fs-xs fw-normal mb-2">Bizi arayın</h3>
+              <div className="nav animate-underline justify-content-center">
+                <a className="nav-link animate-target text-dark-emphasis fs-sm p-0"
+                   href="tel:+905357091720">+90 535 709 17 20</a>
               </div>
             </div>
+            {/*------*/}
           </div>
-
 
         </div>
 

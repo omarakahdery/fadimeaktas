@@ -24,7 +24,7 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
           <div className={"col-lg-8"}>
 
             <p className={"fw-bold text-dark fs-sm "}>
-              Sezon
+              Katagoriler
             </p>
             <ul className="navbar-nav ">
               {categories?.map((category) => {
@@ -62,19 +62,19 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
                 </a>
               </li>
 */}
-              <li className="nav-item">
+            {/*  <li className="nav-item">
                 <a style={{ marginBottom: "16px", color: "#ff6700" }} className="fs-xl fw-normal nav-link "
                    href="/collections">
                   İndirim
                 </a>
-              </li>
+              </li>*/}
             </ul>
 
             <p className={"fw-bold mt-3 text-dark fs-sm "}>
               Bilgi
             </p>
             <h6 style={{ fontSize: "24px" }} className={"fw-bold text-body"}>
-              0312 400 14 14
+              0 535 709 17 20
             </h6>
             <div className=" d-flex justify-content-start justify-content-start mb-4 gap-4 mt-n2 mt-md-0">
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"

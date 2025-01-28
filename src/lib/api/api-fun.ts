@@ -4,9 +4,6 @@ export async function getData<T>(url: string, baseUrl?: string): Promise<T | und
     const res = await fetch(endpoint,
       { cache: 'no-store' }
     );
-/*
-    const cartKey = res.headers.get('CoCart-API-Cart-Key');
-*/
     if (!res.ok) {
       throw new Error('Failed to fetch products');
     }

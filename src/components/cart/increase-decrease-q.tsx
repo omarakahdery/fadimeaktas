@@ -27,9 +27,9 @@ export function IncreaseDecreaseQ({ item_key, quantity, token }: {
       })
       const data = await response.json()
       if (data?.notices?.success?.length > 0) {
-        setIsSuccess(true)
         //todo:  router.refresh() is not working
         router.refresh()
+        setIsSuccess(true)
       }
     } catch (error) {
       /*setMessage("An error occurred while creating the customer.")*/

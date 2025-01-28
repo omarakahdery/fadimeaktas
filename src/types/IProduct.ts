@@ -7,6 +7,9 @@ export interface IProduct {
   sale_price: string;
   short_description: string;
   description: string;
+  backordered: boolean;
+  backorders_allowed: boolean;
+  backorders: string;
 
   images: { src: string }[];
 }

@@ -11,13 +11,13 @@ import { getData } from "@/lib/api/api-fun";
 import { AddItemToCart } from "@/containers/product/add-to-cart";
 import { cookies } from "next/headers";
 import { CartModel } from "@/components/cart/cart-model";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
 export async function Product({ id }: { id: string }) {
   const token = (await cookies()).get("token")
   const data = await getData<IProduct>(`/products/${id}`);
   return (
     <>
-      <CartModel/>
       {/*photos*/}
       <div className={"col-lg-8"}>
         <Link
@@ -81,12 +81,13 @@ export async function Product({ id }: { id: string }) {
               </h6>
               {/*Price*/}
               <div
-                /*
-                                        dangerouslySetInnerHTML={{ __html: data.price_html }}
-                */
+                /* dangerouslySetInnerHTML={{ __html: data.price_html }}*/
                 className="fw-normal fs-sm d-flex align-items-center mb-4">
-                ₺{data?.price}.00,00
-                <del className="fs-sm fw-normal text-body-tertiary ms-2">₺{data?.regular_price}.00,00</del>
+                {formatCurrency(Number(data?.price))}
+                {Number(data?.regular_price) > Number(data?.price) &&
+                    <del className="fs-sm fw-normal text-body-tertiary ms-2">
+                      {formatCurrency(Number(data?.regular_price))}
+                    </del>}
               </div>
 
               {/*Count input + Add to cart button*/}
@@ -100,19 +101,16 @@ export async function Product({ id }: { id: string }) {
                   <AddItemToCart Product={{
                     token: token?.value,
                     id: data?.id.toString() || "",
-                    quantity: "1"
+                    quantity: "1",
+                    backordered: data?.backordered
                   }}/>
                   <button data-bs-toggle="modal" data-bs-target="#modalId" type="button"
                           className="btn btn-outline-secondary rounded-pill btn-lg w-100">
                     Randevu Al
                   </button>
                 </div>
-
-
               </div>
-
               <p dangerouslySetInnerHTML={{ __html: data?.short_description || "" }} className="fs-sm mb-2">
-
               </p>
               <div className="collapse" id="moreDescription">
                 <div className="fs-sm pt-3">

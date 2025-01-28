@@ -3,6 +3,7 @@ import { getData } from "@/lib/api/api-fun";
 import { IOrder, statusTr } from "@/types/IOrder";
 import { formatDate } from "@/lib/format-dete";
 import { cookies } from "next/headers";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
 export default async function MyOrders() {
   const userId = (await cookies()).get("user_id")
@@ -54,7 +55,7 @@ export default async function MyOrders() {
               </span>
             </td>
             <td className="fw-medium py-3 d-none d-md-table-cell">
-              ₺{order.total}
+              {formatCurrency(Number(order.total))}
             </td>
             <td className="py-3 pe-0">
                         <span

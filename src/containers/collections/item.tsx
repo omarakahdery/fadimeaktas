@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { IProduct } from "@/types/IProduct";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
 export const Item = ({ product }: { product: IProduct }) => {
   return (
@@ -31,10 +32,12 @@ export const Item = ({ product }: { product: IProduct }) => {
           </Link>
         </div>
 
-        <div className="fw-normal text-dark fs-sm mb-2">₺{product.price}.00,00
-          <del className="fs-sm fw-normal ms-2 text-body-tertiary">
-            {" "}₺{product.regular_price}.200,00
-          </del>
+        <div className="fw-normal text-dark fs-sm mb-2">{formatCurrency(Number(product.price))}
+          {Number(product?.regular_price) > Number(product?.price) &&
+              <del className="fs-sm fw-normal ms-2 text-body-tertiary">
+                {" "}{formatCurrency(Number(product.regular_price))}
+              </del>
+          }
         </div>
 
       </div>

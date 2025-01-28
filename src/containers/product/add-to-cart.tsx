@@ -7,6 +7,7 @@ type Props = {
     id: string,
     quantity: string
     token?: string
+    backordered?: boolean
   }
 }
 
@@ -15,6 +16,7 @@ export function AddItemToCart({ Product }: Props) {
   const [ isSuccess, setIsSuccess ] = useState(false)
 
   const router = useRouter();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
@@ -34,7 +36,8 @@ export function AddItemToCart({ Product }: Props) {
 
       if (data?.notices?.success?.length > 0) {
         setIsSuccess(true)
-        openCart("cartButton");
+        router.push("/sepetim");
+        /*openCart("cartButton");*/
       } else {
       }
     } catch (error) {
@@ -47,7 +50,7 @@ export function AddItemToCart({ Product }: Props) {
     <>
       <form onSubmit={handleSubmit}>
         <button
-          disabled={isLoading}
+          disabled={Product.backordered ||isLoading}
           type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
           Satın Al
         </button>
@@ -58,7 +61,7 @@ export function AddItemToCart({ Product }: Props) {
           aria-label="Shopping cart"
           id="cartButton"
           type="button"
-          className="btn opacity-0 position-absolute rounded-pill btn-lg btn-dark w-100">
+          className="opacity-0 position-absolute w-0 h-0">
           Görünmez Buton
         </button>
       </form>

@@ -7,6 +7,7 @@ import { RemoveItemBtn } from "@/components/cart/remove-item-btn";
 import { IncreaseDecreaseQ } from "@/components/cart/increase-decrease-q";
 import { Amount } from "@/containers/checkout";
 import { cookies } from "next/headers";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
 export const Cart = async () => {
   const token = (await cookies()).get("token")?.value;
@@ -52,7 +53,7 @@ export const Cart = async () => {
                                   </Link>
                                 </div>
                                 <div className="fw-normal fs-sm d-flex align-items-center">
-                                  ₺{item?.totals?.total},00
+                                  {formatCurrency(Number(item?.totals?.total))}
                                   {/*<del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>*/}
                                 </div>
                               </div>
@@ -84,12 +85,12 @@ export const Cart = async () => {
                   <div className="card border-0 shadow">
                     <div className="card-body vstack gap-4">
                       <h5 className="card-title">Sipariş Özeti</h5>
-                      <Amount value={"₺" + data?.totals?.total.toString()} label={"Toplam"}/>
+                      <Amount value={Number(data?.totals?.total)} label={"Toplam"}/>
                       <div className="d-flex w-100 gap-3">
                         <Link className="btn rounded-pill btn-lg btn-dark w-100" href="/odeme">
-                    <span data-bs-dismiss="offcanvas" aria-label="Close">
-                      Sepeti Onayla
-                    </span>
+                          <span data-bs-dismiss="offcanvas" aria-label="Close">
+                            Sepeti Onayla
+                          </span>
                         </Link>
                       </div>
                     </div>

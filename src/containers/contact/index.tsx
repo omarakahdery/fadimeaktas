@@ -1,6 +1,9 @@
+import Link from "next/link";
+
 export function Contact() {
   return <>
     <h1 className="text-center pb-2 pb-sm-3 mt-lg-3 mt-xl-4">İletişime Geçin</h1>
+    {/*
     <section className="pb-1 pb-sm-3 pb-md-4 pb-lg-5" style={{ "marginTop": "-110px", "paddingTop": "110px" }}>
       <div className="container py-5 mb-xxl-3">
         <div className="card border-0 shadow">
@@ -78,6 +81,7 @@ export function Contact() {
         </div>
       </div>
     </section>
+*/}
 
     <section className="container">
       <div className="card border-0 shadow">
@@ -90,7 +94,7 @@ export function Contact() {
             <h3 className="text-body fs-sm fw-normal mb-2">Bizi arayın</h3>
             <div className="nav animate-underline justify-content-center">
               <a className="nav-link animate-target text-dark-emphasis fs-base p-0"
-                 href="tel:0312 400 14 14">0312 400 14 14</a>
+                 href="tel:+905357091720">+90 535 709 17 20</a>
             </div>
           </div>
           <div className="col text-center mb-2 mb-sm-0">
@@ -104,15 +108,18 @@ export function Contact() {
             </div>
           </div>
           <div className="col text-center">
-            <i className="ci-help-circle bg-dark text-white fs-4 rounded-circle p-3 mb-3 d-inline-flex d-none-dark"></i>
+            <i className="ci-map-pin bg-dark text-white fs-4 rounded-circle p-3 mb-3 d-inline-flex d-none-dark"></i>
+
             <i
-              className="ci-help-circle bg-body-secondary text-white fs-4 rounded-circle p-3 mb-3 d-none d-inline-flex-dark"></i>
-            <h3 className="text-body fs-sm fw-normal mb-2">Aklınıza takılan bir soru mu var?</h3>
+              className="ci-map-pin bg-body-secondary text-white fs-4 rounded-circle p-3 mb-3 d-none d-inline-flex-dark"></i>
+            <h3 className="text-body fs-sm fw-normal mb-2">
+              Fadime Aktaş Atölye
+              Yenice Mh. Atatürk Bul. <br/> B Blok 48/A Alaşehir/Manisa</h3>
             <div className="nav animate-underline justify-content-center">
-              <a className="nav-link animate-target text-dark-emphasis fs-base p-0" href="#!">
+              <Link className="nav-link animate-target text-dark-emphasis fs-base p-0" href="#!">
                 {/*Sıkça Sorulan Sorular*/}
-                SSS
-              </a>
+                Adres
+              </Link>
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getData } from "@/lib/api/api-fun";
 import { ICart } from "@/types/ICart";
 import { cookies } from "next/headers";
+import { formatCurrency } from "@/lib/helper/format-currency";
 
 export const Checkout = async () => {
   const token = (await cookies()).get("token")?.value;
@@ -43,7 +44,8 @@ export const Checkout = async () => {
                                     <span className="text-uppercase">{item.name}</span>
                                   </Link>
                                 </div>
-                                <div className="fw-normal text-dark fs-sm mb-2">₺{item.totals?.total},00</div>
+                                <div
+                                  className="fw-normal text-dark fs-sm mb-2">{formatCurrency(Number(item.totals?.total))}</div>
                               </div>
 
                             </div>
@@ -65,12 +67,12 @@ export const Checkout = async () => {
                   <div className="card border-0 shadow">
                     <div className="card-body">
                       <h5 className="card-title">Sipariş Özeti</h5>
-                      <Amount value={"₺" + data?.totals?.subtotal.toString()} label={"Ürünün Toplamı"}/>
-                      <Amount value={"₺" + data?.totals?.shipping_total.toString()} label={"Kargo Ücreti"}/>
-                      {Number(data?.totals?.discount_total)>0 &&
-                          <Amount value={"₺" + data?.totals?.discount_total.toString()} label={"İndrim"}/>
+                      <Amount value={Number(data?.totals?.subtotal)} label={"Ürünün Toplamı"}/>
+                      <Amount value={Number(data?.totals?.shipping_total)} label={"Kargo Ücreti"}/>
+                      {Number(data?.totals?.discount_total) > 0 &&
+                          <Amount value={Number(data?.totals?.discount_total)} label={"İndrim"}/>
                       }
-                      <Amount value={"₺" + data?.totals?.total.toString()} label={"Toplam"}/>
+                      <Amount value={Number(data?.totals?.total)} label={"Toplam"}/>
 
 
                       <div className="mb-3">
@@ -94,7 +96,7 @@ export const Checkout = async () => {
                       </div>
 
                       <button type="button" className="btn mt-3 btn-lg btn-dark w-100 rounded-pill">
-                        Öde {"₺" + data?.totals?.total.toString()}
+                        Öde {formatCurrency(Number(data?.totals?.total))}
                       </button>
                       <div className="d-flex align-items-center justify-content-center fs-xs text-body-secondary mt-3">
                         <i className="ci-lock me-1"></i>
@@ -112,13 +114,14 @@ export const Checkout = async () => {
   );
 }
 
-/*
-export function Amount({ label, value }: { label: string, value?: string }) {
+export function Amount({ label, value }: { label: string, value?: number }) {
   return (
     <div className="d-flex align-items-center justify-content-between w-100 mt-4 mb-3">
       <span className="fs-sm">{label}</span>
-      <span className="mb-0">{value}</span>
+      <span className="mb-0">
+        {formatCurrency(Number(value))}
+        </span>
     </div>
 
   )
-}*/
+}

@@ -1,5 +1,5 @@
 "use client";
-const phoneNumber = "+90535xxxx7091720";
+const phoneNumber = "+905357091720";
 
 export function Appointment({ productName }: { productName?: string }) {
   return <div className="modal fade modal-lg" id="modalId" tabIndex={-1} role="dialog">
@@ -18,7 +18,7 @@ export function Appointment({ productName }: { productName?: string }) {
             Pzt-Cum: 10:00 - 19:00
           </p>
           <p>
-            0312 466 26 16
+            +90 535 709 17 20
           </p>
           <h6>Whatsapp ile</h6>
           <p className={"fs-sm"}>

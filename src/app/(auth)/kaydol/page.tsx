@@ -49,7 +49,7 @@ export default function Signup() {
       if (data.success) {
         setMessage(`Customer created successfully! ID: ${data.customer.id}`)
         setTimeout(() => {
-          window.location.href = "/"
+          window.location.href = "/giris-yap"
         }, 100)
       } else {
         setMessage(`Error: ${data.error}`)
