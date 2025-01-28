@@ -52,21 +52,19 @@ export function NavbarContent() {
             </button>*/}
 
           <Link
-            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-none d-md-inline-flex"
+            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-md-inline-flex"
             href="/hesap-bilgisi">
             <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
             <span className="visually-hidden">hesap</span>
           </Link>
-
-          <Link
-            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
+    {/*      <Link
+            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-md-inline-flex"
             href="/favorilerim">
             <i style={{ fontSize: "24px" }} className="ci-heart animate-target"></i>
             <span className="visually-hidden">favorilerim</span>
-          </Link>
-
+          </Link>*/}
           <Link
-            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-none d-md-inline-flex"
+            className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-md-inline-flex"
             href="/sepetim">
             <i style={{ fontSize: "24px" }} className="ci-shopping-bag animate-target me-1"></i>
           </Link>

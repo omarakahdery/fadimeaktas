@@ -5,6 +5,7 @@ import { RemoveOverflow } from "@/components/remove-overflow";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import { LogoutBtn } from "@/components/logout-btn";
 
 
 export default async function UserLayout({
@@ -69,11 +70,7 @@ export default async function UserLayout({
                 </nav>
                 <nav className="list-group list-group-borderless pt-3">
                   {/* //todo: logout */}
-                  <Link
-                    className="list-group-item list-group-item-action d-flex align-items-center" href="/">
-                    <i className="ci-log-out fs-base opacity-75 me-2"></i>
-                    Çıkış yap
-                  </Link>
+                  <LogoutBtn/>
                 </nav>
               </div>
             </div>

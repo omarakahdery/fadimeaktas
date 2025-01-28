@@ -9,7 +9,7 @@ import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { z } from "zod";
 
 const signupSchema = z.object({
-  username: z.string().min(3, "Kullanıcı adı en az 3 karakter olmalıdır."),
+  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
   password: z
     .string()
     .min(6, "Şifre en az 6 karakter olmalıdır.")
@@ -17,18 +17,17 @@ const signupSchema = z.object({
 });
 
 export default function LoginPage() {
-  const [ username, setUsername ] = useState("")
+  const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
   const [ message, setMessage ] = useState("")
   const [ isLoading, setIsLoading ] = useState(false)
   const [ errors, setErrors ] = useState<Record<string, string>>({});
-  const router = useRouter()
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setMessage("");
     setErrors({});
 
-    const result = signupSchema.safeParse({ username, password });
+    const result = signupSchema.safeParse({ email, password });
 
     setFieldsErrors(result, setErrors);
 
@@ -39,14 +38,14 @@ export default function LoginPage() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ username: email, password }),
       })
 
       const data = await response.json()
 
       if (data.success) {
         setMessage(`Customer created successfully! ID: ${data.customer.id}`)
-        router.push("/")
+        window.location.href = "/"
       } else {
         setMessage(`Error: ${data.error}`)
       }
@@ -86,12 +85,12 @@ export default function LoginPage() {
             <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
                 <Input
-                  name="username"
-                  label="Kullanıcı Adı"
+                  name="email"
                   type="text"
-                  value={username}
-                  error={errors.username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                  label={"E-posta"}
+                  error={errors.email}
+                  value={email} onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4">

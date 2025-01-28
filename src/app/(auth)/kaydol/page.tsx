@@ -3,7 +3,6 @@ import { useState } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
-import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { Input } from "@/components/input";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
@@ -11,7 +10,6 @@ import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 
 const signupSchema = z.object({
   email: z.string().email("Geçerli bir e-posta adresi giriniz."),
-  username: z.string().min(3, "Kullanıcı adı en az 3 karakter olmalıdır."),
   password: z
     .string()
     .min(6, "Şifre en az 6 karakter olmalıdır.")
@@ -26,7 +24,6 @@ export default function Signup() {
   const [ isLoading, setIsLoading ] = useState(false)
   const [ errors, setErrors ] = useState<Record<string, string>>({});
 
-  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -44,7 +41,7 @@ export default function Signup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username, password }),
+        body: JSON.stringify({ email, username: email, password }),
       })
 
       const data = await response.json()
@@ -52,7 +49,7 @@ export default function Signup() {
       if (data.success) {
         setMessage(`Customer created successfully! ID: ${data.customer.id}`)
         setTimeout(() => {
-          router.push("/giris-yap")
+          window.location.href = "/"
         }, 100)
       } else {
         setMessage(`Error: ${data.error}`)
@@ -99,7 +96,7 @@ export default function Signup() {
                   value={email} onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              <div className="position-relative mb-4">
+              {/* <div className="position-relative mb-4">
                 <Input
                   name="username"
                   label="Kullanıcı Adı"
@@ -108,7 +105,7 @@ export default function Signup() {
                   error={errors.username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
-              </div>
+              </div>*/}
               <div className="mb-4">
                 <div className="password-toggle">
                   <Input

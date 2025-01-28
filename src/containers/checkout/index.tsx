@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { getData } from "@/lib/api/api-fun";
 import { ICart } from "@/types/ICart";
+import { cookies } from "next/headers";
 
 export const Checkout = async () => {
-  const data = await getData<ICart>("/cart?cart_key=8f63fd5a90dcb7e37f544ae7d76094");
-
+  const token = (await cookies()).get("token")?.value;
+  const data = await getData<ICart>("/cart?token=" + token);
   return (
     <>
       <section style={{ marginTop: "80px" }}>
