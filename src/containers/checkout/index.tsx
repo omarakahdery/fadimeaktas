@@ -5,10 +5,7 @@ import { ICart } from "@/types/ICart";
 import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
 
-export const Checkout = async () => {
-  const token = (await cookies()).get("token")?.value;
-  const data = await getData<ICart>("/cart?token=" + token);
-  return (
+A
     <>
       <section style={{ marginTop: "80px" }}>
         <main className="container content-wrapper">
@@ -24,7 +21,7 @@ export const Checkout = async () => {
                   <div style={{ width: "100%" }} className="">
                     <div className="vstack  gap-4">
                       {/*Item*/}
-                      {data?.items.map((item) => {
+                      {data?.items.map((item: any) => {
                         return <>
                           <div className="d-flex w-100 h-100 align-items-start me-auto">
                             <Link className="flex-shrink-0" href={"/product/" + item.id}>

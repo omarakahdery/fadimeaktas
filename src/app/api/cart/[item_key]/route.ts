@@ -1,5 +1,4 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { revalidatePath } from 'next/cache';
 
 export async function DELETE
 (
@@ -42,10 +41,8 @@ export async function POST
   { params }: { params: Promise<{ item_key: string }> }
 ) {
   const item_key = (await params).item_key
-
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")
-  const path = searchParams.get("path")
 
   const { quantity } = await req.json()
 
@@ -62,14 +59,10 @@ export async function POST
         quantity: String(quantity),
       }),
     })
-    const xx = response
     if (!response.ok) {
-      return NextResponse.json({ error: "Failed to update item in cart" }, { status: response.status })
+      return NextResponse.json({ error: response.json() }, { status: response.status })
     }
-    /*
-        const path = req.nextUrl.searchParams.get('path') || '/';
-    */
-    revalidatePath(path || '/');
+
     const cartData = await response.json()
     return NextResponse.json(cartData)
   } catch (error) {
