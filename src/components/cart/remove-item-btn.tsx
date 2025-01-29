@@ -28,17 +28,14 @@ export function RemoveItemBtn({ item_key, token }: { item_key: string, token?: s
     }
   }
   return <>
+
     <button
       onClick={() => {
         handleSubmit()
       }}
-      disabled={isLoading}
-      type="button"
-      className="btn-close fs-sm"
-      data-bs-toggle="tooltip"
-      aria-label="Remove from cart"
-    >
-
+      type="button" className="btn btn-icon btn-sm flex-shrink-0 fs-sm" data-bs-toggle="tooltip"
+            data-bs-custom-class="tooltip-sm" data-bs-title="Remove" aria-label="Remove from cart">
+      <i className="ci-trash fs-base"></i>
     </button>
   </>
 }

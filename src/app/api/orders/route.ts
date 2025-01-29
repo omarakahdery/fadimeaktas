@@ -18,3 +18,17 @@ export async function GET(request: Request) {
   }
 }
 
+export async function POST(request: Request) {
+  const body = await request.json()
+  try {
+    const response = await api.post("orders", body);
+    console.log(response.data);
+    const order = response.data;
+    const payment = "mkde"
+    return NextResponse.json(response.data);
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+  }
+}
+

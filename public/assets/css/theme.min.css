@@ -16554,7 +16554,9 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
 
 .accordion-item {
     border: 0;
+    /*
     border-bottom: var(--cz-accordion-border-width) solid var(--cz-accordion-border-color)
+    */
 }
 
 .accordion-body {

@@ -85,7 +85,15 @@ export const Cart = async () => {
                   <div className="card border-0 shadow">
                     <div className="card-body vstack gap-4">
                       <h5 className="card-title">Sipariş Özeti</h5>
+                      <div>
+                      <Amount value={Number(data?.totals?.total)} label={"Ürünün Toplamı"}/>
+                      <Amount value={Number(data?.totals?.shipping_total)} label={"Kargo Ücreti"}/>
+                      {Number(data?.totals?.discount_total) > 0 &&
+                          <Amount value={Number(data?.totals?.discount_total)} label={"İndrim"}/>
+                      }
                       <Amount value={Number(data?.totals?.total)} label={"Toplam"}/>
+                      </div>
+
                       <div className="d-flex w-100 gap-3">
                         <Link className="btn rounded-pill btn-lg btn-dark w-100" href="/odeme">
                           <span data-bs-dismiss="offcanvas" aria-label="Close">
