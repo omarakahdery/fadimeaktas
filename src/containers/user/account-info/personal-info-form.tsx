@@ -2,9 +2,10 @@
 import { IUser } from "@/types/IUser";
 import { Input } from "@/components/input";
 import { useState } from "react";
-import { date, z } from "zod";
+import { z } from "zod";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { useRouter } from "next/navigation";
+import { IResponse } from "@/types/api/IResponse";
 
 export function PersonalInfoForm({ user }: { user?: IUser }) {
   const [ formData, setFormData ] = useState({
@@ -32,7 +33,10 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
       lastName: formData.lastName,
     });
 
-    setFieldsErrors(result, setErrors);
+    if (!result.success) {
+      setFieldsErrors(result, setErrors);
+      return;
+    }
 
     setIsLoading(true)
     try {
@@ -48,10 +52,9 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
         }),
       })
 
-      const data = await response.json()
+      const data: IResponse<IUser> = await response.json()
 
       if (data.success) {
-        /*setMessage(`Customer created successfully! ID: ${data.customer.id}`)*/
         router.refresh()
         closeForm("close")
       } else {
@@ -117,8 +120,8 @@ export function PersonalInfoForm({ user }: { user?: IUser }) {
 
 const userSchema = z.object({
   email: z.string().email("Geçerli bir e-posta adresi giriniz."),
-  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
-  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  firstName: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  lastName: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
 });
 
 export function closeForm(id: string) {

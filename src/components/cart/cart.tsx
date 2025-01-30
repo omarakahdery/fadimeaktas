@@ -12,6 +12,30 @@ import { formatCurrency } from "@/lib/helper/format-currency";
 export const Cart = async () => {
   const token = (await cookies()).get("token")?.value;
   const data = await getData<ICart>("/cart?token=" + token);
+  if (data?.items && data?.items?.length <= 0)
+    return (
+      <section style={{ marginTop: "80px" }}>
+        <main className="container content-wrapper">
+          <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+            <div className="row">
+              <div className="col-xl-10 offset-xl-1">
+                <h1 className="h3 pb-2 pb-md-3">Sepetim</h1>
+              </div>
+            </div>
+            <div className="d-flex justify-content-center align-items-center">
+              <div style={{ maxWidth: "fit-content" }}
+                   className="alert alert-light d-flex justify-content-center align-items-center flex-column gap-3"
+                   role="alert">
+                <i style={{ "fontSize": "34px" }} className="ci-shopping-bag animate-target me-1"></i>
+                <p>
+                  <b>Sepetinde ürün bulunmamaktadır.</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </main>
+      </section>
+    )
   return (
     <>
       <section style={{ marginTop: "80px" }}>
@@ -86,12 +110,12 @@ export const Cart = async () => {
                     <div className="card-body vstack gap-4">
                       <h5 className="card-title">Sipariş Özeti</h5>
                       <div>
-                      <Amount value={Number(data?.totals?.total)} label={"Ürünün Toplamı"}/>
-                      <Amount value={Number(data?.totals?.shipping_total)} label={"Kargo Ücreti"}/>
-                      {Number(data?.totals?.discount_total) > 0 &&
-                          <Amount value={Number(data?.totals?.discount_total)} label={"İndrim"}/>
-                      }
-                      <Amount value={Number(data?.totals?.total)} label={"Toplam"}/>
+                        <Amount value={Number(data?.totals?.total)} label={"Ürünün Toplamı"}/>
+                        <Amount value={Number(data?.totals?.shipping_total)} label={"Kargo Ücreti"}/>
+                        {Number(data?.totals?.discount_total) > 0 &&
+                            <Amount value={Number(data?.totals?.discount_total)} label={"İndrim"}/>
+                        }
+                        <Amount value={Number(data?.totals?.total)} label={"Toplam"}/>
                       </div>
 
                       <div className="d-flex w-100 gap-3">

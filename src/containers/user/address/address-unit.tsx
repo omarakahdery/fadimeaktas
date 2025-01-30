@@ -21,6 +21,9 @@ export async function ShippingAddress() {
           <li>
             {data?.shipping.address_1}
           </li>
+          <li>
+            {data?.shipping.email}
+          </li>
         </ul>
       </div>
       <div className={"collapse " + "ShippingAddress"} id="primaryAddressEdit">
@@ -48,6 +51,9 @@ export async function BillingAddress() {
           </li>
           <li>
             {data?.billing.address_1}
+          </li>
+          <li>
+            {data?.billing.email}
           </li>
         </ul>
       </div>

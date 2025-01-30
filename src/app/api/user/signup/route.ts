@@ -40,9 +40,7 @@ export async function POST(request: Request) {
         message: response.data.message || "Başarsız"
       }, { status: response.status })
     }
-    return NextResponse.json<IResponse<IUser>>({ success: true, data: response.data, message: "user sorun" })
   } catch (error: any) {
-    console.error("Error creating customer:", error)
     return NextResponse.json<IResponse<IUser>>({
       success: false,
       message: error.response.data.message

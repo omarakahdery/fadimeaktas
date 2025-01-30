@@ -1,4 +1,5 @@
 export interface IOrder {
+  id: string,
   line_items: ILineItem[];
   discount_total: string,
   discount_tax: string,

@@ -3,6 +3,8 @@ import { ICart } from "@/types/ICart";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import { useState } from "react";
 import { IUser } from "@/types/IUser";
+import { IFailureResponse, IResponse } from "@/types/api/IResponse";
+import { IOrder } from "@/types/IOrder";
 
 
 export interface IPaymentGateways {
@@ -88,11 +90,10 @@ type PaymentFormProps = {
 }
 export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: PaymentFormProps) => {
   const [ isLoading, setIsLoading ] = useState(false)
-  const [ isSuccess, setIsSuccess ] = useState(false)
-  const email = userData?.email
+  const [ error, setError ] = useState<IFailureResponse>()
   const handleSubmit = async () => {
     setIsLoading(true)
-    setIsSuccess(false)
+    setError(undefined)
     try {
       const response = await fetch(`/api/orders`, {
         method: "POST",
@@ -101,12 +102,8 @@ export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: Paym
         },
         body: JSON.stringify({
           payment_method: selectedGateway,
-          billing: {
-            ...userData?.billing, email
-          },
-          shipping: {
-            ...userData?.shipping, email
-          },
+          billing: userData?.billing,
+          shipping: userData?.shipping,
           set_paid: false,
           line_items: cartData?.items.map((item) => {
             return {
@@ -116,10 +113,10 @@ export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: Paym
           })
         }),
       })
-      const data = await response.json()
-      if (data?.id) {
-        window.location.href = `/siparis/${data.id}`
-
+      const responseData: IResponse<IOrder> = await response.json()
+      console.log(responseData)
+      if (responseData?.success) {
+        window.location.href = `/siparis/${responseData?.data?.id}`
         try {
           const response = await fetch(`/api/cart/clear?token=${token}`, {
             method: "POST",
@@ -129,18 +126,32 @@ export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: Paym
             body: JSON.stringify({}),
           })
         } catch (error) {
-          /*setMessage("An error occurred while creating the customer.")*/
         }
+
+      } else {
+        setError(responseData)
       }
-      setIsSuccess(true)
-    } catch (error) {
-      /*setMessage("An error occurred while creating the customer.")*/
+    } catch (error: any) {
+      setError(error?.data)
     } finally {
       setIsLoading(false)
     }
   }
   return (
     <>
+      {error?.data?.params &&
+          <div className="alert alert-danger" role="alert">
+            <ul className="mt-2">
+              {
+                Object.entries(error.data?.params).map(([ field, message ]) => (
+                  <li key={field} className="text-sm">
+                   {/* <strong>{field}:</strong>*/} {message}
+                  </li>
+                ))}
+            </ul>
+          </div>
+      }
+
       <button
         onClick={handleSubmit}
         type="button" className="btn mt-3 btn-lg btn-dark w-100 rounded-pill">

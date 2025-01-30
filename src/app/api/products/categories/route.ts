@@ -1,4 +1,4 @@
-import { api } from "../../../../config/wc";
+import { api } from "@/config/wc";
 import { NextResponse } from "next/server";
 
 export async function GET() {

@@ -21,4 +21,6 @@ export interface IAddress {
   address_1: string,
   city: string,
   state: string,
+  email: string,
+  phone: string,
 }

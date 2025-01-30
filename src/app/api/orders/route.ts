@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { api } from "@/config/wc";
+import { IResponse } from "@/types/api/IResponse";
+import { IOrder } from "@/types/IOrder";
 
 
 export async function GET(request: Request) {
@@ -11,10 +13,16 @@ export async function GET(request: Request) {
         customer_id: id,
       }
     );
-    return NextResponse.json(response.data);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+    return  NextResponse.json<IResponse<IOrder>>({
+      success: true,
+      data: response.data.data,
+    });
+  } catch (error: any) {
+    return NextResponse.json<IResponse<IOrder>>({
+      success: false,
+      message: error.response.data.message,
+      data: error.response.data?.data
+    }, { status: 500 });
   }
 }
 
@@ -23,10 +31,16 @@ export async function POST(request: Request) {
   try {
     const response = await api.post("orders", body);
     console.log(response.data);
-    return NextResponse.json(response.data);
-  } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+    return NextResponse.json<IResponse<IOrder>>({
+      success: true,
+      data: response.data,
+    });
+  } catch (error: any) {
+    return NextResponse.json<IResponse<IOrder>>({
+      success: false,
+      message: error.response.data.message,
+      data: error.response.data?.data
+    }, { status: 500 });
   }
 }
 

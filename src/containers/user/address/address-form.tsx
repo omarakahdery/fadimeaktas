@@ -6,15 +6,18 @@ import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { closeForm } from "@/containers/user/account-info/personal-info-form";
 import { z } from "zod";
 import { IUser } from "@/types/IUser";
+import { IResponse } from "@/types/api/IResponse";
 
 
-const userSchema = z.object({
-  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
-  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+const shippingSchema = z.object({
+  firstName: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  lastName: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
+  city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
   addressOne: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
 });
 
-export function ShippingAddressForm({ addressData, collapseName,userId }: {
+export function ShippingAddressForm({ addressData, collapseName, userId }: {
   collapseName: string,
   addressData?: IUser["shipping"]
   userId?: string
@@ -42,12 +45,12 @@ export function ShippingAddressForm({ addressData, collapseName,userId }: {
     setMessage("");
     setErrors({});
 
-    // Validate form fields using zod schema
-    const result = userSchema.safeParse({
-      ...formData
-    });
+    const result = shippingSchema.safeParse(formData);
 
-    setFieldsErrors(result, setErrors);
+    if (!result.success) {
+      setFieldsErrors(result, setErrors);
+      return;
+    }
 
     setIsLoading(true)
     try {
@@ -62,19 +65,19 @@ export function ShippingAddressForm({ addressData, collapseName,userId }: {
             state: formData.state,
             address_1: formData.addressOne,
             first_name: formData.firstName,
-            last_name: formData.lastName
+            last_name: formData.lastName,
           }
         }),
       })
 
-      const data = await response.json()
+      const resData: IResponse<IUser> = await response.json()
 
-      if (data.success) {
-        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
-        router.refresh()
+      if (resData.success) {
+        setMessage(`Customer created successfully! ID: ${resData?.data?.id}`)
         closeForm("close2")
+        router.refresh()
       } else {
-        setMessage(`Error: ${data.error}`)
+        setMessage(`Error: ${resData.message}`)
       }
     } catch (error) {
       setMessage("An error occurred while creating the customer.")
@@ -120,8 +123,16 @@ export function ShippingAddressForm({ addressData, collapseName,userId }: {
   </>
 }
 
+const billingSchema = z.object({
+  firstName: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  lastName: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
+  city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
+  addressOne: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
+  email: z.string().email("Geçerli bir e-posta adresi giriniz.").optional()
+});
 
-export function BillingAddressForm({ addressData, collapseName,userId }: {
+export function BillingAddressForm({ addressData, collapseName, userId }: {
   collapseName: string,
   addressData?: IUser["shipping"]
   userId?: string
@@ -132,6 +143,7 @@ export function BillingAddressForm({ addressData, collapseName,userId }: {
     addressOne: addressData?.address_1 || "",
     state: addressData?.state || "",
     city: addressData?.city || "",
+    email: addressData?.email || "",
   });
 
   const [ message, setMessage ] = useState("")
@@ -149,12 +161,12 @@ export function BillingAddressForm({ addressData, collapseName,userId }: {
     setMessage("");
     setErrors({});
 
-    // Validate form fields using zod schema
-    const result = userSchema.safeParse({
-      ...formData
-    });
+    const result = billingSchema.safeParse(formData);
 
-    setFieldsErrors(result, setErrors);
+    if (!result.success) {
+      setFieldsErrors(result, setErrors);
+      return;
+    }
 
     setIsLoading(true)
     try {
@@ -169,19 +181,19 @@ export function BillingAddressForm({ addressData, collapseName,userId }: {
             state: formData.state,
             address_1: formData.addressOne,
             first_name: formData.firstName,
-            last_name: formData.lastName
+            last_name: formData.lastName,
+            email: formData.email
           }
         }),
       })
 
-      const data = await response.json()
-
-      if (data.success) {
-        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
+      const resData: IResponse<IUser> = await response.json()
+      if (resData.success) {
+        setMessage(`Customer created successfully! ID: ${resData?.data?.id}`)
         router.refresh()
         closeForm("close1")
       } else {
-        setMessage(`Error: ${data.error}`)
+        setMessage(`Error: ${resData.message}`)
       }
     } catch (error) {
       setMessage("An error occurred while creating the customer.")
@@ -197,7 +209,18 @@ export function BillingAddressForm({ addressData, collapseName,userId }: {
         errors={errors}
         handleChange={handleChange}
       />
-
+      <div className="col-sm-6">
+        <div className="position-relative">
+          <Input
+            name={"email"}
+            type="text"
+            label={"E-posta"}
+            value={formData.email}
+            error={errors.email}
+            onChange={handleChange}
+          />
+        </div>
+      </div>
       <div className="col-sm-12">
         <div className="position-relative">
           <label htmlFor="psa-address" className="form-label">Açık Adres</label>
@@ -228,7 +251,7 @@ export function BillingAddressForm({ addressData, collapseName,userId }: {
 }
 
 
-function FormFields({ formData, errors, handleChange }: {
+function FormFields({ formData, errors, handleChange, textarea }: {
   formData: {
     firstName: string,
     lastName: string,
@@ -236,6 +259,7 @@ function FormFields({ formData, errors, handleChange }: {
     city: string,
     addressOne: string
   },
+  textarea?: React.ReactNode,
   errors: Record<string, string>,
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 }) {
@@ -264,7 +288,6 @@ function FormFields({ formData, errors, handleChange }: {
         />
       </div>
     </div>
-
     <div className="col-sm-6">
       <div className="position-relative">
         <Input
