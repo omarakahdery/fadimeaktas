@@ -1,21 +1,11 @@
 "use client"
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
 import { Input } from "@/components/input";
-import { useState } from "react";
-import { setFieldsErrors } from "@/lib/form/set-fields-errors";
-import { z } from "zod";
-
-const signupSchema = z.object({
-/*
-  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
-*/
-  password: z
-    .string()
-    .min(6, "Şifre en az 6 karakter olmalıdır.")
-    .max(20, "Şifre en fazla 20 karakter olabilir."),
-});
+import { IResponse } from "@/types/api/IResponse";
+import { ICartUser } from "@/types/IUser";
 
 export default function LoginPage() {
   const [ email, setEmail ] = useState("")
@@ -28,10 +18,6 @@ export default function LoginPage() {
     setMessage("");
     setErrors({});
 
-    const result = signupSchema.safeParse({ email, password });
-
-    setFieldsErrors(result, setErrors);
-
     setIsLoading(true)
     try {
       const response = await fetch("api/user/login", {
@@ -41,22 +27,18 @@ export default function LoginPage() {
         },
         body: JSON.stringify({ username: email, password }),
       })
-
-      const data = await response.json()
-
+      const data: IResponse<ICartUser> = await response.json()
       if (data.success) {
-        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
         window.location.href = "/"
       } else {
-        setMessage(`Error: ${data.error}`)
+        setMessage(`${data.message}`)
       }
     } catch (error) {
-      setMessage("An error occurred while creating the customer.")
+      setMessage("Bir hata oluştu!")
     } finally {
       setIsLoading(false)
     }
   }
-
   return (
     <>
 
@@ -76,13 +58,16 @@ export default function LoginPage() {
                 />
               </Link>
             </header>
-
             <h1 className="h2 mt-auto"> Giriş Yap</h1>
             <div className="nav fs-sm mb-3 mb-lg-4">
               Hesabın yok mu?
               <Link className="nav-link text-decoration-underline p-0 ms-2" href="/kaydol">Hesap Oluştur</Link>
             </div>
             {/*Form*/}
+            {message.length > 0 && (<div className="alert alert-primary" role="alert">
+              {message}
+            </div>)}
+
             <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
                 <Input

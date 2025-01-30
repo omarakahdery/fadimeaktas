@@ -3,37 +3,20 @@ import { useState } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../../../public/fadime-aktas-logo.svg";
-import { z } from "zod";
 import { Input } from "@/components/input";
-import { setFieldsErrors } from "@/lib/form/set-fields-errors";
+import { IResponse } from "@/types/api/IResponse";
+import { IUser } from "@/types/IUser";
 
-
-const signupSchema = z.object({
-  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
-  password: z
-    .string()
-    .min(6, "Şifre en az 6 karakter olmalıdır.")
-    .max(20, "Şifre en fazla 20 karakter olabilir."),
-});
 
 export default function Signup() {
   const [ email, setEmail ] = useState("")
-  const [ username, setUsername ] = useState("")
   const [ password, setPassword ] = useState("")
   const [ message, setMessage ] = useState("")
   const [ isLoading, setIsLoading ] = useState(false)
-  const [ errors, setErrors ] = useState<Record<string, string>>({});
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setMessage("");
-    setErrors({});
-
-    const result = signupSchema.safeParse({ email, username, password });
-
-    setFieldsErrors(result, setErrors);
-
     setIsLoading(true)
     try {
       const response = await fetch("/api/user/signup", {
@@ -41,21 +24,16 @@ export default function Signup() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ email, username: email, password }),
+        body: JSON.stringify({ email, password }),
       })
-
-      const data = await response.json()
-
+      const data: IResponse<IUser> = await response.json()
       if (data.success) {
-        setMessage(`Customer created successfully! ID: ${data.customer.id}`)
-        setTimeout(() => {
-          window.location.href = "/giris-yap"
-        }, 100)
+        window.location.href = "/"
       } else {
-        setMessage(`Error: ${data.error}`)
+        setMessage(`${data.message}`)
       }
     } catch (error) {
-      setMessage("An error occurred while creating the customer.")
+      setMessage("Bir hata oluştu!")
     } finally {
       setIsLoading(false)
     }
@@ -63,11 +41,8 @@ export default function Signup() {
   return (
     <>
       <main className="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style={{ maxWidth: "1920px" }}>
-
         <div className="d-lg-flex">
-
           <div className="d-flex flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5" style={{ "maxWidth": "416px" }}>
-
             <header className="navbar px-0 pb-4 mt-n2 mt-sm-0 mb-2 mb-md-3 mb-lg-4">
               <Link className={"navbar-brand"} href={"/"}>
                 <Image
@@ -78,13 +53,15 @@ export default function Signup() {
                 />
               </Link>
             </header>
-
             <h1 className="h2 mt-auto">Hesap Oluştur</h1>
             <div className="nav fs-sm mb-3 mb-lg-4">
               Zaten hesabım var
               <Link className="nav-link text-decoration-underline p-0 ms-2" href="/giris-yap">Giriş Yap</Link>
             </div>
             {/*Form*/}
+            {message.length > 0 && (<div className="alert alert-primary" role="alert">
+              {message}
+            </div>)}
             <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
                 <Input
@@ -92,38 +69,24 @@ export default function Signup() {
                   type="text"
                   required
                   label={"E-posta"}
-                  error={errors.email}
                   value={email} onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
-              {/* <div className="position-relative mb-4">
-                <Input
-                  name="username"
-                  label="Kullanıcı Adı"
-                  type="text"
-                  value={username}
-                  error={errors.username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </div>*/}
               <div className="mb-4">
                 <div className="password-toggle">
                   <Input
                     name="password"
                     type="password"
                     label="Şifre"
-                    error={errors.password}
                     value={password} onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
               </div>
-              {/*{message && <p className="text-primary">{message}</p>}*/}
               <button disabled={isLoading} type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
                 Hesap Oluştur
                 <i className="ci-chevron-right fs-lg ms-1 me-n1"></i>
               </button>
             </form>
-
             <footer className="mt-auto">
 
             </footer>

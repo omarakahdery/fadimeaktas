@@ -4,7 +4,7 @@ import { api } from "@/config/wc";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
-  const id = searchParams.get('customer_id') || '1';
+  const id = searchParams.get('customer_id');
   try {
     const response = await api.get("orders",
       {
@@ -23,8 +23,6 @@ export async function POST(request: Request) {
   try {
     const response = await api.post("orders", body);
     console.log(response.data);
-    const order = response.data;
-    const payment = "mkde"
     return NextResponse.json(response.data);
   } catch (error) {
     console.error(error);

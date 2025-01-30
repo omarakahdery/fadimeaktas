@@ -1,15 +1,17 @@
 "use server";
 import { NextResponse } from "next/server"
 import { cookies } from 'next/headers'
+import { IResponse } from "@/types/api/IResponse";
+import { ICartUser, IUser } from "@/types/IUser";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json()
     const { username, password } = body
 
-    if (!username || !password) {
-      return NextResponse.json({ success: false, error: "Username and password are required" }, { status: 400 })
-    }
+    /*   if (!username || !password) {
+         return NextResponse.json({ success: false, error: "email and password are required" }, { status: 400 })
+       }*/
 
     const authHeader = btoa(`${username}:${password}`)
 
@@ -22,7 +24,6 @@ export async function POST(request: Request) {
     })
 
     const data = await response.json()
-
     if (response.ok) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", data.user_id.toString(), {
@@ -39,11 +40,13 @@ export async function POST(request: Request) {
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
       })
-
-      return NextResponse.json({ success: true, customer: data })
+      return NextResponse.json<IResponse<ICartUser>>({ success: true, data: data })
     } else {
       console.error("Login failed:", data)
-      return NextResponse.json({ success: false, error: data.message || "Login failed" }, { status: response.status })
+      return NextResponse.json<IResponse<ICartUser>>({
+        success: false,
+        message: data.message || "Başarsız"
+      }, { status: response.status })
     }
   } catch (error) {
     console.error("An error occurred during login:", error)

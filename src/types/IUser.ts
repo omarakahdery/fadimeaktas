@@ -7,6 +7,14 @@ export interface IUser {
   billing: IAddress
 }
 
+export interface ICartUser {
+  user_id: string,
+  email: string,
+  first_name: string,
+  last_name: string,
+  display_name: string,
+}
+
 export interface IAddress {
   first_name: string,
   last_name: string,
