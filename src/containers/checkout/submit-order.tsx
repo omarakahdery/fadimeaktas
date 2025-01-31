@@ -1,10 +1,10 @@
 "use client";
-import { ICart } from "@/types/ICart";
-import { formatCurrency } from "@/lib/helper/format-currency";
 import { useState } from "react";
+import { ICart } from "@/types/ICart";
 import { IUser } from "@/types/IUser";
-import { IFailureResponse, IResponse } from "@/types/api/IResponse";
 import { IOrder } from "@/types/IOrder";
+import { formatCurrency } from "@/lib/helper/format-currency";
+import { IFailureResponse, IResponse } from "@/types/api/IResponse";
 
 
 export interface IPaymentGateways {
@@ -16,11 +16,12 @@ export interface IPaymentGateways {
 type Props = {
   cartData?: ICart,
   payments?: IPaymentGateways[]
-  userData?: IUser
   token?: string
+  shippingAddress: IUser["shipping"]
+  billingAddress: IUser["billing"]
 }
 
-export function PaymentForm({ cartData, payments, userData, token }: Props) {
+export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token }: Props) {
   const [ selectedGateway, setSelectedGateway ] = useState<string>("sanalpospro")
   return (
     <>
@@ -72,7 +73,8 @@ export function PaymentForm({ cartData, payments, userData, token }: Props) {
         </pre>*/}
         <SubmitOrder
           token={token}
-          userData={userData}
+          shippingAddress={shippingAddress}
+          billingAddress={billingAddress}
           cartData={cartData}
           selectedGateway={selectedGateway}
         />
@@ -85,10 +87,17 @@ export function PaymentForm({ cartData, payments, userData, token }: Props) {
 type PaymentFormProps = {
   cartData?: ICart
   selectedGateway: string
-  userData?: IUser
   token?: string
+  shippingAddress: IUser["shipping"]
+  billingAddress: IUser["billing"]
 }
-export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: PaymentFormProps) => {
+export const SubmitOrder = ({
+                              cartData,
+                              shippingAddress,
+                              billingAddress,
+                              selectedGateway,
+                              token
+                            }: PaymentFormProps) => {
   const [ isLoading, setIsLoading ] = useState(false)
   const [ error, setError ] = useState<IFailureResponse>()
   const handleSubmit = async () => {
@@ -102,8 +111,8 @@ export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: Paym
         },
         body: JSON.stringify({
           payment_method: selectedGateway,
-          billing: userData?.billing,
-          shipping: userData?.shipping,
+          billing: billingAddress,
+          shipping: shippingAddress,
           set_paid: false,
           line_items: cartData?.items.map((item) => {
             return {
@@ -145,7 +154,7 @@ export const SubmitOrder = ({ cartData, userData, selectedGateway, token }: Paym
               {
                 Object.entries(error.data?.params).map(([ field, message ]) => (
                   <li key={field} className="text-sm">
-                   {/* <strong>{field}:</strong>*/} {message}
+                    {/* <strong>{field}:</strong>*/} {message}
                   </li>
                 ))}
             </ul>

@@ -1,9 +1,7 @@
 import { Suspense } from "react";
 import { AddressTitle } from "@/containers/user/address/address-title";
-import { BillingAddress, ShippingAddress } from "@/containers/user/address/address-unit";
-import { getData } from "@/lib/api/api-fun";
-
-
+import { ShippingAddress } from "@/containers/user/address/shipping/unit";
+import { BillingAddress } from "@/containers/user/address/billing/unit";
 
 export default async function AddressesPage() {
   return (

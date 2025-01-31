@@ -1,16 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import { imges } from "@/containers/collections/list";
-import img6 from "../../../public/6.jpg";
-import img4 from "../../../public/4.jpg";
-import img2 from "../../../public/2.jpg";
 import { IProduct } from "@/types/IProduct";
 import { Appointment } from "@/containers/product/appointment";
 import { getData } from "@/lib/api/api-fun";
 import { AddItemToCart } from "@/containers/product/add-to-cart";
 import { cookies } from "next/headers";
-import { CartModel } from "@/components/cart/cart-model";
 import { formatCurrency } from "@/lib/helper/format-currency";
 
 export async function Product({ id }: { id: string }) {

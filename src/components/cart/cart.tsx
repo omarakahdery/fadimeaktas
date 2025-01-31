@@ -5,9 +5,9 @@ import { getData } from "@/lib/api/api-fun";
 import { ICart } from "@/types/ICart";
 import { RemoveItemBtn } from "@/components/cart/remove-item-btn";
 import { IncreaseDecreaseQ } from "@/components/cart/increase-decrease-q";
-import { Amount } from "@/containers/checkout";
 import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
+import { Amount } from "@/components/amount";
 
 export const Cart = async () => {
   const token = (await cookies()).get("token")?.value;

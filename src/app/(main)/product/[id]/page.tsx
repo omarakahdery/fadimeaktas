@@ -2,6 +2,7 @@ import { Suspense } from "react";
 import Link from "next/link";
 import { Product } from "@/containers/product";
 import { LoadingSpinner } from "@/components/loading-spinner";
+import { ProductTitle } from "@/containers/product/title";
 
 export interface PageProps {
   params?: Promise<{ id: string; }>
@@ -20,15 +21,7 @@ export default async function ProductPage
       <main className="content-wrapper">
         <main className="content-wrapper">
           <section className="container pb-5 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
-            <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
-              <ol className="breadcrumb text-dark fs-xs">
-                <li className="breadcrumb-item"><Link href="/gelinlik-frontend/public">Ana Sayfa</Link></li>
-                <li className="breadcrumb-item"><Link href="/collections">Gelinlik</Link>
-                </li>
-                {/*<li className="breadcrumb-item active" aria-current="page">Ürün Sayfası</li>*/}
-              </ol>
-            </nav>
-
+            <ProductTitle  id={id}/>
             <section className="container">
               <div className="row">
                 <Suspense fallback={

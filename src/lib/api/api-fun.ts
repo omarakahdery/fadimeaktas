@@ -4,6 +4,7 @@ export async function getData<T>(url: string, baseUrl?: string): Promise<T | und
     const res = await fetch(endpoint,
       { cache: 'no-store' }
     );
+    console.log(res, "res");
     if (!res.ok) {
       throw new Error('Failed to fetch products');
     }

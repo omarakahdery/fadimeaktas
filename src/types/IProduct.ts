@@ -10,6 +10,10 @@ export interface IProduct {
   backordered: boolean;
   backorders_allowed: boolean;
   backorders: string;
-
   images: { src: string }[];
+  categories: {
+    id: number;
+    name: string;
+    slug: string
+  }[];
 }
