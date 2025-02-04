@@ -9,6 +9,8 @@ import { formatCurrency } from "@/lib/helper/format-currency";
 
 export async function Product({ id }: { id: string }) {
   const token = (await cookies()).get("token")
+  const cart_key = (await cookies()).get("cart_key")
+
   const data = await getData<IProduct>(`/products/${id}`);
   return (
     <>
@@ -94,6 +96,7 @@ export async function Product({ id }: { id: string }) {
                 }}>
                   <AddItemToCart Product={{
                     token: token?.value,
+                    cart_key: cart_key?.value,
                     id: data?.id.toString() || "",
                     quantity: "1",
                     backordered: data?.backordered

@@ -17,11 +17,12 @@ type Props = {
   cartData?: ICart,
   payments?: IPaymentGateways[]
   token?: string
+  cart_key?: string
   shippingAddress: IUser["shipping"]
   billingAddress: IUser["billing"]
 }
 
-export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token }: Props) {
+export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token,cart_key }: Props) {
   const [ selectedGateway, setSelectedGateway ] = useState<string>("sanalpospro")
   return (
     <>
@@ -73,6 +74,7 @@ export function PaymentForm({ cartData, payments, shippingAddress, billingAddres
         </pre>*/}
         <SubmitOrder
           token={token}
+          cart_key={cart_key}
           shippingAddress={shippingAddress}
           billingAddress={billingAddress}
           cartData={cartData}
@@ -88,6 +90,7 @@ type PaymentFormProps = {
   cartData?: ICart
   selectedGateway: string
   token?: string
+  cart_key?: string
   shippingAddress: IUser["shipping"]
   billingAddress: IUser["billing"]
 }
@@ -96,8 +99,10 @@ export const SubmitOrder = ({
                               shippingAddress,
                               billingAddress,
                               selectedGateway,
-                              token
+                              token,
+                              cart_key
                             }: PaymentFormProps) => {
+  const clearEndpoint = `/api/cart/clear?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
   const [ isLoading, setIsLoading ] = useState(false)
   const [ error, setError ] = useState<IFailureResponse>()
   const handleSubmit = async () => {
@@ -125,9 +130,8 @@ export const SubmitOrder = ({
       const responseData: IResponse<IOrder> = await response.json()
       console.log(responseData)
       if (responseData?.success) {
-        window.location.href = `/siparis/${responseData?.data?.id}`
         try {
-          const response = await fetch(`/api/cart/clear?token=${token}`, {
+          const response = await fetch(clearEndpoint, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -136,7 +140,9 @@ export const SubmitOrder = ({
           })
         } catch (error) {
         }
-
+/*
+        window.location.href = `/siparis/${responseData?.data?.id}`
+*/
       } else {
         setError(responseData)
       }

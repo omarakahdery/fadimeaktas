@@ -10,4 +10,7 @@ export async function logout() {
 
   redirect("/")
 }
-
+export async function removeCartKey() {
+  const cookieStore = await cookies()
+  cookieStore.delete("cart_key")
+}

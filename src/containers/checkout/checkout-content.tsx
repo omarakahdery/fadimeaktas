@@ -15,9 +15,10 @@ type Props = {
   data?: ICart
   token?: string
   payments?: IPaymentGateways[]
+  cart_key?: string
 }
 
-export function CheckoutContent({ userData, data, token, payments }: Props) {
+export function CheckoutContent({ userData, data, token, payments,cart_key }: Props) {
   const [ formData, setFormData ] = useState<IUser["billing"]>({
     first_name: userData?.billing?.first_name || "",
     last_name: userData?.billing?.last_name || "",
@@ -121,6 +122,7 @@ export function CheckoutContent({ userData, data, token, payments }: Props) {
                            shippingAddress={formDataShipping}
                            billingAddress={formData}
                            cartData={data} payments={payments}
+                           cart_key={cart_key}
               />
             </div>
           </div>

@@ -2,21 +2,23 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function IncreaseDecreaseQ({ item_key, quantity, token }: {
+export function IncreaseDecreaseQ({ item_key, quantity, token,cart_key }: {
   item_key: string,
   quantity: number,
   token?: string
+  cart_key?: string
 }) {
   const [ q, setQ ] = useState(quantity || 1);
   const [ isLoading, setIsLoading ] = useState(false)
   const [ isSuccess, setIsSuccess ] = useState(false)
   const router = useRouter();
+  const endpoint = `/api/cart/${item_key}` + (token ? `?token=${token}` : `?cart_key=${cart_key}`)
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setIsSuccess(false)
     try {
-      const response = await fetch(`/api/cart/${item_key}?token=${token}&path=/api/cart`, {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

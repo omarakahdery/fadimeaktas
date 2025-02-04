@@ -5,6 +5,8 @@ import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 
 export async function POST(request: Request) {
+  const { searchParams } = new URL(request.url)
+  const cart_key = searchParams.get("cart_key")
   try {
     const body = await request.json()
     const { username, password } = body
@@ -40,9 +42,9 @@ export async function POST(request: Request) {
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
       })
+      cart_key && await mergeCarts(cart_key, authHeader)
       return NextResponse.json<IResponse<ICartUser>>({ success: true, data: data })
     } else {
-      console.error("Login failed:", data)
       return NextResponse.json<IResponse<ICartUser>>({
         success: false,
         message: data.message || "Başarsız"
@@ -51,6 +53,22 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("An error occurred during login:", error)
     return NextResponse.json({ success: false, error: "Internal server error" }, { status: 500 })
+  }
+}
+
+async function mergeCarts(cart_key: string, token: string) {
+  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart?token=${token}&cart_key=${cart_key}`;
+  try {
+    const response = await fetch(endpoint, {
+      headers: {
+        Accept: "application/json",
+        Authorization: "Basic " + token,
+      },
+    })
+    const data = await response.json()
+    return null;
+  } catch (error) {
+    console.log(error)
   }
 }
 

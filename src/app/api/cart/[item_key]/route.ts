@@ -7,9 +7,10 @@ export async function DELETE
 ) {
   const item_key = (await params).item_key
   const { searchParams } = new URL(req.url)
+  const cart_key = searchParams.get("cart_key")
   const token = searchParams.get("token")
+  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
 
-  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}`
   try {
     const response = await fetch(endpoint, {
       method: "DELETE",
@@ -43,10 +44,10 @@ export async function POST
   const item_key = (await params).item_key
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")
+  const cart_key = searchParams.get("cart_key")
 
   const { quantity } = await req.json()
-
-  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}`
+  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
   try {
     const response = await fetch(endpoint, {
       method: "POST",

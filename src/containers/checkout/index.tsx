@@ -2,15 +2,17 @@
 import { getData } from "@/lib/api/api-fun";
 import { ICart } from "@/types/ICart";
 import { cookies } from "next/headers";
-import { IPaymentGateways, PaymentForm } from "@/containers/checkout/submit-order";
+import { IPaymentGateways } from "@/containers/checkout/submit-order";
 import { IUser } from "@/types/IUser";
 import { redirect } from "next/navigation";
 import { CheckoutContent } from "@/containers/checkout/checkout-content";
 
 export const Checkout = async () => {
-  const token = (await cookies()).get("token")?.value;
   const userId = (await cookies()).get("user_id")?.value
-  const data = await getData<ICart>("/cart?token=" + token);
+  const token = (await cookies()).get("token")?.value;
+  const cart_key = (await cookies()).get("cart_key")?.value;
+  const endpoint = `/cart?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
+  const data = await getData<ICart>(endpoint);
   const payments = await getData<IPaymentGateways[]>("/payment_gateways");
   const userData = await getData<IUser>(`/user/me/${userId}`);
   if (data?.items && data?.items?.length <= 0) {
@@ -27,7 +29,7 @@ export const Checkout = async () => {
               </div>
             </div>
             <div className="row">
-              <CheckoutContent userData={userData} data={data} token={token} payments={payments}/>
+              <CheckoutContent userData={userData} data={data} token={token} payments={payments} cart_key={cart_key}/>
             </div>
           </div>
         </main>

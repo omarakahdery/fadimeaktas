@@ -8,21 +8,22 @@ type Props = {
     quantity: string
     token?: string
     backordered?: boolean
+    cart_key?: string
   }
 }
 
 export function AddItemToCart({ Product }: Props) {
   const [ isLoading, setIsLoading ] = useState(false)
   const [ isSuccess, setIsSuccess ] = useState(false)
-
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
     setIsSuccess(false)
+    const endpoint = "/api/cart/add-item" + (Product.token ? `?token=${Product.token}` : (Product.cart_key ? `?cart_key=${Product.cart_key}` : ""))
     try {
-      const response = await fetch("/api/cart?token=" + Product.token, {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,7 +51,7 @@ export function AddItemToCart({ Product }: Props) {
     <>
       <form onSubmit={handleSubmit}>
         <button
-          disabled={Product.backordered ||isLoading}
+          disabled={Product.backordered || isLoading}
           type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
           Satın Al
         </button>
