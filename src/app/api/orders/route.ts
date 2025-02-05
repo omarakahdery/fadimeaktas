@@ -13,14 +13,14 @@ export async function GET(request: Request) {
         customer_id: id,
       }
     );
-    return  NextResponse.json<IResponse<IOrder>>({
+    return  NextResponse.json<IResponse<IOrder[]>>({
       success: true,
-      data: response.data.data,
+      data: response.data,
     });
   } catch (error: any) {
     return NextResponse.json<IResponse<IOrder>>({
       success: false,
-      message: error.response.data.message,
+      message: error.response.data?.message,
       data: error.response.data?.data
     }, { status: 500 });
   }

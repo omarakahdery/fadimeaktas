@@ -1,38 +1,35 @@
 "use client"
+import { useState } from "react"
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import Logo from "../../../public/fadime-aktas-logo.svg";
 import { Input } from "@/components/input";
 import { IResponse } from "@/types/api/IResponse";
-import { ICartUser } from "@/types/IUser";
-import { removeCartKey } from "@/app/actions/auth";
+import { IUser } from "@/types/IUser";
 
-export function Login({ cart_key }: { cart_key?: string }) {
+
+export default function Signup({ cart_key }: { cart_key?: string }) {
   const [ email, setEmail ] = useState("")
   const [ password, setPassword ] = useState("")
   const [ message, setMessage ] = useState("")
   const [ isLoading, setIsLoading ] = useState(false)
-  const [ errors, setErrors ] = useState<Record<string, string>>({});
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setMessage("");
-    setErrors({});
-
     setIsLoading(true)
-    const endpoint = "api/user/login" + (cart_key ? `?cart_key=${cart_key}` : "")
+    const endpoint = "api/user/signup" + (cart_key ? `?cart_key=${cart_key}` : "")
     try {
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username: email, password }),
+        body: JSON.stringify({ email, password }),
       })
-      const data: IResponse<ICartUser> = await response.json()
+      const data: IResponse<IUser> = await response.json()
       if (data.success) {
         window.location.href = "/"
-        await removeCartKey()
       } else {
         setMessage(`${data.message}`)
       }
@@ -44,13 +41,9 @@ export function Login({ cart_key }: { cart_key?: string }) {
   }
   return (
     <>
-
       <main className="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style={{ maxWidth: "1920px" }}>
-
         <div className="d-lg-flex">
-
           <div className="d-flex flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5" style={{ "maxWidth": "416px" }}>
-
             <header className="navbar px-0 pb-4 mt-n2 mt-sm-0 mb-2 mb-md-3 mb-lg-4">
               <Link className={"navbar-brand"} href={"/"}>
                 <Image
@@ -61,16 +54,15 @@ export function Login({ cart_key }: { cart_key?: string }) {
                 />
               </Link>
             </header>
-            <h1 className="h2 mt-auto"> Giriş Yap</h1>
+            <h1 className="h2 mt-auto">Hesap Oluştur</h1>
             <div className="nav fs-sm mb-3 mb-lg-4">
-              Hesabın yok mu?
-              <Link className="nav-link text-decoration-underline p-0 ms-2" href="/kaydol">Hesap Oluştur</Link>
+              Zaten hesabım var
+              <Link className="nav-link text-decoration-underline p-0 ms-2" href="/giris-yap">Giriş Yap</Link>
             </div>
             {/*Form*/}
             {message.length > 0 && (<div className="alert alert-primary" role="alert">
               {message}
             </div>)}
-
             <form className="needs-validation" onSubmit={handleSubmit}>
               <div className="position-relative mb-4">
                 <Input
@@ -78,35 +70,24 @@ export function Login({ cart_key }: { cart_key?: string }) {
                   type="text"
                   required
                   label={"E-posta"}
-                  error={errors.email}
                   value={email} onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-4">
-                <Input
-                  name="password"
-                  type="password"
-                  label="Şifre"
-                  error={errors.password}
-                  value={password} onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              {/*           <div className="d-flex flex-column gap-2 mb-4">
-                <div className="form-check">
-                  <input type="checkbox" className="form-check-input" id="privacy" required/>
-                  <label htmlFor="privacy" className="form-check-label">
-                    <Link className="text-dark-emphasis" href="/">Gizlilik Politikası</Link>
-                    Okudum ve kabul ediyorum
-                  </label>
+                <div className="password-toggle">
+                  <Input
+                    name="password"
+                    type="password"
+                    label="Şifre"
+                    value={password} onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
-              </div>*/}
-              <button type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
-                Giriş Yap
+              </div>
+              <button disabled={isLoading} type="submit" className="btn rounded-pill btn-lg btn-dark w-100">
+                Hesap Oluştur
                 <i className="ci-chevron-right fs-lg ms-1 me-n1"></i>
               </button>
-
             </form>
-
             <footer className="mt-auto">
 
             </footer>
@@ -129,9 +110,7 @@ export function Login({ cart_key }: { cart_key?: string }) {
 
           </div>
         </div>
-
       </main>
-
     </>
 
   )

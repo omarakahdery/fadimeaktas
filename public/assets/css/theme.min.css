@@ -17498,9 +17498,11 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
 .drift-inline {
     z-index: 10
 }
+
 .rotating-icon {
     animation: rotate360 2s linear infinite;
 }
+
 @keyframes rotate360 {
     from {
         transform: rotate(0deg);
@@ -17509,6 +17511,7 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
         transform: rotate(360deg);
     }
 }
+
 /*# sourceMappingURL=theme.min.css.map */
 .home-class {
     margin: 0;
@@ -17520,6 +17523,7 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
 #fullpage {
     height: 100%;
 }
-.fp-watermark{
+
+.fp-watermark {
     display: none;
 }

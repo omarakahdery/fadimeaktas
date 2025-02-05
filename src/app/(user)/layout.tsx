@@ -26,9 +26,8 @@ export default async function UserLayout({
       <div className="container py-5 mt-n2 mt-sm-0">
         <div className="row pt-md-2 pt-lg-3 pb-sm-2 pb-md-3 pb-lg-4 pb-xl-5">
           <aside className="col-lg-3">
-
             <div className="offcanvas-lg offcanvas-start pe-lg-0 pe-xl-4" id="accountSidebar">
-              <div className="offcanvas-body d-block pt-2 pt-lg-4 pb-lg-0">
+              <div className="offcanvas-body d-block">
                 <nav className="list-group list-group-borderless">
                   <Link className="list-group-item list-group-item-action d-flex align-items-center"
                         href="/sipatislerim">

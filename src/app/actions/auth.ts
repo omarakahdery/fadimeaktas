@@ -7,7 +7,7 @@ export async function logout() {
   const cookieStore = await cookies()
   cookieStore.delete("token")
   cookieStore.delete("user_id")
-
+  cookieStore.delete("cart_key")
   redirect("/")
 }
 export async function removeCartKey() {

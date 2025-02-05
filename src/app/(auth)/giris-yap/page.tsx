@@ -2,7 +2,7 @@
 import { Login } from "@/containers/auth/login";
 import { cookies } from "next/headers";
 
-export default async function (){
+export default async function LoginPage (){
   const cookiesStore = await cookies()
   const cart_key = cookiesStore.get("cart_key")?.value
   return <Login cart_key={cart_key} />

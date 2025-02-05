@@ -56,7 +56,7 @@ export async function POST(request: Request) {
   }
 }
 
-async function mergeCarts(cart_key: string, token: string) {
+export async function mergeCarts(cart_key: string, token: string) {
   const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart?token=${token}&cart_key=${cart_key}`;
   try {
     const response = await fetch(endpoint, {

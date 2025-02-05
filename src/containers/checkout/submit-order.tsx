@@ -140,9 +140,7 @@ export const SubmitOrder = ({
           })
         } catch (error) {
         }
-/*
         window.location.href = `/siparis/${responseData?.data?.id}`
-*/
       } else {
         setError(responseData)
       }
@@ -168,6 +166,7 @@ export const SubmitOrder = ({
       }
 
       <button
+        disabled={isLoading}
         onClick={handleSubmit}
         type="button" className="btn mt-3 btn-lg btn-dark w-100 rounded-pill">
         Öde {formatCurrency(Number(cartData?.totals?.total))}
