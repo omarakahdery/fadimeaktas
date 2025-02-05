@@ -3,7 +3,7 @@ import { api } from "@/config/wc";
 import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 import { cookies } from "next/headers";
-import { mergeCarts } from "@/app/api/user/login/route";
+import { mergeCarts } from "@/lib/api/merge-carts";
 
 
 export async function POST(request: Request) {
