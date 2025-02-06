@@ -30,7 +30,7 @@ export default async function UserLayout({
               <div className="offcanvas-body d-block">
                 <nav className="list-group list-group-borderless">
                   <Link className="list-group-item list-group-item-action d-flex align-items-center"
-                        href="/sipatislerim">
+                        href="/siparislerim">
                     <i className="ci-shopping-bag fs-base opacity-75 me-2"></i>
                     Siparişlerim
                   </Link>

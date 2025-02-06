@@ -119,6 +119,7 @@ export function CheckoutContent({ userData, data, token, payments,cart_key }: Pr
           <div className="card border-0 shadow">
             <div className="card-body">
               <PaymentForm token={token}
+                           userId={userData?.id}
                            shippingAddress={formDataShipping}
                            billingAddress={formData}
                            cartData={data} payments={payments}

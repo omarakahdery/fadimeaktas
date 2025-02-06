@@ -20,9 +20,10 @@ type Props = {
   cart_key?: string
   shippingAddress: IUser["shipping"]
   billingAddress: IUser["billing"]
+  userId?: string
 }
 
-export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token,cart_key }: Props) {
+export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token, cart_key, userId }: Props) {
   const [ selectedGateway, setSelectedGateway ] = useState<string>("sanalpospro")
   return (
     <>
@@ -73,6 +74,7 @@ export function PaymentForm({ cartData, payments, shippingAddress, billingAddres
             {JSON.stringify(userData?.email, null, 2)}
         </pre>*/}
         <SubmitOrder
+          userId={userId}
           token={token}
           cart_key={cart_key}
           shippingAddress={shippingAddress}
@@ -93,6 +95,7 @@ type PaymentFormProps = {
   cart_key?: string
   shippingAddress: IUser["shipping"]
   billingAddress: IUser["billing"]
+  userId?: string
 }
 export const SubmitOrder = ({
                               cartData,
@@ -100,7 +103,8 @@ export const SubmitOrder = ({
                               billingAddress,
                               selectedGateway,
                               token,
-                              cart_key
+                              cart_key,
+                              userId
                             }: PaymentFormProps) => {
   const clearEndpoint = `/api/cart/clear?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
   const [ isLoading, setIsLoading ] = useState(false)
@@ -119,6 +123,7 @@ export const SubmitOrder = ({
           billing: billingAddress,
           shipping: shippingAddress,
           set_paid: false,
+          customer_id: userId || null,
           line_items: cartData?.items.map((item) => {
             return {
               product_id: item.id,

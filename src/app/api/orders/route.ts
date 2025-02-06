@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   try {
     const response = await api.get("orders",
       {
-        customer_id: id,
+        customer: id,
       }
     );
     return  NextResponse.json<IResponse<IOrder[]>>({

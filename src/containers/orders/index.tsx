@@ -8,10 +8,27 @@ import { IResponse } from "@/types/api/IResponse";
 import Link from "next/link";
 
 export default async function MyOrders() {
-  const userId = (await cookies()).get("user_id")
+  const userId = (await cookies()).get("user_id")?.value
   const apiOrders: IResponse<IOrder[]> | undefined = await getData(`/orders?customer_id=${userId}`);
+  if (apiOrders?.data && apiOrders?.success && apiOrders?.data?.length <= 0)
+    return (
+      <main className="container content-wrapper">
+        <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
+          <div className="d-flex justify-content-center align-items-center">
+            <div style={{ maxWidth: "fit-content" }}
+                 className="alert alert-light d-flex justify-content-center align-items-center flex-column gap-3"
+                 role="alert">
+              <i style={{ "fontSize": "34px" }} className="ci-table"></i>
+              <p>
+                <b>Ürün bulunmamaktadır.</b>
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    )
   return <>
-      {/*    <pre>
+    {/*    <pre>
       {JSON.stringify(apiOrders?.data[1], null, 2)}
     </pre>*/}
     <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-4 py-4">
@@ -29,7 +46,7 @@ export default async function MyOrders() {
                   </span>
                 </div>
                 <Link className="btn btn-icon btn-ghost btn-secondary stretched-link border-0"
-                      href={`/sipatislerim/${order.id}`}>
+                      href={`/siparislerim/${order.id}`}>
                   <i className="ci-chevron-right fs-lg"></i>
                 </Link>
               </div>
