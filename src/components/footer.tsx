@@ -78,12 +78,12 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                               href="/iletisim">İletişim</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Kargo ve politikalar </a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/satis-sozlesmesi">Satış sözleşmesi </Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">İade ve değişim</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/iade-degisim">İade ve değişim</Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
                         <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
@@ -110,18 +110,18 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                         </a>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Aydınlatma metni
-                        </a>
+                        </Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Sınırlı sorumluluk
-                        </a>
+                        </Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
-                        <a className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Bilgi güvenlği</a>
+                        <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
+                           href="/gizlilik-politikasi">Gizlilik politikası</Link>
                       </li>
 
                     </ul>
