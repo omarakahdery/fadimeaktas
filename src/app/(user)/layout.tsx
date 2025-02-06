@@ -34,11 +34,11 @@ export default async function UserLayout({
                     <i className="ci-shopping-bag fs-base opacity-75 me-2"></i>
                     Siparişlerim
                   </Link>
-                  <Link className="list-group-item list-group-item-action d-flex align-items-center"
+                {/*  <Link className="list-group-item list-group-item-action d-flex align-items-center"
                         href="/favorilerim">
                     <i className="ci-heart fs-base opacity-75 me-2"></i>
                     Favorilerim
-                  </Link>
+                  </Link>*/}
                 </nav>
                 <h6 className="pt-4 ps-2 ms-1">Hesap</h6>
                 <nav className="list-group list-group-borderless">
