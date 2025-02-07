@@ -45,23 +45,20 @@ export function Login({ cart_key }: { cart_key?: string }) {
   return (
     <>
 
-      <main className="content-wrapper w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style={{ maxWidth: "1920px" }}>
-
-        <div className="d-lg-flex">
-
-          <div className="d-flex flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5" style={{ "maxWidth": "416px" }}>
-
-            <header className="navbar px-0 pb-4 mt-n2 mt-sm-0 mb-2 mb-md-3 mb-lg-4">
-              <Link className={"navbar-brand"} href={"/"}>
-                <Image
-                  width={180}
-                  height={180}
-                  src={Logo}
-                  alt={"ddd"}
-                />
-              </Link>
-            </header>
-            <h1 className="h2 mt-auto"> Giriş Yap</h1>
+      <main className="content-wrapper d-flex justify-content-center align-items-center  w-100 px-3 ps-lg-5 pe-lg-4 mx-auto" style={{ maxWidth: "1920px" }}>
+        <div className="w-100" style={{ "maxWidth": "416px" }}>
+          <header className="navbar d-flex pt-5 justify-content-center px-0 pb-4 mt-n2 mt-sm-0 mb-2 mb-md-3 mb-lg-4">
+            <Link className={"navbar-brand"} href={"/"}>
+              <Image
+                width={180}
+                height={180}
+                src={Logo}
+                alt={"ddd"}
+              />
+            </Link>
+          </header>
+          <div className="d-flex mt-5 flex-column min-vh-100 w-100 py-4 mx-auto me-lg-5">
+            <h1 className="h2 mt-5"> Giriş Yap</h1>
             <div className="nav fs-sm mb-3 mb-lg-4">
               Hesabın yok mu?
               <Link className="nav-link text-decoration-underline p-0 ms-2" href="/kaydol">Hesap Oluştur</Link>
@@ -113,7 +110,7 @@ export function Login({ cart_key }: { cart_key?: string }) {
           </div>
 
 
-          <div className="offcanvas-lg offcanvas-end w-100 py-lg-4 ms-auto" id="benefits"
+          {/*   <div className="offcanvas-lg offcanvas-end w-100 py-lg-4 ms-auto" id="benefits"
                style={{ "maxWidth": "1034px" }}>
 
             <div
@@ -127,7 +124,7 @@ export function Login({ cart_key }: { cart_key?: string }) {
               </div>
             </div>
 
-          </div>
+          </div>*/}
         </div>
 
       </main>

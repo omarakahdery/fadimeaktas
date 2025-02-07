@@ -62,7 +62,7 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
                 </a>
               </li>
 */}
-            {/*  <li className="nav-item">
+              {/*  <li className="nav-item">
                 <a style={{ marginBottom: "16px", color: "#ff6700" }} className="fs-xl fw-normal nav-link "
                    href="/collections">
                   İndirim
@@ -73,9 +73,11 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
             <p className={"fw-bold mt-3 text-dark fs-sm "}>
               Bilgi
             </p>
-            <h6 style={{ fontSize: "24px" }} className={"fw-bold text-body"}>
-              0 535 709 17 20
-            </h6>
+            <Link className={"text-decoration-none"} href={"tel:+905357091720"}>
+              <h6 style={{ fontSize: "24px" }} className={"fw-bold text-body"}>
+                0 535 709 17 20
+              </h6>
+            </Link>
             <div className=" d-flex justify-content-start justify-content-start mb-4 gap-4 mt-n2 mt-md-0">
               <a className="btn btn-icon fs-xl btn-outline-secondary border-0" href="#!" data-bs-toggle="tooltip"
                  data-bs-template="<div className=&quot;tooltip fs-xs mb-n2&quot; role=&quot;tooltip&quot;><div className=&quot;tooltip-inner bg-transparent text-body p-0&quot;></div></div>"

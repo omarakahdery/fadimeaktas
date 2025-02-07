@@ -43,14 +43,15 @@ export function CheckoutContent({ userData, data, token, payments,cart_key }: Pr
               <div className="accordion" id="accordionExample">
                 <div className="accordion-item">
                   <h3 className="accordion-header" id="headingOne">
-                    <button type="button" className="accordion-button fs-5" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <button type="button" className="accordion-button fs-5 collapsed"
+                            data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false"
+                            aria-controls="collapseTwo">
                             <span className="animate-target me-2">
                               Sepetimdeki Ürünler ({data?.items.length})
                             </span>
                     </button>
                   </h3>
-                  <div className="accordion-collapse collapse" id="collapseOne" aria-labelledby="headingOne"
+                  <div className="accordion-collapse collapse" id="collapseTwo" aria-labelledby="headingOne"
                        data-bs-parent="#accordionExample">
                     <div className="vstack gap-4">
                       {/*Item*/}
@@ -76,14 +77,12 @@ export function CheckoutContent({ userData, data, token, payments,cart_key }: Pr
                                   </Link>
                                 </div>
                                 <div
-                                  className="fw-normal text-dark fs-sm mb-2">{formatCurrency(Number(item.totals?.total))}</div>
+                                  className="fw-normal text-dark fs-sm mb-2">{formatCurrency(Number(item.price))}</div>
                                 <div
                                   className="fw-normal text-dark fs-sm mb-2">Adet: {item.quantity.value}</div>
                               </div>
-
                             </div>
                           </div>
-
                         </>
                       })}
                     </div>

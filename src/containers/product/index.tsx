@@ -15,6 +15,9 @@ export async function Product({ id }: { id: string }) {
   return (
     <>
       {/*photos*/}
+{/*      <pre>
+      {JSON.stringify(data, null, 2)}
+      </pre>*/}
       <div className={"col-lg-8 position-relative"}>
 {/*        <button type="button"
                 className="btn btn-icon btn-secondary animate-pulse fs-lg bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-2 mt-sm-3 me-2 me-sm-4"

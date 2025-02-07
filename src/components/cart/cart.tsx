@@ -45,8 +45,8 @@ export const Cart = async () => {
       <section style={{ marginTop: "80px" }}>
         <main className="container content-wrapper">
           <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
-            {/*<pre>
-  {JSON.stringify(data?.items[0], null, 2)}
+{/*            <pre>
+  {JSON.stringify(data, null, 2)}
 </pre>*/}
             <div className="row">
               <div className="col-xl-10 offset-xl-1">
@@ -83,7 +83,7 @@ export const Cart = async () => {
                                   </Link>
                                 </div>
                                 <div className="fw-normal fs-sm d-flex align-items-center">
-                                  {formatCurrency(Number(item?.totals?.total))}
+                                  {formatCurrency(Number(item?.price))}
                                   {/*<del className="fs-sm fw-normal text-body-tertiary ms-2">₺15.900,00</del>*/}
                                 </div>
                               </div>

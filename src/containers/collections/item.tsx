@@ -24,7 +24,6 @@ export const Item = ({ product }: { product: IProduct }) => {
             <span className="text-uppercase">{product.name}</span>
           </Link>
         </div>
-
         <div className="fw-normal text-dark fs-sm mb-2">{formatCurrency(Number(product.price))}
           {Number(product?.regular_price) > Number(product?.price) &&
               <del className="fs-sm fw-normal ms-2 text-body-tertiary">

@@ -109,14 +109,14 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                            href="#!">Çerez politikası
                         </a>
                       </li>
-                      <li className="d-flex w-100 pt-1">
+                    {/*  <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
                            href="#!">Aydınlatma metni
                         </Link>
-                      </li>
+                      </li>*/}
                       <li className="d-flex w-100 pt-1">
                         <Link className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                           href="#!">Sınırlı sorumluluk
+                           href="/sinirli-sorumluluk">Sınırlı sorumluluk
                         </Link>
                       </li>
                       <li className="d-flex w-100 pt-1">
