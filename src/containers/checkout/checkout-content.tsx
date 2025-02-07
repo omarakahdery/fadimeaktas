@@ -8,7 +8,8 @@ import { IPaymentGateways, PaymentForm } from "@/containers/checkout/submit-orde
 import { IUser } from "@/types/IUser";
 import { ICart } from "@/types/ICart";
 import { useState } from "react";
-import { OrderShippingAddress } from "@/containers/checkout/order-shipping-address";
+import { setFieldsErrors } from "@/lib/form/set-fields-errors";
+import { z } from "zod";
 
 type Props = {
   userData?: IUser
@@ -17,27 +18,70 @@ type Props = {
   payments?: IPaymentGateways[]
   cart_key?: string
 }
+export type OrderAddress = {
+  first_name: string
+  last_name: string
+  address_1: string
+  state: string
+  city: string
+  email: string
+  first_name_billing: string
+  last_name_billing: string
+  address_1_billing: string
+  state_billing: string
+  city_billing: string
+  phone?: string
+  isAddressSame: boolean
+}
+export const addressSchema = z.object({
+  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
+  city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
+  address_1: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
+  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
+  first_name_billing: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  last_name_billing: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  state_billing: z.string().min(3, "İl en az 3 karakter olmalıdır."),
+  city_billing: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
+  address_1_billing: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
+  phone: z.string().min(10, "Telefon en az 10 karakter olmalıdır.")
+});
+export const shippingSchema = z.object({
+  first_name: z.string().min(3, "Ad en az 3 karakter olmalıdır."),
+  last_name: z.string().min(3, "Soyad en az 3 karakter olmalıdır."),
+  state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
+  city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
+  address_1: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
+  email: z.string().email("Geçerli bir e-posta adresi giriniz."),
+  phone: z.string().min(10, "Telefon en az 10 karakter olmalıdır.")
+});
 
-export function CheckoutContent({ userData, data, token, payments,cart_key }: Props) {
-  const [ formData, setFormData ] = useState<IUser["billing"]>({
-    first_name: userData?.billing?.first_name || "",
-    last_name: userData?.billing?.last_name || "",
-    address_1: userData?.billing?.address_1 || "",
-    state: userData?.billing?.state || "",
-    city: userData?.billing?.city || "",
+export function CheckoutContent({ userData, data, token, payments, cart_key }: Props) {
+  const [ errors, setErrors ] = useState<Record<string, string>>({});
+  const [ formData, setFormData ] = useState<OrderAddress>({
+    first_name: userData?.shipping?.first_name || "",
+    last_name: userData?.shipping?.last_name || "",
+    address_1: userData?.shipping?.address_1 || "",
+    state: userData?.shipping?.state || "",
+    city: userData?.shipping?.city || "",
+    first_name_billing: userData?.billing?.first_name || "",
+    last_name_billing: userData?.billing?.last_name || "",
+    address_1_billing: userData?.billing?.address_1 || "",
+    state_billing: userData?.billing?.state || "",
+    city_billing: userData?.billing?.city || "",
+
     email: userData?.billing?.email || "",
-  });
-  const [ formDataShipping, setFormDataShipping ] = useState<IUser["shipping"]>({
-    first_name: userData?.billing?.first_name || "",
-    last_name: userData?.billing?.last_name || "",
-    address_1: userData?.billing?.address_1 || "",
-    state: userData?.billing?.state || "",
-    city: userData?.billing?.city || "",
+    phone: userData?.billing?.phone || "",
+    isAddressSame: false
   });
   return <>
     <div className="col-lg-12 col-xl-8  mb-5 mb-lg-0">
       <div className="vstack gap-4">
         <div className="">
+          {/*     <pre>
+            {JSON.stringify(formData, null, 2)}
+          </pre>*/}
           <div className="card border-0 shadow">
             <div className="card-body">
               <div className="accordion" id="accordionExample">
@@ -94,8 +138,10 @@ export function CheckoutContent({ userData, data, token, payments,cart_key }: Pr
         </div>
         <div className="card border-0 shadow">
           <div className="card-body">
-            <OrderShippingAddress setFormData={setFormDataShipping} formData={formDataShipping}/>
-            <OrderBillingAddress setFormData={setFormData} formData={formData}/>
+            <OrderBillingAddress
+              errors={errors}
+              setFormData={setFormData}
+              formData={formData}/>
           </div>
         </div>
       </div>
@@ -117,12 +163,22 @@ export function CheckoutContent({ userData, data, token, payments,cart_key }: Pr
           </div>
           <div className="card border-0 shadow">
             <div className="card-body">
-              <PaymentForm token={token}
-                           userId={userData?.id}
-                           shippingAddress={formDataShipping}
-                           billingAddress={formData}
-                           cartData={data} payments={payments}
-                           cart_key={cart_key}
+              <PaymentForm
+                onSubmit={() => {
+                  setErrors({});
+
+                  const result = formData.isAddressSame ? shippingSchema.safeParse(formData) : addressSchema.safeParse(formData);
+                  if (!result.success) {
+                    setFieldsErrors(result, setErrors);
+                    return false;
+                  }
+                  return true;
+                }}
+                token={token}
+                userId={userData?.id}
+                addressData={formData}
+                cartData={data} payments={payments}
+                cart_key={cart_key}
               />
             </div>
           </div>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { contactData } from "@/data/contact";
 
 export function Contact() {
   return <>
@@ -94,7 +95,7 @@ export function Contact() {
             <h3 className="text-body fs-sm fw-normal mb-2">Bizi arayın</h3>
             <div className="nav animate-underline justify-content-center">
               <a className="nav-link animate-target text-dark-emphasis fs-base p-0"
-                 href="tel:+905357091720">+90 535 709 17 20</a>
+                 href={contactData.phone.href}>{contactData.phone.value}</a>
             </div>
           </div>
           <div className="col text-center mb-2 mb-sm-0">

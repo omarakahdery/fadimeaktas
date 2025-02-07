@@ -15,6 +15,7 @@ export const shippingSchema = z.object({
   state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
   city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
   address_1: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
+  phone: z.string().min(10, "Telefon numarası en az 10 karakter olmalıdır."),
 });
 
 export function ShippingAddressForm({ addressData, collapseName, userId }: {
@@ -28,6 +29,7 @@ export function ShippingAddressForm({ addressData, collapseName, userId }: {
     address_1: addressData?.address_1 || "",
     state: addressData?.state || "",
     city: addressData?.city || "",
+    phone: addressData?.phone || "",
   });
 
   const [ message, setMessage ] = useState("")
@@ -66,6 +68,7 @@ export function ShippingAddressForm({ addressData, collapseName, userId }: {
             address_1: formData.address_1,
             first_name: formData.first_name,
             last_name: formData.last_name,
+            phone: formData.phone
           }
         }),
       })
@@ -119,7 +122,6 @@ export const ShippingAddressFormFields = ({ formData, handleChange, setFormData,
       errors={errors}
       handleChange={handleChange}
     />
-
     <div className="col-sm-12">
       <div className="position-relative">
         <label htmlFor="psa-address" className="form-label">Açık Adres</label>

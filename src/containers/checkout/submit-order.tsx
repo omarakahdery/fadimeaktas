@@ -1,10 +1,9 @@
-"use client";
 import { useState } from "react";
 import { ICart } from "@/types/ICart";
-import { IUser } from "@/types/IUser";
 import { IOrder } from "@/types/IOrder";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import { IFailureResponse, IResponse } from "@/types/api/IResponse";
+import { OrderAddress } from "@/containers/checkout/checkout-content";
 
 
 export interface IPaymentGateways {
@@ -18,12 +17,20 @@ type Props = {
   payments?: IPaymentGateways[]
   token?: string
   cart_key?: string
-  shippingAddress: IUser["shipping"]
-  billingAddress: IUser["billing"]
+  addressData: OrderAddress
   userId?: string
+  onSubmit: () => boolean
 }
 
-export function PaymentForm({ cartData, payments, shippingAddress, billingAddress, token, cart_key, userId }: Props) {
+export function PaymentForm({
+                              cartData,
+                              payments,
+                              addressData,
+                              token,
+                              cart_key,
+                              userId,
+                              onSubmit
+                            }: Props) {
   const [ selectedGateway, setSelectedGateway ] = useState<string>("sanalpospro")
   return (
     <>
@@ -74,11 +81,11 @@ export function PaymentForm({ cartData, payments, shippingAddress, billingAddres
             {JSON.stringify(userData?.email, null, 2)}
         </pre>*/}
         <SubmitOrder
+          onSubmit={onSubmit}
           userId={userId}
           token={token}
           cart_key={cart_key}
-          shippingAddress={shippingAddress}
-          billingAddress={billingAddress}
+          addressData={addressData}
           cartData={cartData}
           selectedGateway={selectedGateway}
         />
@@ -93,18 +100,18 @@ type PaymentFormProps = {
   selectedGateway: string
   token?: string
   cart_key?: string
-  shippingAddress: IUser["shipping"]
-  billingAddress: IUser["billing"]
+  addressData: OrderAddress
   userId?: string
+  onSubmit: () => boolean
 }
 export const SubmitOrder = ({
                               cartData,
-                              shippingAddress,
-                              billingAddress,
+                              addressData,
                               selectedGateway,
                               token,
                               cart_key,
-                              userId
+                              userId,
+                              onSubmit
                             }: PaymentFormProps) => {
   const clearEndpoint = `/api/cart/clear?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
   const [ isLoading, setIsLoading ] = useState(false)
@@ -112,7 +119,27 @@ export const SubmitOrder = ({
   const handleSubmit = async () => {
     setIsLoading(true)
     setError(undefined)
+    const shippingAddress = {
+      first_name: addressData.first_name,
+      last_name: addressData.last_name,
+      address_1: addressData.address_1,
+      state: addressData.state,
+      city: addressData.city,
+      email: addressData.email,
+      phone: addressData.phone,
+    }
+    const billingAddress = {
+      first_name: addressData.first_name_billing,
+      last_name: addressData.last_name_billing,
+      address_1: addressData.address_1_billing,
+      state: addressData.state_billing,
+      city: addressData.city_billing,
+      email: addressData.email,
+      phone: addressData.phone,
+    }
     try {
+      const isSuccess = onSubmit()
+      if (!isSuccess) return
       const response = await fetch(`/api/orders`, {
         method: "POST",
         headers: {
@@ -120,7 +147,7 @@ export const SubmitOrder = ({
         },
         body: JSON.stringify({
           payment_method: selectedGateway,
-          billing: billingAddress,
+          billing: addressData.isAddressSame ? shippingAddress : billingAddress,
           shipping: shippingAddress,
           set_paid: false,
           customer_id: userId || null,

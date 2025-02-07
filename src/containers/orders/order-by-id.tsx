@@ -13,7 +13,7 @@ export default async function MyOrder({
   const apiOrders: IResponse<IOrder> | undefined = await getData(`/orders/${id}`);
   if (!apiOrders?.success) return <div>Sipariş bulunamadı</div>
   return <>
-    {/*   <pre>
+  {/*      <pre>
       {JSON.stringify(apiOrders, null, 2)}
     </pre>*/}
     <div className={"py-4"}>

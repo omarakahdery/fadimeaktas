@@ -33,6 +33,13 @@ export function BillingAddressData({ data }: { data?: IUser["billing"] }) {
           <p className="text-danger">E-posta adresi eksik</p>
         )}
       </li>
+      <li>
+        {stringHaveCharacter(data?.phone) ? (
+          data?.phone
+        ) : (
+          <p className="text-danger">Telefon eksik</p>
+        )}
+      </li>
     </ul>
   </>;
 }

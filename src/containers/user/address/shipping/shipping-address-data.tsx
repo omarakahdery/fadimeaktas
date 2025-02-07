@@ -26,6 +26,13 @@ export function ShippingAddressData({ data }: { data?: IUser["shipping"] }) {
           <p className="text-danger">Adres bilgisi eksik</p>
         )}
       </li>
+      <li>
+        {stringHaveCharacter(data?.phone) ? (
+          data?.phone
+        ) : (
+          <p className="text-danger">Telefon eksik</p>
+        )}
+      </li>
     </ul>
   </>;
 }

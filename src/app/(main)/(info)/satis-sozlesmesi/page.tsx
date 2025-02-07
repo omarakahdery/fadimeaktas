@@ -1,4 +1,5 @@
 import { InfoBody } from "@/components/info-body";
+import { contactData } from "@/data/contact";
 
 export default function Page() {
   return <>
@@ -20,7 +21,7 @@ export default function Page() {
                 Ticaret Unvanı: Fadime Aktaş Fashion Tekstil San. ve Tic. A.Ş.
               </li>
               <li>
-                Telefon: 0 535 709 17 20
+                Telefon: {contactData.phone.value}
               </li>
               <li>
                 Vergi Numarası: 11111111111

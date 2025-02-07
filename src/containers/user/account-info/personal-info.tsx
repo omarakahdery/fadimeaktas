@@ -16,6 +16,9 @@ export async function PersonalInfo() {
           <li className="mb-1">{data?.email}</li>
         </ul>
       </div>
+{/*      <pre>
+        {JSON.stringify(data, null, 2)}
+      </pre>*/}
       <div className="collapse basic-info" id="basicInfoEdit">
         <PersonalInfoForm user={data}/>
       </div>

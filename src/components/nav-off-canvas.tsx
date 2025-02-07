@@ -3,6 +3,7 @@ import img from "../../public/image-63.webp";
 import { getData } from "@/lib/api/api-fun";
 import Link from "next/link";
 import { PER_PAGE } from "@/containers/collections/list";
+import { contactData } from "@/data/contact";
 
 export async function NavOffCanvas({ categories }: { categories?: ICategory[] }) {
 
@@ -73,9 +74,9 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
             <p className={"fw-bold mt-3 text-dark fs-sm "}>
               Bilgi
             </p>
-            <Link className={"text-decoration-none"} href={"tel:+905357091720"}>
+            <Link className={"text-decoration-none"} href={contactData.phone.href}>
               <h6 style={{ fontSize: "24px" }} className={"fw-bold text-body"}>
-                0 535 709 17 20
+                {contactData.phone.value}
               </h6>
             </Link>
             <div className=" d-flex justify-content-start justify-content-start mb-4 gap-4 mt-n2 mt-md-0">

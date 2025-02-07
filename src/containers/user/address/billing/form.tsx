@@ -1,7 +1,7 @@
 "use client";
 import { z } from "zod";
 import { IUser } from "@/types/IUser";
-import { Dispatch, SetStateAction, useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { useRouter } from "next/navigation";
 import { setFieldsErrors } from "@/lib/form/set-fields-errors";
 import { IResponse } from "@/types/api/IResponse";
@@ -15,7 +15,8 @@ export const billingSchema = z.object({
   state: z.string().min(3, "İl en az 3 karakter olmalıdır."),
   city: z.string().min(3, "İlçe en az 3 karakter olmalıdır."),
   address_1: z.string().min(5, "Adres en az 5 karakter olmalıdır."),
-  email: z.string().email("Geçerli bir e-posta adresi giriniz.").optional()
+  email: z.string().email("Geçerli bir e-posta adresi giriniz.").optional(),
+  phone: z.string().min(10, "Telefon en az 10 karakter olmalıdır.").optional()
 });
 
 
@@ -31,6 +32,7 @@ export function BillingAddressForm({ addressData, collapseName, userId }: {
     state: addressData?.state || "",
     city: addressData?.city || "",
     email: addressData?.email || "",
+    phone: addressData?.phone || ""
   });
 
   const [ message, setMessage ] = useState("")
@@ -69,7 +71,8 @@ export function BillingAddressForm({ addressData, collapseName, userId }: {
             address_1: formData.address_1,
             first_name: formData.first_name,
             last_name: formData.last_name,
-            email: formData.email
+            email: formData.email,
+            phone: formData.phone
           }
         }),
       })

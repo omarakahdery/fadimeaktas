@@ -1,5 +1,6 @@
 import { Input } from "@/components/input";
 import { IUser } from "@/types/IUser";
+import React from "react";
 
 export function FormFields({ formData, errors, handleChange, textarea }: {
   formData?: IUser["billing"],
@@ -53,6 +54,20 @@ export function FormFields({ formData, errors, handleChange, textarea }: {
           value={formData?.city || ""}
           error={errors.city}
           onChange={handleChange}
+        />
+      </div>
+    </div>
+    <div className="col-sm-6">
+      <div className="position-relative">
+        <Input
+          name={"phone"}
+          type="text"
+          label={"Telefon"}
+          value={formData?.phone || ""}
+          error={errors.phone}
+          onChange={handleChange}
+          placeholder="(5__) ___ __ __"
+          data-input-format="{&quot;numericOnly&quot;: true, &quot;delimiters&quot;: [&quot;+1 (&quot;, &quot;)&quot;, &quot; &quot;], &quot;blocks&quot;: [0, 3, 0, 3, 2, 2]}"
         />
       </div>
     </div>
