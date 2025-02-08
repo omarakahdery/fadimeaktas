@@ -3,6 +3,7 @@ import { IProduct } from "@/types/IProduct";
 import { Items } from "./items";
 import { Filter } from "./filter";
 import { getData } from "@/lib/api/api-fun";
+import queryString from "query-string";
 
 export const PER_PAGE = 3
 
@@ -11,17 +12,20 @@ type CollectionsProps = {
     id: string,
     category: string
   }
+  searchParams:{
+    orderby: string,
+    order: string,
+  }
 }
 
-export async function Collections({ params }: CollectionsProps) {
-  const endpoint = `/products?page=${1}&per_page=${PER_PAGE}&category=${params.id}`;
+export async function Collections({ params,searchParams }: CollectionsProps) {
+  const endpoint = `/products?page=${1}&per_page=${PER_PAGE}&category=${params.id}&${queryString.stringify(searchParams)}`;
   const products: IProduct [] | undefined = await getData(endpoint);
   return (
     <>
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
         <Filter/>
       </div>
-      {/*<pre>{JSON.stringify(products, null, 2)}</pre>*/}
       <Items
         params={{
           id: params.id,

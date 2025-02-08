@@ -6,14 +6,18 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('per_page') || '3';
-  const category = searchParams.get('category') ;
-  const slug = searchParams.get('slug') ;
+  const category = searchParams.get('category');
+  const orderby = searchParams.get('orderby');
+  const order = searchParams.get('order');
+  const slug = searchParams.get('slug');
   try {
     const response = await api.get("products",
       {
         per_page: perPage,
         page: page,
         category,
+        orderby,
+        order,
         /*slug*/
       }
     );
