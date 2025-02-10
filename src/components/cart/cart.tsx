@@ -112,11 +112,8 @@ export const Cart = async () => {
               </div>
               {/* Footer */}
               <div className="col-lg-5 col-xl-4 offset-lg-1">
-                <div
-                  style={{ "marginTop": "-115px" }}
-                  className=" offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0"
-                >
-                  <div className="" style={{ "height": "115px" }}></div>
+                <div id="cart-mt" className=" offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0">
+                  <div className="d-none d-lg-block" style={{ "height": "115px" }}></div>
                   <div className="card border-0 shadow">
                     <div className="card-body vstack gap-4">
                       <h5 className="card-title">Sipariş Özeti</h5>

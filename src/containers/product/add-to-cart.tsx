@@ -37,7 +37,7 @@ export function AddItemToCart({ Product }: Props) {
 
       if (data?.notices?.success?.length > 0) {
         setIsSuccess(true)
-        router.push("/sepetim");
+        window.location.href = "/sepetim"
         /*openCart("cartButton");*/
       } else {
       }

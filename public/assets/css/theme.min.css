@@ -17527,3 +17527,13 @@ html:not([dir=rtl]) .range-slider-ui.noUi-horizontal .noUi-handle {
 .fp-watermark {
     display: none;
 }
+@media (max-width: 991px) { /* Bootstrap lg breakpoint */
+    #cart-mt {
+        margin-top: 0 !important;
+    }
+}
+@media (min-width: 992px) {
+    #cart-mt {
+        margin-top: -115px;
+    }
+}

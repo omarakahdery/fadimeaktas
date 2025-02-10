@@ -23,7 +23,7 @@ export async function CollectionTitle({ params }: CollectionsProps) {
     <>
       <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">
         <ol className="breadcrumb text-dark fs-xs">
-          <li className="breadcrumb-item"><Link href="/gelinlik-frontend/public">Ana Sayfa</Link></li>
+          <li className="breadcrumb-item"><Link href="/">Ana Sayfa</Link></li>
           <li className="breadcrumb-item" aria-current="page">{data?.name}</li>
         </ol>
       </nav>

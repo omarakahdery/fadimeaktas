@@ -23,6 +23,9 @@ export async function Collections({ params,searchParams }: CollectionsProps) {
   const products: IProduct [] | undefined = await getData(endpoint);
   return (
     <>
+{/*      <pre>
+        {JSON.stringify(products, null, 2)}
+      </pre>*/}
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
         <Filter/>
       </div>

@@ -39,7 +39,7 @@ export default async function RootLayout({
   const categories = await getData<ICategory[]>(`/products/categories`);
 
   return (
-    <html lang="en">
+    <html lang="tr">
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com"/>
       <link rel="preconnect" href="https://fonts.gstatic.com"/>
