@@ -32,12 +32,12 @@ export async function Product({ id }: { id: string }) {
                   : ''
               }`}
             >
-              <Link
+   {/*           <Link
                 className="position-relative d-flex rounded-0 overflow-hidden"
                 href={image.src}
                 data-glightbox=""
                 data-gallery="product-gallery"
-              >
+              >*/}
                 <div
                   className="ratio hover-effect-target bg-body-tertiary rounded-0"
                   style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
@@ -50,7 +50,9 @@ export async function Product({ id }: { id: string }) {
                     className="object-cover"
                   />
                 </div>
+{/*
               </Link>
+*/}
             </div>
           ))}
         </div>
