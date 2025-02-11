@@ -14,46 +14,46 @@ export async function Product({ id }: { id: string }) {
   const data = await getData<IProduct>(`/products/${id}`, {});
   return (
     <>
-      {/*photos*/}
-      {/*      <pre>
+      {/*<pre>
       {JSON.stringify(data, null, 2)}
       </pre>*/}
       <div className={"col-lg-8 position-relative"}>
-        {/*        <button type="button"
-                className="btn btn-icon btn-secondary animate-pulse fs-lg bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-2 mt-sm-3 me-2 me-sm-4"
-                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-sm"
-                data-bs-title="Add to Wishlist" aria-label="Add to Wishlist">
-          <i className="ci-heart animate-target"></i>
-        </button>*/}
-        <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
-             style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
-          <Image
-            width={600}
-            height={900}
-            src={data?.images[0].src || ""}
-            alt="Image"
-          />
+        <div className="row g-0 lg:g-1">
+          {data?.images.map((image, index) => (
+            <div
+              key={index}
+              className={`${
+                index === 0 ? 'col-12 mb-0 lg:mb-1' : 'col-6 lg:col-6'
+              } ${
+                index > 0
+                  ? index % 2 === 1
+                    ? 'lg:pr-0.5'
+                    : 'lg:pl-0.5'
+                  : ''
+              }`}
+            >
+              <Link
+                className="position-relative d-flex rounded-0 overflow-hidden"
+                href={image.src}
+                data-glightbox=""
+                data-gallery="product-gallery"
+              >
+                <div
+                  className="ratio hover-effect-target bg-body-tertiary rounded-0"
+                  style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
+                >
+                  <Image
+                    width={600}
+                    height={900}
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt || `Image ${index + 1}`}
+                    className="object-cover"
+                  />
+                </div>
+              </Link>
+            </div>
+          ))}
         </div>
-        {/*//todo handle photos*/}
-
-        {/*    <div className="row mb-1">
-          style={{ paddingLeft: "2px" }}
-          <div style={{ paddingRight: "2px" }} className="col-lg-6">
-            <Link
-              className="position-relative d-flex rounded-0 overflow-hidden"
-              href="" data-glightbox="" data-gallery="product-gallery">
-              <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
-                   style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
-                <Image
-                  width={600}
-                  height={900}
-                  src={img2}
-                  alt="Image"
-                />
-              </div>
-            </Link>
-          </div>
-        </div>*/}
       </div>
       <div className={"col-lg-4 col-xl-3"}>
         <div
