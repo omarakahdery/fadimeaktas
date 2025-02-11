@@ -1,8 +1,15 @@
-export async function getData<T>(url: string, baseUrl?: string): Promise<T | undefined> {
+export async function getData<T>(
+  url: string,
+  option?: Record<string, string>
+): Promise<T | undefined> {
+  let endOption: Record<string, string> | undefined = { cache: 'no-store' }
+  if (endOption) {
+    endOption = option
+  }
   const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api${url}`
   try {
     const res = await fetch(endpoint,
-      { cache: 'no-store' }
+      endOption
     );
     console.log(res, "res");
     if (!res.ok) {

@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import Link from "next/link";
 import { Product } from "@/containers/product";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import { ProductTitle } from "@/containers/product/title";
@@ -8,7 +7,7 @@ export interface PageProps {
   params?: Promise<{ id: string; }>
   searchParams?: Promise<any>
 }
-
+export const revalidate = 60
 export default async function ProductPage
 ({
    params,

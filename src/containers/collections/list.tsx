@@ -12,18 +12,18 @@ type CollectionsProps = {
     id: string,
     category: string
   }
-  searchParams:{
+  searchParams: {
     orderby: string,
     order: string,
   }
 }
 
-export async function Collections({ params,searchParams }: CollectionsProps) {
+export async function Collections({ params, searchParams }: CollectionsProps) {
   const endpoint = `/products?page=${1}&per_page=${PER_PAGE}&category=${params.id}&${queryString.stringify(searchParams)}`;
-  const products: IProduct [] | undefined = await getData(endpoint);
+  const products: IProduct [] | undefined = await getData(endpoint, {});
   return (
     <>
-{/*      <pre>
+      {/*      <pre>
         {JSON.stringify(products, null, 2)}
       </pre>*/}
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">

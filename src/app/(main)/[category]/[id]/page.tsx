@@ -4,6 +4,7 @@ import { LoadingSpinner } from "@/components/loading-spinner";
 import { CollectionTitle } from "@/containers/collections/title";
 import { use } from "react"
 
+export const revalidate = 60
 export default function CategoryPage({
                                        params,
                                        searchParams,

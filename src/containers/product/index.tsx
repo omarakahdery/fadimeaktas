@@ -11,29 +11,29 @@ export async function Product({ id }: { id: string }) {
   const token = (await cookies()).get("token")
   const cart_key = (await cookies()).get("cart_key")
 
-  const data = await getData<IProduct>(`/products/${id}`);
+  const data = await getData<IProduct>(`/products/${id}`, {});
   return (
     <>
       {/*photos*/}
-{/*      <pre>
+      {/*      <pre>
       {JSON.stringify(data, null, 2)}
       </pre>*/}
       <div className={"col-lg-8 position-relative"}>
-{/*        <button type="button"
+        {/*        <button type="button"
                 className="btn btn-icon btn-secondary animate-pulse fs-lg bg-transparent border-0 position-absolute top-0 end-0 z-2 mt-2 mt-sm-3 me-2 me-sm-4"
                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="tooltip-sm"
                 data-bs-title="Add to Wishlist" aria-label="Add to Wishlist">
           <i className="ci-heart animate-target"></i>
         </button>*/}
-          <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
-               style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
-            <Image
-              width={600}
-              height={900}
-              src={data?.images[0].src || ""}
-              alt="Image"
-            />
-          </div>
+        <div className="ratio hover-effect-target bg-body-tertiary rounded-0"
+             style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}>
+          <Image
+            width={600}
+            height={900}
+            src={data?.images[0].src || ""}
+            alt="Image"
+          />
+        </div>
         {/*//todo handle photos*/}
 
         {/*    <div className="row mb-1">
