@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Image from "next/image";
 import { IProduct } from "@/types/IProduct";
 import { Appointment } from "@/containers/product/appointment";

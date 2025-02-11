@@ -9,10 +9,12 @@ export const Item = ({ product }: { product: IProduct }) => {
       <div className="animate-underline hover-effect-opacity">
         <div className="position-relative mb-3">
           <Link className="d-flex bg-body-tertiary rounded-0" href={"/product/" + product.id.toString()}>
-            <div className="ratio" style={{ "--cz-aspect-ratio": "calc(360 / 274 * 100%)" } as React.CSSProperties}>
+            <div className="ratio"
+                 style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
+            >
               <Image
-                width={274}
-                height={360}
+                width={600}
+                height={900}
                 src={product.images[0].src}
                 alt="Image"
               />
