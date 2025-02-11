@@ -42,7 +42,7 @@ export function Filter() {
                       &quot;containerInner&quot;: [&quot;form-select&quot;, &quot;border-0&quot;, &quot;rounded-0&quot;, &quot;px-1&quot;]
                     }
                   }">
-            <option value={"no-filter"}>Sıralama yok</option>
+            <option value={"no-filter"}>Varsayılan</option>
             <option value="asc">Fiyat: Düşükten Yükseğe</option>
             <option value="desc">Fiyat: Yüksekten Düşüğe</option>
           </select>
