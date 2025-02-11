@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
+const woocommerceUrl = process.env.WOOCOMMERCE_URL
 export async function POST(req: Request) {
 
   const { id, quantity } = await req.json()
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")
   const cart_key = searchParams.get("cart_key")
-  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
+  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
   try {
     const response = await fetch(endpoint, {
       method: "POST",

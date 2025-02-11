@@ -5,6 +5,8 @@ import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 import { mergeCarts } from "@/lib/api/merge-carts";
 
+const woocommerceUrl = process.env.WOOCOMMERCE_URL
+
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url)
   const cart_key = searchParams.get("cart_key")
@@ -18,7 +20,7 @@ export async function POST(request: Request) {
 
     const authHeader = btoa(`${username}:${password}`)
 
-    const response = await fetch("https://faktas.yeniveri.com/wp-json/cocart/v2/login", {
+    const response = await fetch(woocommerceUrl + "/wp-json/cocart/v2/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

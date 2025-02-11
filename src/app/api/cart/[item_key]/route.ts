@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+const woocommerceUrl = process.env.WOOCOMMERCE_URL
 
 export async function DELETE
 (
@@ -9,7 +10,7 @@ export async function DELETE
   const { searchParams } = new URL(req.url)
   const cart_key = searchParams.get("cart_key")
   const token = searchParams.get("token")
-  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
+  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
 
   try {
     const response = await fetch(endpoint, {
@@ -47,7 +48,7 @@ export async function POST
   const cart_key = searchParams.get("cart_key")
 
   const { quantity } = await req.json()
-  const endpoint = `https://faktas.yeniveri.com/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
+  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/item/${item_key}` + (cart_key ? ("?cart_key=" + cart_key) : "")
   try {
     const response = await fetch(endpoint, {
       method: "POST",
