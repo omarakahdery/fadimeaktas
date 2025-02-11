@@ -5,7 +5,7 @@ import { Filter } from "./filter";
 import { getData } from "@/lib/api/api-fun";
 import queryString from "query-string";
 
-export const PER_PAGE = 3
+export const PER_PAGE = 10
 
 type CollectionsProps = {
   params: {
