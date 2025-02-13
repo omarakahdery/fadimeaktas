@@ -9,7 +9,8 @@ const nextConfig: NextConfig = {
       "cdn.vakko.com",
       "api.vakko.com",
       "weddedwonderland.com",
-      "faktas.yeniveri.com"
+      "faktas.yeniveri.com",
+      "api.fadimeaktas.com"
 
     ],
   },

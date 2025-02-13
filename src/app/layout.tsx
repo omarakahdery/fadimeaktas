@@ -4,7 +4,6 @@ import "../../public/assets/icons/cartzilla-icons.min.css";
 import Script from "next/script";
 import { NavOffCanvas } from "@/components/nav-off-canvas";
 import { getData } from "@/lib/api/api-fun";
-import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
   title: "Fadime Aktaş",
