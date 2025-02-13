@@ -1,11 +1,12 @@
-import { IResponse } from "@/types/api/IResponse";
-import { IOrder } from "@/types/IOrder";
-import { getData } from "@/lib/api/api-fun";
 import MyOrder from "@/containers/orders/order-by-id";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@/components/loading-spinner";
-import MyOrders from "@/containers/orders";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Sipatişlerim',
+  description: 'Sipatişlerim sayfası',
+}
 export default async function MyOrderPage({
                                             params,
                                           }: {

@@ -2,7 +2,12 @@ import Link from "next/link";
 import { Suspense } from "react";
 import { LoadingSpinner } from "@/components/loading-spinner";
 import MyOrder from "@/containers/orders/order-by-id";
+import { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: 'Başarılı Sipariş',
+  description: 'Başarılı Sipariş sayfası',
+}
 export default async function OrderPage({
                                     params,
                                   }: {

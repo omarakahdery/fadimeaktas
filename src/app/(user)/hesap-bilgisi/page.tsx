@@ -1,7 +1,12 @@
 import { PersonalInfo } from "@/containers/user/account-info/personal-info";
 import { Suspense } from "react";
-import { LoadingSpinner } from "@/components/loading-spinner";
 import { PersonalInfoTitle } from "@/containers/user/account-info/personal-info-title";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: 'Hesap Bilgisi'+ " | Fadime Aktaş",
+  description: 'Hesap Bilgisi sayfası',
+}
 
 export interface PageProps {
   params?: Promise<{ id: string; }>

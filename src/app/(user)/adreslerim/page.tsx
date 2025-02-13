@@ -2,7 +2,11 @@ import { Suspense } from "react";
 import { AddressTitle } from "@/containers/user/address/address-title";
 import { ShippingAddress } from "@/containers/user/address/shipping/unit";
 import { BillingAddress } from "@/containers/user/address/billing/unit";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: 'Adreslerim'+ " | Fadime Aktaş",
+  description: 'Adreslerim sayfası',
+}
 export default async function AddressesPage() {
   return (
     <>
