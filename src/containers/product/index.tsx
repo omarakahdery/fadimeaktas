@@ -7,15 +7,15 @@ import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
 
 export async function Product({ id }: { id: string }) {
-  /*const token = (await cookies()).get("token")
+  const token = (await cookies()).get("token")
   const cart_key = (await cookies()).get("cart_key")
 
   const data = await getData<IProduct>(`/products/${id}`, {});
   return (
-    <>*/
-      <pre>
+    <>
+   {/*   <pre>
       {JSON.stringify(data, null, 2)}
-      </pre>
+      </pre>*/}
       <div className={"col-lg-8 position-relative"}>
         <div className="row g-0 lg:g-1">
           {data?.images.map((image, index) => (

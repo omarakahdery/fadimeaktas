@@ -2,13 +2,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { IProduct } from "@/types/IProduct";
 import { formatCurrency } from "@/lib/helper/format-currency";
+import React from "react";
 
 export const Item = ({ product }: { product: IProduct }) => {
   return (
     <div className="col-6 col-md-4 mb-2 mb-sm-3 mb-md-0">
+  {/*    {product.id === 232 && <pre>
+        {JSON.stringify(product, null, 2)}
+      </pre>}*/}
       <div className="animate-underline hover-effect-opacity">
         <div className="position-relative mb-3">
-          <Link className="d-flex bg-body-tertiary rounded-0" href={"/product/" + product.id.toString()}>
+          <Link className="d-flex bg-body-tertiary rounded-0" href={`/urun/${product.slug}/${product.id}`}>
             <div className="ratio"
                  style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
             >
@@ -22,7 +26,7 @@ export const Item = ({ product }: { product: IProduct }) => {
           </Link>
         </div>
         <div className="nav mb-2">
-          <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={"/product/" + product.id.toString()}>
+          <Link className="nav-link min-w-0 text-dark-emphasis p-0" href={`/urun/${product.slug}/${product.id}`}>
             <span className="text-uppercase">{product.name}</span>
           </Link>
         </div>
