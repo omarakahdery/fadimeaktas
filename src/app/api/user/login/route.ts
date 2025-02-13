@@ -5,7 +5,7 @@ import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 import { mergeCarts } from "@/lib/api/merge-carts";
 
-const woocommerceUrl = process.env.WOOCOMMERCE_URL
+const woocommerceUrl = "https://api.fadimeaktas.com"
 
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url)
@@ -33,14 +33,14 @@ export async function POST(request: Request) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", data.user_id.toString(), {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure:true,
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
       })
       cookieStore.set("token", authHeader, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure:true,
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",

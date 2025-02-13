@@ -1,5 +1,5 @@
 "use server"
-const woocommerceUrl = process.env.WOOCOMMERCE_URL
+const woocommerceUrl = "https://api.fadimeaktas.com"
 export async function mergeCarts(cart_key: string, token: string) {
   const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart?token=${token}&cart_key=${cart_key}`;
   try {

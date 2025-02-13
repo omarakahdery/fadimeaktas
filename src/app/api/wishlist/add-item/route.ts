@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-const woocommerceUrl = process.env.WOOCOMMERCE_URL
+const woocommerceUrl = "https://api.fadimeaktas.com"
 export async function POST(req: Request) {
   const { id, quantity } = await req.json()
   const { searchParams } = new URL(req.url)
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
     const cookieStore = await cookies()
     cookieStore.set("wishlist_key", cartData.cart_key, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure:true,
       sameSite: "strict",
       maxAge: 90 * 24 * 60 * 60, // 1 week
       path: "/",

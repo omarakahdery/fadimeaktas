@@ -6,7 +6,7 @@ export async function getData<T>(
   if (endOption) {
     endOption = option
   }
-  const endpoint = `${process.env.NEXT_PUBLIC_API_URL}/api${url}`
+  const endpoint = `http://localhost:3000/api${url}`
   try {
     const res = await fetch(endpoint,
       endOption

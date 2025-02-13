@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-const woocommerceUrl = process.env.WOOCOMMERCE_URL
+const woocommerceUrl = "https://api.fadimeaktas.com"
 
 export async function DELETE
 (

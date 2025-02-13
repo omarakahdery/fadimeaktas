@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const woocommerceUrl = process.env.WOOCOMMERCE_URL
+const woocommerceUrl = "https://api.fadimeaktas.com"
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")

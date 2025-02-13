@@ -24,14 +24,14 @@ export async function POST(request: Request) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", response.data.id.toString(), {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
       })
       cookieStore.set("token", authHeader, {
         httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
+        secure: true,
         sameSite: "strict",
         maxAge: 7 * 24 * 60 * 60, // 1 week
         path: "/",
