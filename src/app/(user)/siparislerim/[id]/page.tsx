@@ -4,7 +4,7 @@ import { LoadingSpinner } from "@/components/loading-spinner";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Sipatişlerim',
+  title: 'Sipatişlerim'+ " | Fadime Aktaş",
   description: 'Sipatişlerim sayfası',
 }
 export default async function MyOrderPage({
