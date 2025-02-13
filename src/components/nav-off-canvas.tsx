@@ -31,7 +31,7 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
               {categories?.map((category) => {
                 return <li className="nav-item ">
                   <Link style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" aria-current="page"
-                        href={`/${category.slug}/${category.id}`}>
+                        href={`/${category.slug || "kategori"}/${category.id}`}>
                     <span data-bs-dismiss="offcanvas" aria-label="Close">
                     {category.name}
                     </span>

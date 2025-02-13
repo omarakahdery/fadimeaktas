@@ -56,7 +56,7 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                         <li className="d-flex w-100 pt-1">
                           <Link
                             className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                            href={`/${category.slug}/${category.id}`}>{category.name}</Link>
+                            href={`/${category.slug|| "kategori"}/${category.id}`}>{category.name}</Link>
                         </li>
                       ))}
                     </ul>
