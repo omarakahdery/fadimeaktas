@@ -1,4 +1,3 @@
-"use server"
 import React from "react";
 import { IUser } from "@/types/IUser";
 import { cookies } from "next/headers";

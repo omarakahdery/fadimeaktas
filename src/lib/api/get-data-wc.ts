@@ -1,9 +1,4 @@
-"use server"
 import { api } from "@/config/wc";
-import { NextResponse } from "next/server";
-import { IResponse } from "@/types/api/IResponse";
-import { ICartUser } from "@/types/IUser";
-
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
 
@@ -15,7 +10,7 @@ export async function getCategoryById(
     return response.data;
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+    return {}
   }
 }
 
@@ -24,7 +19,7 @@ export async function getCategoriesAsList() {
     const response = await api.get("products/categories");
     return response.data;
   } catch (error) {
-    return { error: "Error fetching products" };
+    return {}
   }
 }
 
@@ -64,7 +59,7 @@ export async function getProducts({ page, perPage, category, orderby, order, slu
     );
     return response.data;
   } catch (error: any) {
-    throw Error(error)
+    return []
   }
 }
 
@@ -88,10 +83,7 @@ export async function getUserById(
     const response = await api.get(`customers/${id}`)
     return response.data
   } catch (error) {
-    return NextResponse.json<IResponse<ICartUser>>({
-      success: false,
-      message: "Error fetching customer data"
-    }, { status: 500 })
+    return {}
   }
 }
 
@@ -102,8 +94,7 @@ export async function getProductById(
     const response = await api.get("products/" + id);
     return response.data
   } catch (error) {
-    console.error(error);
-    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+    return {}
   }
 }
 

@@ -1,10 +1,8 @@
 import Image from "next/image";
-import { getData } from "@/lib/api/api-fun";
 import { IOrder, statusTr } from "@/types/IOrder";
 import { formatDate } from "@/lib/format-dete";
 import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
-import { IResponse } from "@/types/api/IResponse";
 import Link from "next/link";
 import { getOrders } from "@/lib/api/get-data-wc";
 

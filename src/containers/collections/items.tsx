@@ -12,13 +12,13 @@ type Props = {
     id: string,
     category: string
   }
-  initialProducts?: IProduct[]
+ // initialProducts?: IProduct[]
 }
 
 
-export const Items = ({ initialProducts, params }: Props) => {
+export const Items = ({ params }: Props) => {
   const searchParams = useSearchParams()
-  const [ products, setProducts ] = useState<IProduct[]>([])
+  const [ products, setProducts ] = useState<IProduct[]>(  [])
   const [ offset, setOffset ] = useState(2)
   const [ haveMoreData, setHaveMoreData ] = useState(true)
 
@@ -55,7 +55,7 @@ export const Items = ({ initialProducts, params }: Props) => {
 
   return (
     <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
-      {products.map((product) => (
+      {products?.map((product) => (
         <Item key={product.id} product={product}/>
       ))}
       {haveMoreData && (
