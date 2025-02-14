@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getData } from "@/lib/api/api-fun";
 import { IUser } from "@/types/IUser";
+import { getCategoryById } from "@/lib/api/get-data-wc";
 
 type CollectionsProps = {
   params: {
@@ -18,7 +19,8 @@ interface ICategory {
 }
 
 export async function CollectionTitle({ params }: CollectionsProps) {
-  const data = await getData<ICategory>(`/categories/${params.id}`);
+  // const data = await getData<ICategory>(`/categories/${params.id}`);
+  const data: any = await getCategoryById({ id: params.id });
   return (
     <>
       <nav className="container pt-2 pt-xxl-3 my-3 my-md-4" aria-label="breadcrumb">

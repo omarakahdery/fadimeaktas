@@ -4,6 +4,7 @@ import { Items } from "./items";
 import { Filter } from "./filter";
 import { getData } from "@/lib/api/api-fun";
 import queryString from "query-string";
+import { getProducts } from "@/lib/api/get-data-wc";
 
 export const PER_PAGE = 10
 
@@ -20,11 +21,18 @@ type CollectionsProps = {
 
 export async function Collections({ params, searchParams }: CollectionsProps) {
   const endpoint = `/products?page=${1}&per_page=${PER_PAGE}&category=${params.id}&${queryString.stringify(searchParams)}`;
-  const products: IProduct [] | undefined = await getData(endpoint, {});
+  // const products: IProduct [] | undefined = await getData(endpoint, {});
+  const products: any= await getProducts({
+    perPage: PER_PAGE,
+    page: 1,
+    category: params.id,
+    orderby: searchParams.orderby,
+    order: searchParams.order
+  })
   return (
     <>
-      {/*      <pre>
-        {JSON.stringify(products, null, 2)}
+  {/*          <pre>
+        {JSON.stringify({ products }, null, 2)}
       </pre>*/}
       <div className="d-sm-flex align-items-center justify-content-between mt-n2 mb-3 mb-sm-4">
         <Filter/>

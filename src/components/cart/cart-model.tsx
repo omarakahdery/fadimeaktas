@@ -14,7 +14,7 @@ export const CartModel = ({ token }: { token?: string }) => {
     useEffect(() => {
       (async () => {
         try {
-          const fetchedData = await getData<ICart>("/cart?cart_key=903d882be54f000d83fb7710ff3059");
+          const fetchedData = await getxData<ICart>("/cart?cart_key=903d882be54f000d83fb7710ff3059");
           setData(fetchedData);
         } catch (error) {
           console.error("Error fetching cart data:", error);
@@ -91,7 +91,8 @@ export const CartModel = ({ token }: { token?: string }) => {
                       <span className="text-uppercase">{item.name}</span>
                     </Link>
                   </div>
-                  <div className="fw-normal fs-sm d-flex align-items-center">{formatCurrency(Number(item?.totals?.total))}
+                  <div
+                    className="fw-normal fs-sm d-flex align-items-center">{formatCurrency(Number(item?.totals?.total))}
                   </div>
                   <div className="w-100 d-flex justify-content-between mt-2">
                     <IncreaseDecreaseQ

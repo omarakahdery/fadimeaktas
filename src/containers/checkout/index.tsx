@@ -6,6 +6,7 @@ import { IPaymentGateways } from "@/containers/checkout/submit-order";
 import { IUser } from "@/types/IUser";
 import { redirect } from "next/navigation";
 import { CheckoutContent } from "@/containers/checkout/checkout-content";
+import { getPaymentGateways, getUserById } from "@/lib/api/get-data-wc";
 
 export const Checkout = async () => {
   const userId = (await cookies()).get("user_id")?.value
@@ -13,8 +14,11 @@ export const Checkout = async () => {
   const cart_key = (await cookies()).get("cart_key")?.value;
   const endpoint = `/cart?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
   const data = await getData<ICart>(endpoint);
-  const payments = await getData<IPaymentGateways[]>("/payment_gateways");
-  const userData = await getData<IUser>(`/user/me/${userId}`);
+  //const payments = await getData<IPaymentGateways[]>("/payment_gateways");
+  const payments = await getPaymentGateways();
+//  const userData = await getData<IUser>(`/user/me/${userId}`);
+  const userData = await getUserById({ id: userId });
+
   if (data?.items && data?.items?.length <= 0) {
     redirect("/sepetim")
   }

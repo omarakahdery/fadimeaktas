@@ -5,15 +5,17 @@ import { getData } from "@/lib/api/api-fun";
 import { AddItemToCart } from "@/containers/product/add-to-cart";
 import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
+import { getProductById } from "@/lib/api/get-data-wc";
 
 export async function Product({ id }: { id: string }) {
   const token = (await cookies()).get("token")
   const cart_key = (await cookies()).get("cart_key")
 
-  const data = await getData<IProduct>(`/products/${id}`, {});
+  // const data = await getData<IProduct>(`/products/${id}`, {});
+  const data: IProduct = await getProductById({ id });
   return (
     <>
-   {/*   <pre>
+      {/*   <pre>
       {JSON.stringify(data, null, 2)}
       </pre>*/}
       <div className={"col-lg-8 position-relative"}>
@@ -31,25 +33,25 @@ export async function Product({ id }: { id: string }) {
                   : ''
               }`}
             >
-   {/*           <Link
+              {/*           <Link
                 className="position-relative d-flex rounded-0 overflow-hidden"
                 href={image.src}
                 data-glightbox=""
                 data-gallery="product-gallery"
               >*/}
-                <div
-                  className="ratio hover-effect-target bg-body-tertiary rounded-0"
-                  style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
-                >
-                  <Image
-                    width={600}
-                    height={900}
-                    src={image.src || "/placeholder.svg"}
-                    alt={image.alt || `Image ${index + 1}`}
-                    className="object-cover"
-                  />
-                </div>
-{/*
+              <div
+                className="ratio hover-effect-target bg-body-tertiary rounded-0"
+                style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
+              >
+                <Image
+                  width={600}
+                  height={900}
+                  src={image.src || "/placeholder.svg"}
+                  alt={image.alt || `Image ${index + 1}`}
+                  className="object-cover"
+                />
+              </div>
+              {/*
               </Link>
 */}
             </div>

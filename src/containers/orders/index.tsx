@@ -6,11 +6,13 @@ import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import { IResponse } from "@/types/api/IResponse";
 import Link from "next/link";
+import { getOrders } from "@/lib/api/get-data-wc";
 
 export default async function MyOrders() {
   const userId = (await cookies()).get("user_id")?.value
-  const apiOrders: IResponse<IOrder[]> | undefined = await getData(`/orders?customer_id=${userId}`);
-  if (apiOrders?.data && apiOrders?.success && apiOrders?.data?.length <= 0)
+  //const apiOrders: IResponse<IOrder[]> | undefined = await getData(`/orders?customer_id=${userId}`);
+  const apiOrders: any = await getOrders({ customer_id: userId });
+  if (apiOrders && apiOrders?.length <= 0)
     return (
       <main className="container content-wrapper">
         <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
@@ -32,7 +34,7 @@ export default async function MyOrders() {
       {JSON.stringify(apiOrders?.data[1], null, 2)}
     </pre>*/}
     <div className="row row-cols-1 row-cols-sm-1 row-cols-md-2 g-4 py-4">
-      {apiOrders?.success && apiOrders?.data?.map((order) => {
+      {apiOrders?.map((order:IOrder) => {
         return <>
           <div className="col">
             <div className="card">

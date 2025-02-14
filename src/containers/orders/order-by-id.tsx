@@ -4,27 +4,28 @@ import { getData } from "@/lib/api/api-fun";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import Image from "next/image";
 import { formatDate } from "@/lib/format-dete";
+import { getOrderById } from "@/lib/api/get-data-wc";
 
 export default async function MyOrder({
                                         id,
                                       }: {
   id: string
 }) {
-  const apiOrders: IResponse<IOrder> | undefined = await getData(`/orders/${id}`);
-  if (!apiOrders?.success) return <div>Sipariş bulunamadı</div>
+  // const apiOrders: IResponse<IOrder> | undefined = await getData(`/orders/${id}`);
+  const apiOrders: any = await getOrderById({ id });
   return <>
-  {/*      <pre>
+       {/*      <pre>
       {JSON.stringify(apiOrders, null, 2)}
     </pre>*/}
     <div className={"py-4"}>
  <span className="d-flex align-items-center">
-                 Sipariş Tarihi: {formatDate(apiOrders?.data?.date_created).toLocaleDateString()}
+                 Sipariş Tarihi: {formatDate(apiOrders?.date_created).toLocaleDateString()}
                   </span>
       <span className="d-flex align-items-center">
-                    Toplam: {formatCurrency(Number(apiOrders?.data?.total))}
+                    Toplam: {formatCurrency(Number(apiOrders?.total))}
                   </span>
-      {apiOrders?.data?.status && <span className="d-flex align-items-center mb-2">
-                  Durum: {statusTr[apiOrders?.data?.status] || "Bilinmeyen"}
+      {apiOrders?.status && <span className="d-flex align-items-center mb-2">
+                  Durum: {statusTr[apiOrders?.status as keyof typeof statusTr] || "Bilinmeyen"}
                  </span>
       }
       <table className="table align-middle fs-sm text-nowrap ">
@@ -47,7 +48,7 @@ export default async function MyOrder({
         </tr>
         </thead>
         <tbody className="text-body-emphasis orders-list">
-        {apiOrders?.success && apiOrders?.data?.line_items?.map((order) => {
+        { apiOrders?.line_items?.map((order: any) => {
           return <>
             <tr>
               <td className="fw-medium pt-2 pb-3 py-md-2 ps-0">

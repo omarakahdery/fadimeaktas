@@ -1,8 +1,8 @@
 import { Home } from "@/containers/home";
-import { getData } from "@/lib/api/api-fun";
+import { getCategoriesAsList } from "@/lib/api/get-data-wc";
 
 export default async function HomePage() {
-  const categories = await getData<ICategory[]>(`/products/categories`);
+  const categories = await getCategoriesAsList();
   return (
     <>
       <Home footerData={categories}  />

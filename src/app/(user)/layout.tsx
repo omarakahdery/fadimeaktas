@@ -6,6 +6,7 @@ import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LogoutBtn } from "@/components/logout-btn";
+import { getCategoriesAsList } from "@/lib/api/get-data-wc";
 
 
 export default async function UserLayout({
@@ -15,7 +16,7 @@ export default async function UserLayout({
 }>) {
   const cookiesStore = await cookies()
   const userId = cookiesStore.get("user_id")
-  const categories = await getData<ICategory[]>(`/products/categories`);
+  const categories = await getCategoriesAsList();
   if (!userId?.value) {
     redirect("/giris-yap")
   }

@@ -8,7 +8,7 @@ import { getData } from "@/lib/api/api-fun";
 export function ClientCartWrapper({ initialData, token }: { initialData?: ICart, token?: string }) {
   const [ cartData, setCartData ] = useState(initialData)
   const refreshCart = async () => {
-    const newData = await getData<ICart>(`/api/cart?token=${token}`)
+    const newData = await getsData<ICart>(`/api/cart?token=${token}`)
     setCartData(newData)
   }
   return (

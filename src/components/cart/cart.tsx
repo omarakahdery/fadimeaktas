@@ -9,14 +9,15 @@ import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import { Amount } from "@/components/amount";
 import { redirect } from "next/navigation";
+import { getMyCart } from "@/lib/api/get-data-wc";
 
 export const Cart = async () => {
   const token = (await cookies()).get("token")?.value;
   const cart_key = (await cookies()).get("cart_key")?.value;
   const endpoint = `/cart?` + (token ? `token=${token}` : `cart_key=${cart_key}`);
-  const data = await getData<ICart>(endpoint);
-
-  if ((data?.items && data?.items?.length <= 0)||(!cart_key && !token))
+  //const data = await getData<ICart>(endpoint);
+  const data: ICart = await getMyCart({ token, cart_key });
+  if ((data?.items && data?.items?.length <= 0) || (!cart_key && !token))
     return (
       <section style={{ marginTop: "80px" }}>
         <main className="container content-wrapper">
@@ -45,7 +46,7 @@ export const Cart = async () => {
       <section style={{ marginTop: "80px" }}>
         <main className="container content-wrapper">
           <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
-{/*            <pre>
+            {/*            <pre>
   {JSON.stringify(data, null, 2)}
 </pre>*/}
             <div className="row">
@@ -62,7 +63,7 @@ export const Cart = async () => {
                       {/*                      <pre>
                         {JSON.stringify(data, null, 2)}
                       </pre>*/}
-                      {data?.items.map((item, index) => {
+                      {data?.items?.map((item, index) => {
                         return <>
                           <div className="d-flex align-items-center">
                             <Link aria-label="Close" className="flex-shrink-0" href={"/product/" + item.id}>

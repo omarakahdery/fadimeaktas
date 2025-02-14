@@ -6,6 +6,7 @@ import { Metadata, ResolvingMetadata } from "next";
 import { cookies } from "next/headers";
 import { getData } from "@/lib/api/api-fun";
 import { IProduct } from "@/types/IProduct";
+import { getProductById } from "@/lib/api/get-data-wc";
 
 export interface PageProps {
   params?: Promise<{ id: string; }>
@@ -18,7 +19,8 @@ export async function generateMetadata(
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const id = (await params)?.id
-  const product = await getData<IProduct>(`/products/${id}`, {});
+ // const product = await getData<IProduct>(`/products/${id}`, {});
+  const product = await getProductById({ id });
   return {
     title: product?.name ? product?.name + " - "+product.categories[0].name + " | Fadime Aktaş" : "Ürün",
   }

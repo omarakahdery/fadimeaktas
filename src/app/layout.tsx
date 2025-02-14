@@ -4,6 +4,7 @@ import "../../public/assets/icons/cartzilla-icons.min.css";
 import Script from "next/script";
 import { NavOffCanvas } from "@/components/nav-off-canvas";
 import { getData } from "@/lib/api/api-fun";
+import { getCategoriesAsList } from "@/lib/api/get-data-wc";
 
 export const metadata: Metadata = {
   title: "Fadime Aktaş",
@@ -35,7 +36,7 @@ export default async function RootLayout({
                                          }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = await getData<ICategory[]>(`/products/categories`);
+  const categories = await getCategoriesAsList();
 
   return (
     <html lang="tr">

@@ -2,6 +2,7 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { getData } from "@/lib/api/api-fun";
 import { RemoveOverflow } from "@/components/remove-overflow";
+import { getCategoriesAsList } from "@/lib/api/get-data-wc";
 
 
 export default async function AppLayout({
@@ -9,7 +10,7 @@ export default async function AppLayout({
                                          }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const categories = await getData<ICategory[]>(`/products/categories`);
+  const categories = await getCategoriesAsList();
   return (
     <main className="page-wrapper">
       <RemoveOverflow/>
