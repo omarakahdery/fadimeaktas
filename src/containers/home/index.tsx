@@ -3,19 +3,17 @@ import Image from "next/image";
 import Link from "next/link";
 import Fullpage from "@fullpage/react-fullpage";
 import { Footer } from "@/components/footer";
-import { getData } from "@/lib/api/api-fun";
-import { Navbar, NavbarContent } from "@/components/navbar";
+import { NavbarContent } from "@/components/navbar";
+import img1 from "../../../public/home-1.webp";
+import img2 from "../../../public/home-2.webp";
+import img3 from "../../../public/home-3.webp";
+import img4 from "../../../public/home-4.webp";
 
 const imgList = [
-  /* "https://alissenuera.com/cdn/shop/files/Alisse_nuerA_Gelinlik_main_page_slider_desktop.jpg",
-   "https://alissenuera.com/cdn/shop/files/gelinlik-modelleri-gelinlik-koleksiyonlari-slider-2_96d2987d-f3a8-41fa-b312-0b2bcd2bdcc7.webp",
-   "https://alissenuera.com/cdn/shop/files/saten-gelinlik-modelleri-saten-gelinlik-koleksiyonu-slider-3.webp",
-   "https://alissenuera.com/cdn/shop/files/oriental-fashion-show-alisse-nuera-fashion-show-slider-4.webp",
-   "https://alissenuera.com/cdn/shop/files/gelin-odasi-dugununuze-hazirlanin-slider-6.webp",*/
-  "https://cdn.vakko.com/banners/d74ad5e7-4f5c-482d-acc4-e69ea5f56ece.jpeg",
-  "https://cdn.vakko.com/banners/fe7e6da4-e226-43e7-ab7b-13c74abf90ce.jpeg",
-  "https://api.vakko.com//medias/esra-12.jpg?context=bWFzdGVyfGltYWdlc3w1NjgwNzV8aW1hZ2UvanBlZ3xhRGN5TDJnek5TODVNak16TkRVMk9EVTNNVEU0TDJWemNtRXRNVEl1YW5Cbnw0NzcwYjM2MzA0NjcxMDRlNmViZWU1ODA2YzI3YzRmOGZiNzE2ZDcwNTU3MGMzYTYxNzFiMzY5NWQzNTdjYWI2",
-  "https://cdn.vakko.com/banners/d7025919-d811-496f-8c6a-00885d3b3c27.jpeg"
+  img1,
+  img2,
+  img3,
+  img4,
 ]
 
 export function Home({ footerData }: { footerData: any }) {
