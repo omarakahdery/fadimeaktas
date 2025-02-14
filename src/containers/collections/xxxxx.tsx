@@ -20,7 +20,7 @@ type Props = {
 
 export const Items = ({ initialProducts, params }: Props) => {
   const searchParams = useSearchParams()
-  const [ products, setProducts ] = useState<IProduct[]>(initialProducts || [])
+  const [ products, setProducts ] = useState<IProduct[]>([])
   const [ offset, setOffset ] = useState(2)
   const [ haveMoreData, setHaveMoreData ] = useState(true)
 
@@ -29,9 +29,6 @@ export const Items = ({ initialProducts, params }: Props) => {
   const filterQuery = searchParams.toString()
 
   const loadMoreProducts = async () => {
-    /!*    const apiProducts: IProduct[] | undefined = await getData(
-          `/products?page=${offset}&per_page=${PER_PAGE}&category=${params.id}&${filterQuery}`,
-        )*!/
     const apiProducts: IProduct[] | undefined = await getProducts({
       perPage: PER_PAGE,
       page: offset,
@@ -52,9 +49,6 @@ export const Items = ({ initialProducts, params }: Props) => {
 
   useEffect(() => {
     const fetchInitialProducts = async () => {
-      /!*    const apiProducts: IProduct[] | undefined = await getData(
-            `/products?page=1&per_page=${PER_PAGE}&category=${params.id}&${filterQuery}`,
-          )*!/
       const apiProducts: IProduct[] | undefined = await getProducts({
         perPage: PER_PAGE,
         page: 1,
@@ -66,6 +60,7 @@ export const Items = ({ initialProducts, params }: Props) => {
       setOffset(1)
       setHaveMoreData(apiProducts?.length === PER_PAGE)
     }
+    //todo add if url has filterQuery
     fetchInitialProducts()
   }, [ filterQuery ])
 
@@ -92,4 +87,5 @@ export const Items = ({ initialProducts, params }: Props) => {
     </div>
   )
 }
+
 */

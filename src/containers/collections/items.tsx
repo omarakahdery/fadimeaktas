@@ -18,9 +18,9 @@ type Props = {
 
 export const Items = ({ initialProducts, params }: Props) => {
   const searchParams = useSearchParams()
-  const [products, setProducts] = useState<IProduct[]>(initialProducts || [])
-  const [offset, setOffset] = useState(2)
-  const [haveMoreData, setHaveMoreData] = useState(true)
+  const [ products, setProducts ] = useState<IProduct[]>([])
+  const [ offset, setOffset ] = useState(2)
+  const [ haveMoreData, setHaveMoreData ] = useState(true)
 
   const { ref, inView } = useInView()
 
@@ -31,7 +31,7 @@ export const Items = ({ initialProducts, params }: Props) => {
       `/products?page=${offset}&per_page=${PER_PAGE}&category=${params.id}&${filterQuery}`,
     )
     setHaveMoreData(apiProducts?.length === PER_PAGE)
-    setProducts((prevState) => [...prevState, ...(apiProducts || [])])
+    setProducts((prevState) => [ ...prevState, ...(apiProducts || []) ])
     setOffset((offset) => offset + 1)
   }
 
@@ -39,7 +39,7 @@ export const Items = ({ initialProducts, params }: Props) => {
     if (inView) {
       loadMoreProducts()
     }
-  }, [inView, loadMoreProducts])
+  }, [ inView, loadMoreProducts ])
 
   useEffect(() => {
     const fetchInitialProducts = async () => {
@@ -51,12 +51,12 @@ export const Items = ({ initialProducts, params }: Props) => {
       setHaveMoreData(apiProducts?.length === PER_PAGE)
     }
     fetchInitialProducts()
-  }, [filterQuery])
+  }, [ filterQuery ])
 
   return (
     <div className="row gy-4 gy-md-5 pb-4 pb-md-5">
       {products.map((product) => (
-        <Item key={product.id} product={product} />
+        <Item key={product.id} product={product}/>
       ))}
       {haveMoreData && (
         <div className="w-100 d-flex justify-content-center align-items-center" ref={ref}>
@@ -68,3 +68,4 @@ export const Items = ({ initialProducts, params }: Props) => {
     </div>
   )
 }
+
