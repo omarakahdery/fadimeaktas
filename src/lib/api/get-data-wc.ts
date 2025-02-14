@@ -2,7 +2,6 @@
 import { api } from "@/config/wc";
 import { NextResponse } from "next/server";
 import { IResponse } from "@/types/api/IResponse";
-import { IOrder } from "@/types/IOrder";
 import { ICartUser } from "@/types/IUser";
 
 
@@ -13,7 +12,7 @@ export async function getCategoryById(
 ) {
   try {
     const response = await api.get("products/categories/" + id);
-    return NextResponse.json(response.data);
+    return response.data;
   } catch (error) {
     console.error(error);
     return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
@@ -64,8 +63,8 @@ export async function getProducts({ page, perPage, category, orderby, order, slu
       }
     );
     return response.data;
-  } catch (error) {
-    return NextResponse.json({ error: "Error fetching products" }, { status: 500 });
+  } catch (error: any) {
+    throw Error(error)
   }
 }
 

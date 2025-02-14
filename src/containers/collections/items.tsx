@@ -47,7 +47,7 @@ export const Items = ({ initialProducts, params }: Props) => {
         `/products?page=1&per_page=${PER_PAGE}&category=${params.id}&${filterQuery}`,
       )
       setProducts(apiProducts || [])
-      setOffset(2)
+      setOffset(1)
       setHaveMoreData(apiProducts?.length === PER_PAGE)
     }
     fetchInitialProducts()
