@@ -20,7 +20,7 @@ export async function generateMetadata({ params, searchParams }: PageProps, pare
   }
 }
 
-export const revalidate = 60
+//export const revalidate = 60
 export default function CategoryPage({
                                        params,
                                        searchParams,

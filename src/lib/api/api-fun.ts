@@ -6,12 +6,11 @@ export async function getData<T>(
   if (endOption) {
     endOption = option
   }
-  const endpoint = `http://localhost:3000/api${url}`
+  const endpoint = `/api${url}`
   try {
     const res = await fetch(endpoint,
-      endOption
+      { cache: 'no-store' }
     );
-    console.log(res, "res");
     if (!res.ok) {
       throw new Error('Failed to fetch products');
     }
