@@ -102,8 +102,7 @@ export async function Product({ id }: { id: string }) {
                   </button>
                 </div>
               </div>
-              <p dangerouslySetInnerHTML={{ __html: data?.short_description || "" }} className="fs-sm mb-2">
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: data?.short_description || data?.description }} className="fs-sm mb-2"></p>
               <div className="collapse" id="moreDescription">
                 <div className="fs-sm pt-3">
                   <p dangerouslySetInnerHTML={{ __html: data?.description || "" }}>
@@ -111,15 +110,16 @@ export async function Product({ id }: { id: string }) {
                 </div>
               </div>
 
-              <a className="d-inline-block fs-sm fw-medium text-dark-emphasis collapsed"
-                 href="#moreDescription"
-                 data-bs-toggle="collapse"
-                 aria-expanded="false"
-                 aria-controls="moreDescription"
-                 data-label-collapsed="Daha fazla göster"
-                 data-label-expanded="Daha az göster"
-                 aria-label="Show / hide description"
-              ></a>
+              {data?.description && data?.short_description &&
+                  <a className="d-inline-block fs-sm fw-medium text-dark-emphasis collapsed"
+                     href="#moreDescription"
+                     data-bs-toggle="collapse"
+                     aria-expanded="false"
+                     aria-controls="moreDescription"
+                     data-label-collapsed="Daha fazla göster"
+                     data-label-expanded="Daha az göster"
+                     aria-label="Show / hide description"
+                  ></a>}
             </div>
           </div>
 
