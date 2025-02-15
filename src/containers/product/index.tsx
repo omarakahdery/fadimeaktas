@@ -6,6 +6,7 @@ import { AddItemToCart } from "@/containers/product/add-to-cart";
 import { cookies } from "next/headers";
 import { formatCurrency } from "@/lib/helper/format-currency";
 import { getProductById } from "@/lib/api/get-data-wc";
+import { LightBox } from "@/containers/product/glight-box";
 
 export async function Product({ id }: { id: string }) {
   const token = (await cookies()).get("token")
@@ -18,13 +19,14 @@ export async function Product({ id }: { id: string }) {
       {/*   <pre>
       {JSON.stringify(data, null, 2)}
       </pre>*/}
+      {/*<LightBox/>*/}
       <div className={"col-lg-8 position-relative"}>
-        <div className="row g-0 lg:g-1">
+        <div className="row g-1 lg:g-1">
           {data?.images.map((image, index) => (
             <div
               key={index}
-              className={`${
-                index === 0 ? 'col-12 mb-0 lg:mb-1' : 'col-6 lg:col-6'
+              className={`col-12 ${
+                index === 0 ? 'col-12 mb-0 lg:mb-1' : 'col-lg-6 lg:col-6'
               } ${
                 index > 0
                   ? index % 2 === 1
@@ -58,7 +60,7 @@ export async function Product({ id }: { id: string }) {
           ))}
         </div>
       </div>
-      <div className={"col-lg-4 col-xl-3"}>
+      <div className={"col-lg-4 col-xl-3 mt-4 mt-0"}>
         <div
           style={{ "marginTop": "-115px" }}
           className=" offcanvas-end sticky-lg-top ps-lg-4 ps-xl-0">

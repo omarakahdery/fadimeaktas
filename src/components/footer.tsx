@@ -54,9 +54,9 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
                       {categories?.map((category) => (
                         <li className="d-flex w-100 pt-1">
-                          <Link
+                          <a
                             className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"
-                            href={`/${category.slug|| "kategori"}/${category.id}`}>{category.name}</Link>
+                            href={`/${category.slug|| "kategori"}/${category.id}`}>{category.name}</a>
                         </li>
                       ))}
                     </ul>
