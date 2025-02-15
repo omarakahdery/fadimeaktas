@@ -43,7 +43,7 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
 
                 <div className="accordion-item col border-0">
                   <h6 className="accordion-header" id="categoriesHeading">
-                    <span className="text-dark-emphasis d-none d-sm-block">Sezon</span>
+                    <span className="text-dark-emphasis d-none d-sm-block">Katagoriler</span>
                     <button type="button" className="accordion-button collapsed py-3 d-sm-none"
                             data-bs-toggle="collapse" data-bs-target="#categoriesLinks" aria-expanded="false"
                             aria-controls="categoriesLinks">Categories

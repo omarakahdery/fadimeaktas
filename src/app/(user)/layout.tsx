@@ -1,6 +1,5 @@
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
-import { getData } from "@/lib/api/api-fun";
 import { RemoveOverflow } from "@/components/remove-overflow";
 import Link from "next/link";
 import { cookies } from "next/headers";
