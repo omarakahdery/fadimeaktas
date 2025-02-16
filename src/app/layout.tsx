@@ -3,8 +3,9 @@ import type { Metadata } from "next";
 import "../../public/assets/icons/cartzilla-icons.min.css";
 import Script from "next/script";
 import { NavOffCanvas } from "@/components/nav-off-canvas";
-import { getData } from "@/lib/api/api-fun";
 import { getCategoriesAsList } from "@/lib/api/get-data-wc";
+import 'glightbox/dist/css/glightbox.min.css';
+
 
 export const metadata: Metadata = {
   title: "Fadime Aktaş",
@@ -41,13 +42,14 @@ export default async function RootLayout({
   return (
     <html lang="tr">
     <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com"/>
-        <link rel="preconnect" href="https://fonts.gstatic.com"/>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
-              rel="stylesheet"/>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
-          rel="stylesheet"/>
+      <link rel="stylesheet" href="/assets/vendor/simplebar/simplebar.min.css"/>
+      <link rel="preconnect" href="https://fonts.googleapis.com"/>
+      <link rel="preconnect" href="https://fonts.gstatic.com"/>
+      <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+            rel="stylesheet"/>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+        rel="stylesheet"/>
     </head>
 
     <body className={""}>

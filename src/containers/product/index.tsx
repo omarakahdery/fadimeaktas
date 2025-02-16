@@ -16,10 +16,9 @@ export async function Product({ id }: { id: string }) {
   const data: IProduct = await getProductById({ id });
   return (
     <>
-      {/*   <pre>
+      {/*         <pre>
       {JSON.stringify(data, null, 2)}
       </pre>*/}
-      {/*<LightBox/>*/}
       <div className={"col-lg-8 position-relative"}>
         <div className="row g-1 lg:g-1">
           {data?.images.map((image, index) => (
@@ -35,27 +34,23 @@ export async function Product({ id }: { id: string }) {
                   : ''
               }`}
             >
-              {/*           <Link
-                className="position-relative d-flex rounded-0 overflow-hidden"
-                href={image.src}
-                data-glightbox=""
-                data-gallery="product-gallery"
-              >*/}
-              <div
-                className="ratio hover-effect-target bg-body-tertiary rounded-0"
-                style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
+              <LightBox
+                imgUrl={image.src}
               >
-                <Image
-                  width={600}
-                  height={900}
-                  src={image.src || "/placeholder.svg"}
-                  alt={image.alt || `Image ${index + 1}`}
-                  className="object-cover"
-                />
-              </div>
-              {/*
-              </Link>
-*/}
+                <div
+                  className="ratio hover-effect-target bg-body-tertiary rounded-0"
+                  style={{ "--cz-aspect-ratio": "calc(900 / 600 * 100%)" } as React.CSSProperties}
+                >
+                  <Image
+                    width={600}
+                    height={900}
+                    src={image.src || "/placeholder.svg"}
+                    alt={image.alt || `Image ${index + 1}`}
+                    className="object-cover"
+                  />
+                </div>
+              </LightBox>
+
             </div>
           ))}
         </div>
@@ -102,7 +97,8 @@ export async function Product({ id }: { id: string }) {
                   </button>
                 </div>
               </div>
-              <p dangerouslySetInnerHTML={{ __html: data?.short_description || data?.description }} className="fs-sm mb-2"></p>
+              <p dangerouslySetInnerHTML={{ __html: data?.short_description || data?.description }}
+                 className="fs-sm mb-2"></p>
               <div className="collapse" id="moreDescription">
                 <div className="fs-sm pt-3">
                   <p dangerouslySetInnerHTML={{ __html: data?.description || "" }}>
