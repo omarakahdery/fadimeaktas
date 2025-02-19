@@ -107,8 +107,7 @@ export async function getMyCart({
                                   token,
                                   cart_key
                                 }: GetMyCartProps) {
-  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart` + (cart_key ? ("?cart_key=" + cart_key) : "")
-  console.log(endpoint, "endpoint")
+  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart` + (!token && cart_key ? ("?cart_key=" + cart_key) : "")
   try {
     const response = await fetch(endpoint, {
       headers: {

@@ -34,7 +34,6 @@ export function AddItemToCart({ Product }: Props) {
         }),
       })
       const data = await response.json()
-
       if (data?.notices?.success?.length > 0) {
         setIsSuccess(true)
         window.location.href = "/sepetim"

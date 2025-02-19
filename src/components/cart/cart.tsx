@@ -46,7 +46,7 @@ export const Cart = async () => {
       <section style={{ marginTop: "80px" }}>
         <main className="container content-wrapper">
           <div className=" pt-4 pt-md-5 pb-5 mt-sm-3 mt-md-0 mb-2 mb-md-3 mb-lg-4 mb-xl-5">
-            {/*            <pre>
+{/*                        <pre>
   {JSON.stringify(data, null, 2)}
 </pre>*/}
             <div className="row">
