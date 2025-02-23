@@ -4,6 +4,7 @@ import { cookies } from 'next/headers'
 import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 import { mergeCarts } from "@/lib/api/merge-carts";
+import { cookieDomain } from "@/config/wc";
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
 
@@ -32,7 +33,7 @@ export async function POST(request: Request) {
     if (response.ok) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", data.user_id.toString(), {
-        domain: ".fadimeaktas.com",
+        domain: cookieDomain,
         httpOnly: true,
         secure:true,
         sameSite: "strict",
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
         path: "/",
       })
       cookieStore.set("token", authHeader, {
-        domain: ".fadimeaktas.com",
+        domain: cookieDomain,
         httpOnly: true,
         secure:true,
         sameSite: "strict",

@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
+import { cookieDomain } from "@/config/wc";
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
+
 export async function POST(req: Request) {
   const { id, quantity } = await req.json()
   const { searchParams } = new URL(req.url)
@@ -26,9 +28,9 @@ export async function POST(req: Request) {
     }
     const cookieStore = await cookies()
     cookieStore.set("wishlist_key", cartData.cart_key, {
-      domain: ".fadimeaktas.com",
+      domain: cookieDomain,
       httpOnly: true,
-      secure:true,
+      secure: true,
       sameSite: "strict",
       maxAge: 90 * 24 * 60 * 60, // 1 week
       path: "/",

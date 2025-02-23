@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { api } from "@/config/wc";
+import { api, cookieDomain } from "@/config/wc";
 import { IResponse } from "@/types/api/IResponse";
 import { ICartUser, IUser } from "@/types/IUser";
 import { cookies } from "next/headers";
@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       const authHeader = btoa(`${response.data.username}:${password}`)
       const cookieStore = await cookies()
       cookieStore.set("user_id", response.data.id.toString(), {
-        domain: ".fadimeaktas.com",
+        domain: cookieDomain,
         httpOnly: true,
         secure: true,
         sameSite: "strict",
@@ -31,7 +31,7 @@ export async function POST(request: Request) {
         path: "/",
       })
       cookieStore.set("token", authHeader, {
-        domain: ".fadimeaktas.com",
+        domain: cookieDomain,
         httpOnly: true,
         secure: true,
         sameSite: "strict",
