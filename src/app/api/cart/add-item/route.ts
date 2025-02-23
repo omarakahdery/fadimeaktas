@@ -29,6 +29,7 @@ export async function POST(req: Request) {
     }
     const cookieStore = await cookies()
     cookieStore.set("cart_key", cartData.cart_key, {
+      domain: ".fadimeaktas.com",
       httpOnly: true,
       secure: true,
       sameSite: "strict",

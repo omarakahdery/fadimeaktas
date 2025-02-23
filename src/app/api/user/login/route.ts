@@ -32,6 +32,7 @@ export async function POST(request: Request) {
     if (response.ok) {
       const cookieStore = await cookies()
       cookieStore.set("user_id", data.user_id.toString(), {
+        domain: ".fadimeaktas.com",
         httpOnly: true,
         secure:true,
         sameSite: "strict",
@@ -39,6 +40,7 @@ export async function POST(request: Request) {
         path: "/",
       })
       cookieStore.set("token", authHeader, {
+        domain: ".fadimeaktas.com",
         httpOnly: true,
         secure:true,
         sameSite: "strict",

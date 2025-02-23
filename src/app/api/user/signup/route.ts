@@ -23,6 +23,7 @@ export async function POST(request: Request) {
       const authHeader = btoa(`${response.data.username}:${password}`)
       const cookieStore = await cookies()
       cookieStore.set("user_id", response.data.id.toString(), {
+        domain: ".fadimeaktas.com",
         httpOnly: true,
         secure: true,
         sameSite: "strict",
@@ -30,6 +31,7 @@ export async function POST(request: Request) {
         path: "/",
       })
       cookieStore.set("token", authHeader, {
+        domain: ".fadimeaktas.com",
         httpOnly: true,
         secure: true,
         sameSite: "strict",

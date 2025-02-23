@@ -81,6 +81,8 @@ export async function getUserById(
 ) {
   try {
     const response = await api.get(`customers/${id}`)
+    // console.log(response.request._header, "xwwwx")
+    //const {data,  headers, request, config, ...rest } = response
     return response.data
   } catch (error) {
     return {}
