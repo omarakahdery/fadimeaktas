@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { cookieDomain } from "@/config/wc";
+import { consumerKey, consumerSecret, cookieDomain } from "@/config/wc";
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
 // https://api.fadimeaktas.com/?add-to-cart=354&quantity=1
@@ -11,6 +11,7 @@ export async function POST(req: Request) {
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")
   const cart_key = searchParams.get("cart_key")
+  const authHeader = btoa(`${consumerKey}:${consumerSecret}`)
   //const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
   const endpoint = `${woocommerceUrl}?add-to-cart=${id.toString()}&quantity=${quantity.toString()}`
   try {
@@ -19,7 +20,7 @@ export async function POST(req: Request) {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        Authorization: "Basic " + token,
+        Authorization: "Basic " + authHeader,
       },
       credentials: "include",
     })
