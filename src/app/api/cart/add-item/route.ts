@@ -34,7 +34,7 @@ export async function POST(req: Request) {
           domain: cookieDomain,
           httpOnly: true,
           secure: true,
-          sameSite: "strict",
+          sameSite: "none",
           maxAge: 90 * 24 * 60 * 60,
           path: "/",
         })
