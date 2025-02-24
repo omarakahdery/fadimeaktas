@@ -53,7 +53,7 @@ export function NavbarContent() {
 
           <Link
             className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-shake d-md-inline-flex"
-            href="/hesap-bilgisi">
+            href="https://api.fadimeaktas.com/hesabim/">
             <i style={{ fontSize: "24px" }} className="ci-user animate-target"></i>
             <span className="visually-hidden">hesap</span>
           </Link>
@@ -65,7 +65,7 @@ export function NavbarContent() {
           </Link>*/}
           <Link
             className="btn btn-icon btn-lg fs-xl btn-outline-secondary border-0 rounded-circle animate-pulse d-md-inline-flex"
-            href="/sepetim">
+            href="https://api.fadimeaktas.com/sepet/">
             <i style={{ fontSize: "24px" }} className="ci-shopping-bag animate-target me-1"></i>
           </Link>
 

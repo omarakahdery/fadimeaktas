@@ -34,9 +34,10 @@ export function AddItemToCart({ Product }: Props) {
         }),
       })
       const data = await response.json()
-      if (data?.notices?.success?.length > 0) {
+      if (data?.success) {
         setIsSuccess(true)
-        window.location.href = "/sepetim"
+        // window.location.href = "/sepetim"
+        window.location.href = "https://api.fadimeaktas.com/sepet/"
         /*openCart("cartButton");*/
       } else {
       }

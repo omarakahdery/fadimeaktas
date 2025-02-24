@@ -16,9 +16,9 @@ export default async function UserLayout({
   const cookiesStore = await cookies()
   const userId = cookiesStore.get("user_id")
   const categories = await getCategoriesAsList();
-  if (!userId?.value) {
+/*  if (!userId?.value) {
     redirect("/giris-yap")
-  }
+  }*/
   return (
     <main className="page-wrapper">
       <RemoveOverflow/>

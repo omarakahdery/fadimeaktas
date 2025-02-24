@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { cookieDomain } from "@/config/wc";
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
+// https://api.fadimeaktas.com/?add-to-cart=354&quantity=1
 
 export async function POST(req: Request) {
 
@@ -10,7 +11,8 @@ export async function POST(req: Request) {
   const { searchParams } = new URL(req.url)
   const token = searchParams.get("token")
   const cart_key = searchParams.get("cart_key")
-  const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
+  //const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
+  const endpoint = `${woocommerceUrl}?add-to-cart=${id.toString()}&quantity=${quantity.toString()}`
   try {
     const response = await fetch(endpoint, {
       method: "POST",
@@ -19,31 +21,25 @@ export async function POST(req: Request) {
         "Content-Type": "application/json",
         Authorization: "Basic " + token,
       },
-      body: JSON.stringify({
-        id: id.toString(),
-        quantity,
-      }),
       credentials: "include",
     })
     const cookieStore = await cookies()
     response.headers.forEach((value, name) => {
       if (name.toLowerCase() === "set-cookie") {
-        // Extract the first cookie (before the first semicolon)
         const cookiePart = value.split("; ")[0];
-
-        // Split by '=' to get name and value
         const [cookieName, cookieValue] = cookiePart.split("=");
+        console.log({ cookieName, cookieValue })
         cookieStore.set(cookieName, cookieValue, {
           domain: cookieDomain,
           httpOnly: true,
           secure: true,
           sameSite: "strict",
-          maxAge: 90 * 24 * 60 * 60, // 1 week
+          maxAge: 90 * 24 * 60 * 60,
           path: "/",
         })
       }
     });
-    const cartData = await response.json()
+   /* const cartData = await response.json()
     if (!response.ok) {
       return NextResponse.json({ error: "Failed to fetch cart from CoCart API" }, { status: response.status })
     }
@@ -54,8 +50,8 @@ export async function POST(req: Request) {
       sameSite: "strict",
       maxAge: 90 * 24 * 60 * 60, // 1 week
       path: "/",
-    })
-    return NextResponse.json(cartData)
+    })*/
+    return NextResponse.json({ success: true })
   } catch (error) {
     return NextResponse.json({ error: "Error fetching cart" }, { status: 500 })
   }
