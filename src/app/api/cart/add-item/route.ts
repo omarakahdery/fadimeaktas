@@ -30,9 +30,10 @@ export async function POST(req: Request) {
       if (name.toLowerCase() === "set-cookie") {
         const cookiePart = value.split("; ")[0];
         const [ cookieName, cookieValue ] = cookiePart.split("=");
+        //console.log({ cookieName, cookieValue })
         if (cookieName.includes("wp_woocommerce_session")) {
-          //console.log({ cookieName, cookieValue })
-          cookieStore.set(cookieName, cookieValue, {
+        const decodedCookieValue = decodeURIComponent(cookieValue)
+          cookieStore.set(cookieName, decodedCookieValue, {
             domain: cookieDomain,
             httpOnly: true,
             secure: true,
@@ -41,7 +42,6 @@ export async function POST(req: Request) {
             path: "/",
           })
         }
-
       }
     });
     /* const cartData = await response.json()
