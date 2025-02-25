@@ -32,15 +32,18 @@ export async function POST(req: Request) {
         const [ cookieName, cookieValue ] = cookiePart.split("=");
         //console.log({ cookieName, cookieValue })
         if (cookieName.includes("wp_woocommerce_session")) {
-        const decodedCookieValue = decodeURIComponent(cookieValue)
-          cookieStore.set(cookieName, decodedCookieValue, {
-            domain: cookieDomain,
-            httpOnly: true,
-            secure: true,
-            sameSite: "none",
-            maxAge: 90 * 24 * 60 * 60,
-            path: "/",
-          })
+          const existingCookie = cookieStore.get(cookieName)
+          if (!existingCookie) {
+            const decodedCookieValue = decodeURIComponent(cookieValue)
+            cookieStore.set(cookieName, decodedCookieValue, {
+              domain: cookieDomain,
+              httpOnly: true,
+              secure: true,
+              sameSite: "none",
+              maxAge: 2 * 24 * 60 * 60,
+              path: "/",
+            })
+          }
         }
       }
     });
