@@ -16,21 +16,29 @@ export async function POST(req: Request) {
   //const endpoint = `${woocommerceUrl}/wp-json/cocart/v2/cart/add-item` + (cart_key ? ("?cart_key=" + cart_key) : "")
   const endpoint = `${woocommerceUrl}?add-to-cart=${id.toString()}&quantity=${quantity.toString()}`
   try {
+    const cookieStore = await cookies();
+    const allCookies = cookieStore.getAll();
+    const woocommerceSessionCookie = allCookies.find(({ name }) =>
+      name.includes("wp_woocommerce_session")
+    );
+    const headers: HeadersInit = {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: "Basic " + authHeader,
+    };
+    if (woocommerceSessionCookie) {
+      headers["Cookie"] = `${woocommerceSessionCookie.name}=${woocommerceSessionCookie.value}`;
+    }
+
     const response = await fetch(endpoint, {
       method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Basic " + authHeader,
-      },
+      headers,
       credentials: "include",
     })
-    const cookieStore = await cookies()
     response.headers.forEach((value, name) => {
       if (name.toLowerCase() === "set-cookie") {
         const cookiePart = value.split("; ")[0];
         const [ cookieName, cookieValue ] = cookiePart.split("=");
-        //console.log({ cookieName, cookieValue })
         if (cookieName.includes("wp_woocommerce_session")) {
           const existingCookie = cookieStore.get(cookieName)
           if (!existingCookie) {
@@ -47,18 +55,6 @@ export async function POST(req: Request) {
         }
       }
     });
-    /* const cartData = await response.json()
-     if (!response.ok) {
-       return NextResponse.json({ error: "Failed to fetch cart from CoCart API" }, { status: response.status })
-     }
-     cookieStore.set("cart_key", cartData.cart_key, {
-       domain: cookieDomain,
-       httpOnly: true,
-       secure: true,
-       sameSite: "strict",
-       maxAge: 90 * 24 * 60 * 60, // 1 week
-       path: "/",
-     })*/
     return NextResponse.json({ success: true })
   } catch (error) {
     return NextResponse.json({ error: "Error fetching cart" }, { status: 500 })

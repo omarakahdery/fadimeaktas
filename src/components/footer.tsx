@@ -52,7 +52,7 @@ export const Footer = ({ categories }: { categories?: ICategory[] }) => {
                   <div className="accordion-collapse collapse d-sm-block" id="categoriesLinks"
                        aria-labelledby="categoriesHeading" data-bs-parent="#footerLinks">
                     <ul className="nav flex-column gap-2 pt-sm-3 pb-3 pb-sm-0 mt-n1 mb-1 mb-sm-0">
-                      {categories?.map((category) => (
+                      {(categories||[])?.map((category) => (
                         <li className="d-flex w-100 pt-1">
                           <a
                             className="nav-link animate-underline animate-target d-inline fw-normal text-truncate p-0"

@@ -28,7 +28,7 @@ export async function NavOffCanvas({ categories }: { categories?: ICategory[] })
               Katagoriler
             </p>
             <ul className="navbar-nav ">
-              {categories?.map((category) => {
+              {(categories||[])?.map((category) => {
                 return <li className="nav-item ">
                   <a style={{ marginBottom: "16px" }} className="fs-xl fw-normal nav-link" aria-current="page"
                         href={`/${category.slug || "kategori"}/${category.id}`}>
