@@ -18,18 +18,22 @@ export async function POST(req: Request) {
   try {
     const cookieStore = await cookies();
     const allCookies = cookieStore.getAll();
-    const woocommerceSessionCookie = allCookies.find(({ name }) =>
-      name.includes("wp_woocommerce_session")
-    );
+    /*    const woocommerceSessionCookie = allCookies.find(({ name }) =>
+          name.includes("wp_woocommerce_session")
+        );*/
     const headers: HeadersInit = {
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: "Basic " + authHeader,
     };
-    if (woocommerceSessionCookie) {
-      headers["Cookie"] = `${woocommerceSessionCookie.name}=${woocommerceSessionCookie.value}`;
+    /*  if (woocommerceSessionCookie) {
+        headers["Cookie"] = `${woocommerceSessionCookie.name}=${woocommerceSessionCookie.value}`;
+      }*/
+    if (allCookies.length > 0) {
+      headers["Cookie"] = allCookies
+        .map(cookie => `${cookie.name}=${cookie.value}`)
+        .join('; ');
     }
-
     const response = await fetch(endpoint, {
       method: "POST",
       headers,
@@ -39,19 +43,18 @@ export async function POST(req: Request) {
       if (name.toLowerCase() === "set-cookie") {
         const cookiePart = value.split("; ")[0];
         const [ cookieName, cookieValue ] = cookiePart.split("=");
-        if (cookieName.includes("wp_woocommerce_session")) {
-          const existingCookie = cookieStore.get(cookieName)
-          if (!existingCookie) {
-            const decodedCookieValue = decodeURIComponent(cookieValue)
-            cookieStore.set(cookieName, decodedCookieValue, {
-              domain: cookieDomain,
-              httpOnly: true,
-              secure: true,
-              sameSite: "none",
-              maxAge: 2 * 24 * 60 * 60,
-              path: "/",
-            })
-          }
+        //if (cookieName.includes("wp_woocommerce_session")) {
+        const existingCookie = cookieStore.get(cookieName)
+        if (!existingCookie) {
+          const decodedCookieValue = decodeURIComponent(cookieValue)
+          cookieStore.set(cookieName, decodedCookieValue, {
+            domain: cookieDomain,
+            httpOnly: true,
+            secure: true,
+            sameSite: "none",
+            maxAge: 2 * 24 * 60 * 60,
+            path: "/",
+          })
         }
       }
     });

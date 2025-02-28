@@ -37,7 +37,7 @@ export function AddItemToCart({ Product }: Props) {
       if (data?.success) {
         setIsSuccess(true)
         // window.location.href = "/sepetim"
-        window.location.href = "https://api.fadimeaktas.com/sepet/"
+       // window.location.href = "https://api.fadimeaktas.com/sepet/"
         /*openCart("cartButton");*/
       } else {
       }
