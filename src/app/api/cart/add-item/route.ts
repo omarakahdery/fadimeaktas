@@ -4,8 +4,6 @@ import { consumerKey, consumerSecret, cookieDomain } from "@/config/wc";
 
 const woocommerceUrl = "https://api.fadimeaktas.com"
 
-// https://api.fadimeaktas.com/?add-to-cart=354&quantity=1
-
 export async function POST(req: Request) {
 
   const { id, quantity } = await req.json()
